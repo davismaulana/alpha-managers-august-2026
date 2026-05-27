@@ -1,0 +1,22 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      - LEAD_WEBHOOK_URL=${LEAD_WEBHOOK_URL:-https://n8n.sixzenith.com/webhook/cfr-june2026-leadform}
+    networks:
+      - dokploy-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=dokploy-network"
+      - "traefik.http.routers.autopilot-june2026-preview.rule=Host(`autopilot-june2026-preview.zenova.id`)"
+      - "traefik.http.routers.autopilot-june2026-preview.entrypoints=websecure"
+      - "traefik.http.services.autopilot-june2026-preview-service.loadbalancer.server.port=80"
+      - "traefik.http.routers.autopilot-june2026-preview.service=autopilot-june2026-preview-service"
+      - "traefik.http.routers.autopilot-june2026-preview.tls=true"
+
+networks:
+  dokploy-network:
+    external: true

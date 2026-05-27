@@ -1,0 +1,373 @@
+import React, { useMemo, useState } from 'react';
+import { ArrowRight, CheckCircle2, Loader2, ShieldCheck } from 'lucide-react';
+import { FadeIn } from '../animations/FadeIn';
+import { FORM_SECTION_ID } from '../../lib/constants';
+
+type FormState = {
+  name: string;
+  email: string;
+  whatsapp: string;
+  businessName: string;
+  businessCategory: string;
+  monthlyRevenue: string;
+  city: string;
+  challenge: string;
+};
+
+type SubmitState =
+  | { status: 'idle'; message: string }
+  | { status: 'submitting'; message: string }
+  | { status: 'success'; message: string; leadId: string }
+  | { status: 'error'; message: string };
+
+const initialForm: FormState = {
+  name: '',
+  email: '',
+  whatsapp: '',
+  businessName: '',
+  businessCategory: '',
+  monthlyRevenue: '',
+  city: '',
+  challenge: '',
+};
+
+const revenueOptions = [
+  'Di bawah Rp50 juta/bulan',
+  'Rp50-100 juta/bulan',
+  'Rp100-500 juta/bulan',
+  'Rp500 juta-1 miliar/bulan',
+  'Di atas Rp1 miliar/bulan',
+];
+
+const categoryOptions = [
+  'F&B / restoran / cafe',
+  'Retail / distributor',
+  'Jasa profesional',
+  'Manufaktur / produksi',
+  'Online / digital commerce',
+  'Lainnya',
+];
+
+const CAMPAIGN_PREFIX = 'cfr-june2026';
+const DEFAULT_UTM_CAMPAIGN = 'june-2026-event';
+const DEFAULT_UTM_SOURCE = 'june-2026-lp';
+const EVENT_NAME_PIXEL = 'Sales Team yang Scalable - 25 Juni 2026';
+
+const getCookie = (name: string) => {
+  const match = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
+  return match ? decodeURIComponent(match[1]) : '';
+};
+
+const createEventId = () => {
+  if (window.crypto?.randomUUID) {
+    return `${CAMPAIGN_PREFIX}-${window.crypto.randomUUID()}`;
+  }
+  return `${CAMPAIGN_PREFIX}-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+};
+
+const LeadCapture: React.FC = () => {
+  const [form, setForm] = useState<FormState>(initialForm);
+  const [submitState, setSubmitState] = useState<SubmitState>({
+    status: 'idle',
+    message:
+      'Isi profil owner. Tim Alpha Leaders membaca konteks bisnis sebelum mengirim undangan.',
+  });
+
+  const sourceMeta = useMemo(() => {
+    const params = new URLSearchParams(window.location.search);
+    return {
+      pageUrl: window.location.href,
+      utmCampaign: params.get('utm_campaign') || DEFAULT_UTM_CAMPAIGN,
+      utmMedium: params.get('utm_medium') || '',
+      utmSource: params.get('utm_source') || DEFAULT_UTM_SOURCE,
+      utmContent: params.get('utm_content') || '',
+      fbp: getCookie('_fbp'),
+      fbc: getCookie('_fbc'),
+    };
+  }, []);
+
+  const updateField = (field: keyof FormState, value: string) => {
+    setForm((current) => ({ ...current, [field]: value }));
+    if (submitState.status === 'error') {
+      setSubmitState({ status: 'idle', message: 'Periksa lagi datanya, lalu kirim ulang.' });
+    }
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSubmitState({ status: 'submitting', message: 'Mengirim profil owner...' });
+
+    try {
+      const eventId = createEventId();
+      const response = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          whatsapp: form.whatsapp,
+          business: form.businessName,
+          challenge: form.challenge,
+          event_id: eventId,
+          fbp: sourceMeta.fbp,
+          fbc: sourceMeta.fbc,
+          source: sourceMeta.utmSource,
+          page_url: sourceMeta.pageUrl,
+          utm_source: sourceMeta.utmSource,
+          utm_medium: sourceMeta.utmMedium,
+          utm_campaign: sourceMeta.utmCampaign,
+          utm_content: sourceMeta.utmContent,
+          metadata: {
+            businessCategory: form.businessCategory,
+            monthlyRevenue: form.monthlyRevenue,
+            city: form.city,
+          },
+        }),
+      });
+      const body = await response.json();
+
+      if (!response.ok || !body.ok) {
+        throw new Error(body.error || 'Form belum berhasil dikirim.');
+      }
+
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Lead', {
+          content_name: EVENT_NAME_PIXEL,
+          content_category: 'Alpha Leaders Sales System Event',
+          lead_id: body.leadId,
+          event_id: eventId,
+        });
+      }
+
+      setForm(initialForm);
+      setSubmitState({
+        status: 'success',
+        leadId: body.leadId,
+        message:
+          'Profil diterima. Tim Alpha Leaders akan meninjau kecocokan dan menghubungi Anda via WhatsApp.',
+      });
+    } catch (error) {
+      setSubmitState({
+        status: 'error',
+        message: error instanceof Error ? error.message : 'Form belum berhasil dikirim.',
+      });
+    }
+  };
+
+  return (
+    <section
+      id={FORM_SECTION_ID}
+      className="scroll-mt-24 bg-[var(--cf-cream)] text-zinc-950 py-20 md:py-28 overflow-hidden"
+      aria-label="Owner Profile — Alpha Leaders"
+    >
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-16 items-start">
+          <FadeIn direction="up">
+            <div className="lg:sticky lg:top-28">
+              <p className="text-[11px] tracking-[0.22em] uppercase text-gold-700 font-black mb-4">
+                Owner Profile
+              </p>
+              <h2 className="font-serif text-3xl md:text-5xl font-bold leading-tight tracking-normal">
+                Daftar Melalui Owner Profile
+              </h2>
+              <p className="mt-6 text-base md:text-lg leading-relaxed text-zinc-700 max-w-xl">
+                Masalah terbesar bisnis Anda mungkin bukan di produk atau marketing, tetapi di
+                sistem sales team yang belum dibangun dengan benar. Bisnis besar tidak bertumbuh
+                karena owner bekerja lebih keras setiap hari. Bisnis besar bertumbuh karena
+                memiliki sales team yang mampu menghasilkan revenue secara konsisten.
+              </p>
+
+              <div className="mt-8 grid gap-4">
+                {[
+                  'Data masuk sebagai lead event Juni 2026.',
+                  'Tim Alpha Leaders meninjau kecocokan sebelum undangan dikirim.',
+                  'Follow-up dilakukan via WhatsApp setelah profil dinyatakan sesuai.',
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-start gap-3 text-sm font-semibold text-zinc-800"
+                  >
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-gold-700" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </FadeIn>
+
+          <FadeIn direction="up" delay={0.2}>
+            <form
+              onSubmit={handleSubmit}
+              className="bg-white border border-black/10 rounded-xl p-5 md:p-8 shadow-[0_24px_70px_rgba(30,20,8,0.18)]"
+            >
+              <div className="flex items-center justify-between gap-4 border-b border-zinc-200 pb-5 mb-6">
+                <div>
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-zinc-500">
+                    2 menit
+                  </p>
+                  <h3 className="text-xl md:text-2xl font-bold tracking-normal">
+                    Profil bisnis Anda
+                  </h3>
+                </div>
+                <ShieldCheck className="h-9 w-9 shrink-0 text-gold-700" />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <label className="grid gap-2 text-sm font-bold text-zinc-800">
+                  Nama owner
+                  <input
+                    required
+                    name="name"
+                    autoComplete="name"
+                    value={form.name}
+                    onChange={(event) => updateField('name', event.target.value)}
+                    className="min-h-12 rounded-lg border border-zinc-300 bg-white px-4 text-base font-medium outline-none focus:border-gold-600 focus:ring-4 focus:ring-gold-500/20"
+                    placeholder="Nama Anda"
+                  />
+                </label>
+
+                <label className="grid gap-2 text-sm font-bold text-zinc-800">
+                  WhatsApp aktif
+                  <input
+                    required
+                    name="whatsapp"
+                    type="tel"
+                    inputMode="tel"
+                    autoComplete="tel"
+                    value={form.whatsapp}
+                    onChange={(event) => updateField('whatsapp', event.target.value)}
+                    className="min-h-12 rounded-lg border border-zinc-300 bg-white px-4 text-base font-medium outline-none focus:border-gold-600 focus:ring-4 focus:ring-gold-500/20"
+                    placeholder="0812 3456 7890"
+                  />
+                </label>
+
+                <label className="grid gap-2 text-sm font-bold text-zinc-800">
+                  Email opsional
+                  <input
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    value={form.email}
+                    onChange={(event) => updateField('email', event.target.value)}
+                    className="min-h-12 rounded-lg border border-zinc-300 bg-white px-4 text-base font-medium outline-none focus:border-gold-600 focus:ring-4 focus:ring-gold-500/20"
+                    placeholder="nama@email.com"
+                  />
+                </label>
+
+                <label className="grid gap-2 text-sm font-bold text-zinc-800">
+                  Nama bisnis
+                  <input
+                    required
+                    name="businessName"
+                    value={form.businessName}
+                    onChange={(event) => updateField('businessName', event.target.value)}
+                    className="min-h-12 rounded-lg border border-zinc-300 bg-white px-4 text-base font-medium outline-none focus:border-gold-600 focus:ring-4 focus:ring-gold-500/20"
+                    placeholder="Contoh: Sari Rasa Group"
+                  />
+                </label>
+
+                <label className="grid gap-2 text-sm font-bold text-zinc-800">
+                  Kota / domisili bisnis
+                  <input
+                    required
+                    name="city"
+                    autoComplete="address-level2"
+                    value={form.city}
+                    onChange={(event) => updateField('city', event.target.value)}
+                    className="min-h-12 rounded-lg border border-zinc-300 bg-white px-4 text-base font-medium outline-none focus:border-gold-600 focus:ring-4 focus:ring-gold-500/20"
+                    placeholder="Jakarta, Surabaya, Bandung"
+                  />
+                </label>
+
+                <label className="grid gap-2 text-sm font-bold text-zinc-800">
+                  Kategori bisnis
+                  <select
+                    required
+                    name="businessCategory"
+                    value={form.businessCategory}
+                    onChange={(event) => updateField('businessCategory', event.target.value)}
+                    className="min-h-12 rounded-lg border border-zinc-300 bg-white px-4 text-base font-medium outline-none focus:border-gold-600 focus:ring-4 focus:ring-gold-500/20"
+                  >
+                    <option value="">Pilih kategori</option>
+                    {categoryOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+
+                <label className="grid gap-2 text-sm font-bold text-zinc-800 md:col-span-2">
+                  Omset bulanan
+                  <select
+                    required
+                    name="monthlyRevenue"
+                    value={form.monthlyRevenue}
+                    onChange={(event) => updateField('monthlyRevenue', event.target.value)}
+                    className="min-h-12 rounded-lg border border-zinc-300 bg-white px-4 text-base font-medium outline-none focus:border-gold-600 focus:ring-4 focus:ring-gold-500/20"
+                  >
+                    <option value="">Pilih rentang</option>
+                    {revenueOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              </div>
+
+              <label className="mt-4 grid gap-2 text-sm font-bold text-zinc-800">
+                Tantangan terbesar saat ini
+                <textarea
+                  required
+                  name="challenge"
+                  value={form.challenge}
+                  onChange={(event) => updateField('challenge', event.target.value)}
+                  className="min-h-28 rounded-lg border border-zinc-300 bg-white px-4 py-3 text-base font-medium outline-none focus:border-gold-600 focus:ring-4 focus:ring-gold-500/20"
+                  placeholder="Contoh: leads banyak tapi closing rendah, target tidak tercapai, tim sales belum punya KPI, atau owner masih harus ikut follow-up."
+                />
+              </label>
+
+              <div className="mt-6 flex flex-col md:flex-row md:items-center gap-4">
+                <button
+                  type="submit"
+                  disabled={submitState.status === 'submitting'}
+                  className="inline-flex min-h-14 items-center justify-center rounded-full bg-zinc-950 px-8 text-base font-black text-white transition hover:bg-gold-700 hover:text-black disabled:pointer-events-none disabled:opacity-60"
+                >
+                  {submitState.status === 'submitting' ? (
+                    <>
+                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                      Mengirim
+                    </>
+                  ) : (
+                    <>
+                      Daftar Sekarang
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </>
+                  )}
+                </button>
+
+                <p
+                  className={[
+                    'text-sm font-semibold leading-6',
+                    submitState.status === 'success' ? 'text-emerald-700' : '',
+                    submitState.status === 'error' ? 'text-red-700' : '',
+                    submitState.status === 'idle' || submitState.status === 'submitting'
+                      ? 'text-zinc-600'
+                      : '',
+                  ].join(' ')}
+                  role={submitState.status === 'error' ? 'alert' : 'status'}
+                >
+                  {submitState.message}
+                  {submitState.status === 'success' ? ` ID: ${submitState.leadId}` : ''}
+                </p>
+              </div>
+            </form>
+          </FadeIn>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export { LeadCapture };
