@@ -1,7 +1,7 @@
 import React from 'react';
 import { FadeIn } from '../animations/FadeIn';
 import { scrollToLeadForm } from '../../lib/constants';
-import { Calendar, Clock, Users, Video, ArrowRight, Target, TrendingUp, Award } from 'lucide-react';
+import { Calendar, Clock, Users, Video, ArrowRight } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
@@ -72,51 +72,33 @@ const Hero: React.FC = () => {
           </div>
 
           <FadeIn direction="up" delay={0.2} duration={0.8}>
-            <div className="relative">
-              <div className="absolute -left-4 -top-4 h-full w-full border border-gold-500/30" />
+            <div className="relative mx-auto w-full max-w-[460px] lg:max-w-none">
+              <div className="absolute -left-4 -top-4 h-full w-full border border-gold-500/30" aria-hidden="true" />
 
-              <div className="relative z-10 bg-gradient-to-br from-zinc-900 via-[#0a0a0a] to-zinc-950 border border-gold-500/30 p-8 md:p-10 rotate-[-2deg] shadow-[0_36px_100px_rgba(0,0,0,0.55)] overflow-hidden">
-                <div className="pointer-events-none absolute inset-0 opacity-[0.10] bg-[linear-gradient(115deg,transparent_38%,var(--cf-gold)_38%,var(--cf-gold)_39%,transparent_39%,transparent_60%,var(--cf-cream)_60%,var(--cf-cream)_60.6%,transparent_60.6%)]" />
-
-                <p className="relative text-[10px] tracking-[0.22em] uppercase text-gold-400 font-black mb-6">
-                  Sales System Command Board
-                </p>
-
-                <div className="relative space-y-5">
-                  {[
-                    { icon: Target, label: 'Struktur Tim & KPI', value: 'Locked' },
-                    { icon: TrendingUp, label: 'Target & Insentif', value: 'Calibrated' },
-                    { icon: Award, label: 'Lead Conversion', value: 'Scaled' },
-                  ].map((row) => (
-                    <div
-                      key={row.label}
-                      className="flex items-center justify-between gap-3 border-b border-white/10 pb-4 last:border-b-0 last:pb-0"
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className="rounded-md border border-gold-500/40 bg-gold-500/10 p-2 text-gold-400">
-                          <row.icon className="h-4 w-4" />
-                        </div>
-                        <span className="text-sm md:text-base font-semibold text-zinc-100">
-                          {row.label}
-                        </span>
-                      </div>
-                      <span className="text-[11px] md:text-xs font-black uppercase tracking-[0.18em] text-gold-300">
-                        {row.value}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="relative mt-7 flex items-center justify-between border-t border-gold-500/30 pt-5">
-                  <div>
-                    <p className="text-[10px] uppercase tracking-[0.22em] text-zinc-400">Bersama</p>
-                    <p className="font-serif text-xl text-white mt-1">Coach Ferly F. Raya</p>
-                  </div>
-                  <span className="rounded-full border border-gold-500/40 bg-black/60 px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-gold-300">
-                    Owner-only
-                  </span>
-                </div>
-              </div>
+              <picture>
+                <source
+                  type="image/webp"
+                  media="(min-width: 768px)"
+                  srcSet="/hero-poster.webp"
+                />
+                <source
+                  type="image/webp"
+                  srcSet="/hero-poster-mobile.webp"
+                />
+                <source
+                  media="(min-width: 768px)"
+                  srcSet="/hero-poster.jpg"
+                />
+                <img
+                  src="/hero-poster-mobile.jpg"
+                  alt="The Million Dollar Sales Team — Coach Ferly F. Raya · 25 Juni 2026"
+                  width={1080}
+                  height={1350}
+                  loading="eager"
+                  fetchPriority="high"
+                  className="relative z-10 block w-full h-auto rotate-[-2deg] shadow-[0_36px_100px_rgba(0,0,0,0.55)] border border-gold-500/30"
+                />
+              </picture>
 
               <div className="absolute -bottom-6 right-2 z-20 max-w-[260px] bg-[var(--cf-cream)] px-5 py-4 text-zinc-950 shadow-2xl">
                 <p className="text-[10px] font-black uppercase tracking-[0.18em] text-gold-700">
