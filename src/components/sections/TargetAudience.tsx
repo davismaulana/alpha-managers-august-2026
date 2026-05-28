@@ -14,7 +14,7 @@ const Audience: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-[var(--cf-ink)]">
+    <section className="py-20 md:py-28 bg-[var(--cf-ink)] md:min-h-screen md:flex md:flex-col md:justify-center">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-16 items-start">
           <FadeIn direction="up">

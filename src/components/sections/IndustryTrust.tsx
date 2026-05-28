@@ -3,7 +3,7 @@ import { FadeIn } from '../animations/FadeIn';
 
 const IndustryTrust: React.FC = () => {
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-b from-[var(--cf-ink)] to-zinc-950">
+    <section className="py-20 md:py-28 bg-gradient-to-b from-[var(--cf-ink)] to-zinc-950 md:min-h-screen md:flex md:flex-col md:justify-center">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mb-10 md:mb-12">
           <FadeIn direction="up">

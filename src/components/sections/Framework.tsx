@@ -26,7 +26,7 @@ const Framework: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-b from-zinc-950 to-[var(--cf-ink)]">
+    <section className="py-20 md:py-28 bg-gradient-to-b from-zinc-950 to-[var(--cf-ink)] md:min-h-screen md:flex md:flex-col md:justify-center">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mb-12 md:mb-14">
           <FadeIn direction="up">

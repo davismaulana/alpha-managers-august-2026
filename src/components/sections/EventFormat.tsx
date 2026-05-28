@@ -25,7 +25,7 @@ const EventDetails: React.FC = () => {
   return (
     <section
       id="event-details"
-      className="py-20 md:py-28 bg-[var(--cf-ink)] relative overflow-hidden scroll-mt-24"
+      className="py-20 md:py-28 bg-[var(--cf-ink)] relative overflow-hidden scroll-mt-24 md:min-h-screen md:flex md:flex-col md:justify-center"
     >
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-30">
         <div className="absolute inset-0 bg-[linear-gradient(135deg,transparent_0%,transparent_44%,rgba(212,175,106,0.18)_44%,rgba(212,175,106,0.18)_45%,transparent_45%)]" />

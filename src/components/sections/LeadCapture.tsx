@@ -157,7 +157,7 @@ const LeadCapture: React.FC = () => {
   return (
     <section
       id={FORM_SECTION_ID}
-      className="scroll-mt-24 bg-[var(--cf-cream)] text-zinc-950 py-20 md:py-28 overflow-hidden"
+      className="scroll-mt-24 bg-[var(--cf-cream)] text-zinc-950 py-20 md:py-28 overflow-hidden md:min-h-screen md:flex md:flex-col md:justify-center"
       aria-label="Owner Profile — Alpha Leaders"
     >
       <div className="container mx-auto px-4 md:px-6">

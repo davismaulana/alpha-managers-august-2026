@@ -34,7 +34,7 @@ const FAQ: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-zinc-950">
+    <section className="py-20 md:py-28 bg-zinc-950 md:min-h-screen md:flex md:flex-col md:justify-center">
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
         <FadeIn direction="up">
           <p className="text-[11px] tracking-[0.22em] uppercase text-gold-400 font-black mb-4">
