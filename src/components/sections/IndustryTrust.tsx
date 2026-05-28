@@ -23,14 +23,17 @@ const IndustryTrust: React.FC = () => {
         </div>
 
         <FadeIn direction="up" delay={0.3}>
-          <div className="relative border border-gold-500/30 bg-[var(--cf-cream)] p-5 md:p-8">
+          <div className="relative">
             <div className="absolute -left-2 -top-2 h-full w-full border border-gold-500/30 pointer-events-none" />
-            <img
-              src="/industry-trust.png"
-              alt="Logo collage of industries Coach Ferly has served"
-              className="relative w-full h-auto"
-              loading="lazy"
-            />
+            <picture>
+              <source type="image/webp" srcSet="/industry-trust.webp" />
+              <img
+                src="/industry-trust.png"
+                alt="Logo collage of industries Coach Ferly has served"
+                className="relative z-10 block w-full h-auto"
+                loading="lazy"
+              />
+            </picture>
           </div>
         </FadeIn>
       </div>
