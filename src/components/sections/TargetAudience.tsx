@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 const Audience: React.FC = () => {
   const items = [
-    'Business owner yang sudah punya tim sales, tetapi closing dan omzet masih naik turun.',
+    'Business owner yang sudah punya tim sales, tetapi performanya belum siap membawa bisnis ke level berikutnya.',
     'Founder yang masih harus turun mengejar target penjualan setiap bulan.',
     'Owner yang ingin leads dari marketing dikonversi menjadi revenue lebih maksimal.',
     'Bisnis yang ingin struktur sales, target, KPI, dan insentif lebih jelas.',

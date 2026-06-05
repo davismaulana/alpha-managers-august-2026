@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
 
       <div className="relative z-10 w-full">
         <FadeIn direction="up" delay={0.05} duration={0.7}>
-          <div className="w-full">
+          <div className="relative w-full">
             <picture>
               <source
                 type="image/webp"
@@ -35,6 +35,19 @@ const Hero: React.FC = () => {
                 className="block w-full h-auto"
               />
             </picture>
+
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/80 to-transparent px-4 pb-6 pt-24 md:px-6 md:pb-10 md:pt-36">
+              <div className="container mx-auto">
+                <p className="mb-3 text-[10px] md:text-xs font-black tracking-[0.18em] uppercase text-gold-300">
+                  Exclusive Community Sharing · By Invitation Only
+                </p>
+                <h1 className="max-w-5xl font-serif text-[2.1rem] md:text-6xl xl:text-7xl font-bold leading-[1.04] tracking-normal text-white drop-shadow-[0_6px_24px_rgba(0,0,0,0.75)]">
+                  Sales team yang membawa bisnis ke{' '}
+                  <span className="text-gold-400">Rp10 Miliar</span>, belum tentu bisa membawanya ke{' '}
+                  <span className="text-gold-400">Rp100 Miliar.</span>
+                </h1>
+              </div>
+            </div>
           </div>
         </FadeIn>
 
@@ -58,7 +71,7 @@ const Hero: React.FC = () => {
             <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto">
               {[
                 { icon: Calendar, label: 'Kamis, 25 Juni 2026' },
-                { icon: Clock, label: '08.00 – 12.00 WIB' },
+                { icon: Clock, label: '08.00-12.00 WIB' },
                 { icon: Video, label: 'Online via Zoom' },
                 { icon: Users, label: 'Owner-only' },
               ].map((item) => (
