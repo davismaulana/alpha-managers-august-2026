@@ -49,17 +49,17 @@ const FloatingCTA: React.FC = () => {
       ].join(' ')}
       aria-hidden={!show}
     >
-      <div className="mx-3 mb-3 rounded-full bg-[var(--cf-gold)] shadow-2xl border border-black/10">
-        <button
-          type="button"
-          onClick={scrollToLeadForm}
-          className="flex w-full items-center justify-center gap-2 px-6 py-3.5 text-sm font-black text-black"
-          style={{ minHeight: 52 }}
-        >
-          Daftar Sekarang <ArrowRight className="h-4 w-4" />
-        </button>
+        <div className="mx-3 mb-3 rounded-full bg-[var(--cf-gold)] shadow-2xl border border-black/10">
+          <button
+            type="button"
+            onClick={scrollToLeadForm}
+            className="flex w-full items-center justify-center gap-2 px-6 py-3.5 text-sm font-black text-black"
+            style={{ minHeight: 52 }}
+          >
+            Daftarkan Manager Anda <ArrowRight className="h-4 w-4" />
+          </button>
+        </div>
       </div>
-    </div>
   );
 };
 

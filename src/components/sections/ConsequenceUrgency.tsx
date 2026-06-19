@@ -1,14 +1,15 @@
 import React from 'react';
-import { AlertTriangle } from 'lucide-react';
+import { AlertTriangle, ArrowRight } from 'lucide-react';
 import { FadeIn } from '../animations/FadeIn';
 import { StaggerContainer } from '../animations/StaggerContainer';
 import { motion } from 'framer-motion';
+import { scrollToLeadForm } from '../../lib/constants';
 
 const ConsequenceUrgency: React.FC = () => {
   const warnings = [
-    'Revenue sulit stabil jika performa sales team terus naik turun dan tidak memiliki sistem yang jelas.',
-    'Leads dan budget marketing akan terus terbuang jika tim sales gagal mengubahnya menjadi closing.',
-    'Selama owner masih harus mengejar closing setiap hari, bisnis belum memiliki sales system yang benar-benar kuat.',
+    'Target perusahaan akan semakin sulit tercapai jika manager hanya mengawasi aktivitas tanpa mampu mendorong performa tim.',
+    'Karyawan yang potensial pun bisa kehilangan produktivitas jika dipimpin oleh manager tanpa kepemimpinan dan accountability kuat.',
+    'Selama owner masih harus turun tangan menyelesaikan masalah tim setiap hari, fungsi manajerial organisasi belum berjalan optimal.',
   ];
 
   return (
@@ -20,9 +21,9 @@ const ConsequenceUrgency: React.FC = () => {
               Konsekuensi
             </p>
             <h2 className="font-serif text-3xl md:text-5xl font-bold text-white leading-tight">
-              Jika Sales Team Tidak Punya Sistem,
+              Target Perusahaan Akan Makin Sulit
               <br />
-              <span className="text-[var(--cf-accent)]">Revenue Akan Tetap Naik Turun</span>
+              <span className="text-[var(--cf-accent)]">Jika Manager Hanya Mengawasi Aktivitas</span>
             </h2>
           </FadeIn>
 
@@ -38,6 +39,17 @@ const ConsequenceUrgency: React.FC = () => {
               </motion.div>
             ))}
           </StaggerContainer>
+
+          <FadeIn direction="up" delay={0.2}>
+            <button
+              type="button"
+              onClick={scrollToLeadForm}
+              className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-gold-500/40 px-6 text-sm font-black text-gold-300 transition hover:bg-[var(--cf-gold)] hover:text-black"
+            >
+              Daftarkan Manager Anda
+              <ArrowRight className="h-4 w-4" />
+            </button>
+          </FadeIn>
         </div>
       </div>
     </section>

@@ -6,9 +6,9 @@ import { motion } from 'framer-motion';
 
 const NotForYou: React.FC = () => {
   const items = [
-    'Belum siap membangun sales team dengan target, KPI, dan sistem yang lebih terukur.',
-    'Mencari strategi instan tanpa membangun fondasi sales team yang kuat.',
-    'Tidak ingin bisnis memiliki sistem penjualan yang berjalan lebih konsisten tanpa bergantung penuh pada owner.',
+    'Tidak cocok jika perusahaan Anda hanya mencari motivasi singkat tanpa perubahan sistem kerja.',
+    'Tidak cocok jika manager belum diberi target, peran, atau ruang memimpin yang jelas.',
+    'Tidak cocok jika leadership diperlakukan sebagai acara HR, bukan mesin performa bisnis.',
   ];
 
   return (

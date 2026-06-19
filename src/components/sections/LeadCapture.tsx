@@ -48,10 +48,10 @@ const categoryOptions = [
   'Lainnya',
 ];
 
-const CAMPAIGN_PREFIX = 'cfr-june2026';
-const DEFAULT_UTM_CAMPAIGN = 'june-2026-event';
-const DEFAULT_UTM_SOURCE = 'june-2026-lp';
-const EVENT_NAME_PIXEL = 'Sales Team yang Scalable - 25 Juni 2026';
+const CAMPAIGN_PREFIX = 'cfr-august2026';
+const DEFAULT_UTM_CAMPAIGN = 'alpha-managers-august-2026';
+const DEFAULT_UTM_SOURCE = 'alpha-managers-august-lp';
+const EVENT_NAME_PIXEL = 'Alpha Managers - 13 Agustus 2026';
 
 const getCookie = (name: string) => {
   const match = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
@@ -70,7 +70,7 @@ const LeadCapture: React.FC = () => {
   const [submitState, setSubmitState] = useState<SubmitState>({
     status: 'idle',
     message:
-      'Isi profil owner. Tim Alpha Leaders membaca konteks bisnis sebelum mengirim undangan.',
+      'Isi profil perusahaan dan kebutuhan manager. Tim Alpha Leaders akan menilai kesesuaian.',
   });
 
   const sourceMeta = useMemo(() => {
@@ -133,7 +133,7 @@ const LeadCapture: React.FC = () => {
       if (typeof window.fbq === 'function') {
         window.fbq('track', 'Lead', {
           content_name: EVENT_NAME_PIXEL,
-          content_category: 'Alpha Leaders Sales System Event',
+          content_category: 'Alpha Leaders Managers Event',
           lead_id: body.leadId,
           event_id: eventId,
         });
@@ -171,17 +171,16 @@ const LeadCapture: React.FC = () => {
                 Daftar Melalui Owner Profile
               </h2>
               <p className="mt-6 text-base md:text-lg leading-relaxed text-zinc-700 max-w-xl">
-                Masalah terbesar bisnis Anda mungkin bukan di produk atau marketing, tetapi di
-                sistem sales team yang belum dibangun dengan benar. Bisnis besar tidak bertumbuh
-                karena owner bekerja lebih keras setiap hari. Bisnis besar bertumbuh karena
-                memiliki sales team yang mampu menghasilkan revenue secara konsisten.
+                Mulai dari profil perusahaan dan kebutuhan manager. Tim Alpha Leaders akan menilai
+                kecocokan konteks bisnis Anda sebelum mengonfirmasi seat, investasi, dan instruksi
+                kehadiran.
               </p>
 
               <div className="mt-8 grid gap-4">
                 {[
-                  'Data masuk sebagai lead event Juni 2026.',
-                  'Tim Alpha Leaders meninjau kecocokan sebelum undangan dikirim.',
-                  'Follow-up dilakukan via WhatsApp setelah profil dinyatakan sesuai.',
+                  'Data masuk sebagai calon peserta Alpha Managers Agustus 2026.',
+                  'Tim Alpha Leaders meninjau kecocokan peserta dan kebutuhan organisasi.',
+                  'Follow-up dilakukan via WhatsApp untuk konfirmasi seat dan instruksi berikutnya.',
                 ].map((item) => (
                   <div
                     key={item}
@@ -214,7 +213,7 @@ const LeadCapture: React.FC = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <label className="grid gap-2 text-sm font-bold text-zinc-800">
-                  Nama owner
+                  Nama PIC / owner
                   <input
                     required
                     name="name"
@@ -324,7 +323,7 @@ const LeadCapture: React.FC = () => {
                   value={form.challenge}
                   onChange={(event) => updateField('challenge', event.target.value)}
                   className="min-h-28 rounded-lg border border-zinc-300 bg-white px-4 py-3 text-base font-medium outline-none focus:border-gold-600 focus:ring-4 focus:ring-gold-500/20"
-                  placeholder="Contoh: leads banyak tapi closing rendah, target tidak tercapai, tim sales belum punya KPI, atau owner masih harus ikut follow-up."
+                  placeholder="Contoh: target tidak tercapai konsisten, manager sulit mendorong performa tim, atau owner masih harus turun tangan tiap hari."
                 />
               </label>
 
@@ -341,7 +340,7 @@ const LeadCapture: React.FC = () => {
                     </>
                   ) : (
                     <>
-                      Daftar Sekarang
+                      Daftarkan Manager Anda
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </>
                   )}

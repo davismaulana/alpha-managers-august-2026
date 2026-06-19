@@ -4,6 +4,15 @@ import { ArrowRight, Menu, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { scrollToLeadForm } from '../../lib/constants';
 
+const navItems = [
+  { label: 'Masalah', href: '#problem-section' },
+  { label: 'Untuk Siapa', href: '#audience-fit' },
+  { label: 'Materi', href: '#learning-outcomes' },
+  { label: 'Mentor', href: '#speakers' },
+  { label: 'Detail', href: '#event-details' },
+  { label: 'FAQ', href: '#faq' },
+];
+
 const Navigation: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -52,12 +61,24 @@ const Navigation: React.FC = () => {
           </span>
         </div>
 
+        <nav className="hidden items-center gap-6 lg:flex">
+          {navItems.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="text-xs font-bold uppercase tracking-[0.16em] text-zinc-300 transition hover:text-gold-300"
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
         <button
           type="button"
           onClick={handleDaftarSekarang}
           className="hidden md:inline-flex items-center gap-2 rounded-full bg-[var(--cf-gold)] px-5 py-2.5 text-sm font-black text-black transition hover:bg-[var(--cf-cream)] hover:text-[var(--cf-ink)] cursor-pointer"
         >
-          Daftar Sekarang <ArrowRight className="w-4 h-4" />
+          Daftarkan Manager Anda <ArrowRight className="w-4 h-4" />
         </button>
 
         <button
@@ -78,13 +99,25 @@ const Navigation: React.FC = () => {
             transition={{ duration: 0.2, ease: 'easeInOut' }}
             className="md:hidden overflow-hidden bg-black/90 backdrop-blur-xl border-b border-white/5"
           >
-            <div className="container mx-auto px-4 py-6">
+            <div className="container mx-auto space-y-4 px-4 py-6">
+              <nav className="grid gap-2">
+                {navItems.map((item) => (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="rounded-xl border border-white/10 px-4 py-3 text-sm font-bold uppercase tracking-[0.14em] text-zinc-200 transition hover:border-gold-500/30 hover:text-gold-300"
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </nav>
               <button
                 type="button"
                 onClick={handleDaftarSekarang}
                 className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--cf-gold)] px-5 py-3 text-sm font-black text-black"
               >
-                Daftar Sekarang <ArrowRight className="w-4 h-4" />
+                Daftarkan Manager Anda <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           </motion.div>

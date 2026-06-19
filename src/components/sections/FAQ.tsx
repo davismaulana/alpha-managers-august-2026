@@ -8,33 +8,37 @@ const FAQ: React.FC = () => {
 
   const faqs = [
     {
-      question: 'Apakah event ini terbuka untuk umum?',
+      question: 'Apakah harus manager?',
       answer:
-        'Tidak. Sesi ini owner-only dan by invitation only agar diskusinya relevan dengan konteks bisnis yang sudah memiliki sales team.',
+        'Tidak. Program ini juga cocok untuk supervisor, team leader, atau karyawan yang sedang disiapkan menjadi manager.',
     },
     {
-      question: 'Apakah ada biaya pendaftaran?',
+      question: 'Apakah materi lebih teori atau praktik?',
       answer:
-        'Tidak ada biaya pendaftaran. Namun peserta tetap dikurasi melalui Owner Profile dan internal assessment.',
+        'Fokus utamanya adalah implementasi dan studi kasus yang dapat langsung diterapkan di tempat kerja.',
     },
     {
-      question: 'Kenapa harus mengisi Owner Profile dulu?',
-      answer:
-        'Agar tim Alpha Leaders dapat memastikan konteks bisnis, skala tantangan, dan kecocokan peserta sebelum undangan Zoom dikirim.',
+      question: 'Apakah ada sesi tanya jawab?',
+      answer: 'Ya. Tersedia sesi diskusi dan Q&A bersama mentor.',
     },
     {
-      question: 'Apakah bisa membawa keluarga atau tim?',
-      answer: 'By approval, tergantung konteks bisnis dan relevansi diskusi.',
+      question: 'Apakah mendapatkan sertifikat?',
+      answer: 'Ya. Seluruh peserta akan menerima Certificate of Attendance.',
     },
     {
-      question: 'Apakah ini cocok jika saya belum punya sales team?',
+      question: 'Bagaimana cara mendaftar?',
       answer:
-        'Tidak menjadi prioritas. Sesi ini paling relevan untuk owner yang sudah punya sales team dan ingin membuat performanya lebih terukur.',
+        'Isi profil perusahaan melalui form di halaman ini. Tim Alpha Leaders akan meninjau kesesuaian, lalu menghubungi Anda via WhatsApp untuk konfirmasi seat dan instruksi berikutnya.',
+    },
+    {
+      question: 'Apakah terbuka untuk umum?',
+      answer:
+        'Tidak. Program ini by invitation only agar konteks diskusinya tetap relevan dengan kebutuhan business owner, HR, dan manager yang sedang membangun performa tim.',
     },
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-zinc-950 md:min-h-screen md:flex md:flex-col md:justify-center">
+    <section id="faq" className="scroll-mt-24 bg-zinc-950 py-20 md:py-28">
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
         <FadeIn direction="up">
           <p className="text-[11px] tracking-[0.22em] uppercase text-gold-400 font-black mb-4">
@@ -64,7 +68,9 @@ const FAQ: React.FC = () => {
                 <div
                   className={cn(
                     'overflow-hidden transition-all duration-300 ease-in-out px-5 md:px-6',
-                    openIndex === idx ? 'max-h-60 opacity-100 pb-5 md:pb-6' : 'max-h-0 opacity-0'
+                    openIndex === idx
+                      ? 'max-h-60 opacity-100 pb-5 md:pb-6'
+                      : 'max-h-0 opacity-0'
                   )}
                 >
                   <p className="text-sm md:text-base text-zinc-300 leading-relaxed">{faq.answer}</p>

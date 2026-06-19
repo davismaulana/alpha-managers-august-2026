@@ -8,20 +8,20 @@ const Framework: React.FC = () => {
     {
       number: 'I',
       icon: GitBranch,
-      title: 'The Scalable Sales Team Structure',
-      desc: 'Membangun struktur tim sales yang tidak bergantung pada owner.',
+      title: 'Manager Performance Architecture',
+      desc: 'Membangun pola kerja manager yang membuat tim bergerak tanpa supervision langsung owner.',
     },
     {
       number: 'II',
       icon: Gauge,
-      title: 'The Sales Target & Incentive Framework',
-      desc: 'Menyusun target dan komisi yang mendorong performa tanpa merusak margin.',
+      title: 'Accountability Control System',
+      desc: 'Membangun ritme kontrol performa, pelaporan, dan tindak lanjut yang konsisten.',
     },
     {
       number: 'III',
       icon: Workflow,
-      title: 'The Lead Conversion Strategy',
-      desc: 'Meningkatkan conversion leads menjadi closing yang lebih konsisten.',
+      title: 'Leadership Communication',
+      desc: 'Membuat arahan, feedback, dan ekspektasi lebih jelas agar kualitas eksekusi meningkat.',
     },
   ];
 
@@ -36,7 +36,7 @@ const Framework: React.FC = () => {
             <h2 className="font-serif text-3xl md:text-5xl font-bold text-white leading-tight">
               Framework untuk Membangun
               <br />
-              <span className="text-gold-400">Sales Team yang Lebih Scalable</span>
+              <span className="text-gold-400">Management Layer yang Akuntabel</span>
             </h2>
           </FadeIn>
         </div>
@@ -71,7 +71,7 @@ const Framework: React.FC = () => {
               onClick={scrollToLeadForm}
               className="mt-10 inline-flex items-center gap-2 rounded-full bg-[var(--cf-gold)] px-6 py-3 text-sm font-black text-black transition hover:bg-[var(--cf-cream)] hover:text-[var(--cf-ink)]"
             >
-              Daftar Sekarang <ArrowRight className="h-4 w-4" />
+              Daftarkan Manager Anda <ArrowRight className="h-4 w-4" />
             </button>
           </FadeIn>
         </div>

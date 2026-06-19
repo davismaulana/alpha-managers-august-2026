@@ -10,33 +10,35 @@ const Pain: React.FC = () => {
   const pains = [
     {
       icon: TrendingDown,
-      title: 'Budget marketing tinggi, closing rendah',
-      desc: 'Budget marketing terus keluar, tetapi leads yang masuk belum konsisten berubah menjadi closing.',
+      desc: 'Tim sulit mencapai KPI secara konsisten.',
     },
     {
       icon: Activity,
-      title: 'Performa sales naik turun',
-      desc: 'Performa sales team naik turun, sehingga omzet sulit stabil dan sulit diprediksi.',
+      desc: 'Manager terlalu fokus mengerjakan pekerjaan operasional dibanding memimpin tim.',
     },
     {
       icon: Users2,
-      title: 'Tim sibuk, revenue tidak ikut tumbuh',
-      desc: 'Tim terlihat sibuk setiap hari, tetapi hasil revenue tidak ikut bertumbuh.',
+      desc: 'Karyawan masih bergantung pada arahan terus-menerus.',
     },
     {
       icon: ShieldAlert,
-      title: 'Mental tim turun setelah penolakan',
-      desc: 'Baru beberapa kali ditolak, mental tim turun dan follow-up mulai longgar.',
+      desc: 'Delegasi sudah dilakukan, tetapi eksekusinya tetap tidak berjalan.',
     },
     {
       icon: UserCog,
-      title: 'Owner masih turun mengejar closing',
-      desc: 'Owner masih harus ikut turun tangan untuk mendorong sales mengejar target.',
+      desc: 'Banyak meeting, sedikit accountability.',
+    },
+    {
+      icon: Activity,
+      desc: 'HR sudah mengadakan training, tetapi perubahan performa tidak terlihat.',
     },
   ];
 
   return (
-    <section className="relative py-20 md:py-28 bg-gradient-to-b from-[var(--cf-ink)] via-zinc-950 to-[var(--cf-ink)] md:min-h-screen md:flex md:flex-col md:justify-center">
+    <section
+      id="problem-section"
+      className="relative scroll-mt-24 bg-gradient-to-b from-[var(--cf-ink)] via-zinc-950 to-[var(--cf-ink)] py-20 md:py-28"
+    >
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mb-12 md:mb-16">
           <FadeIn direction="up">
@@ -44,38 +46,33 @@ const Pain: React.FC = () => {
               Diagnosa
             </p>
             <h2 className="font-serif text-3xl md:text-5xl font-bold text-white leading-tight">
-              Anda Mungkin Sedang
+              Inikah yang
               <br />
-              Mengalami Masalah Ini
+              Terjadi di Perusahaan Anda?
             </h2>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>
             <p className="mt-6 text-base md:text-lg text-zinc-400 max-w-2xl leading-relaxed">
-              Masalahnya bukan sekadar kurang leads atau kurang orang. Sering kali revenue naik
-              turun karena sales team belum bekerja dengan sistem yang sama.
+              Masalahnya sering kali bukan pada kemampuan teknis manager. Masalahnya ada pada
+              kemampuan mereka memimpin, mengarahkan, mengelola performa, dan membuat tim bergerak
+              tanpa harus terus diawasi owner.
             </p>
           </FadeIn>
         </div>
 
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-6xl">
+        <StaggerContainer className="grid max-w-6xl grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
           {pains.map((p, idx) => (
             <motion.div
               key={idx}
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-              className={[
-                'group relative border border-white/10 bg-zinc-900/40 backdrop-blur-sm p-6 md:p-7 transition-colors hover:bg-zinc-900/70',
-                idx === 4 ? 'md:col-span-2' : '',
-              ].join(' ')}
+              className="group relative border border-white/10 bg-zinc-900/40 p-6 backdrop-blur-sm transition-colors hover:bg-zinc-900/70 md:p-7"
             >
               <div className="absolute left-0 top-0 h-full w-1 bg-[var(--cf-accent)]/70" />
               <div className="flex items-start gap-4">
                 <div className="rounded-md border border-gold-500/30 bg-gold-500/10 p-2.5 text-gold-400 shrink-0">
                   <p.icon className="h-5 w-5" />
                 </div>
-                <div>
-                  <h3 className="text-base md:text-lg font-bold text-white mb-1.5">{p.title}</h3>
-                  <p className="text-sm md:text-base text-zinc-400 leading-relaxed">{p.desc}</p>
-                </div>
+                <p className="text-sm leading-relaxed text-zinc-200 md:text-base">{p.desc}</p>
               </div>
             </motion.div>
           ))}
@@ -85,16 +82,16 @@ const Pain: React.FC = () => {
           <div className="mt-12 md:mt-16 max-w-4xl">
             <div className="relative border border-gold-500/30 bg-black/50 backdrop-blur-md p-8 md:p-10">
               <p className="text-lg md:text-2xl font-semibold text-white leading-relaxed">
-                Jika poin-poin ini terasa familiar, bisnis Anda kemungkinan belum memiliki{' '}
-                <span className="text-gold-400">sales system yang scalable</span>. Owner masih
-                menjadi penopang utama revenue.
+                Jika pola ini terus berulang, perusahaan bukan hanya kekurangan training.
+                Perusahaan sedang kekurangan <span className="text-gold-400">management layer</span>{' '}
+                yang bisa dipercaya untuk membawa target menjadi eksekusi.
               </p>
               <button
                 type="button"
                 onClick={scrollToLeadForm}
                 className="mt-6 inline-flex items-center gap-2 rounded-full bg-[var(--cf-gold)] px-6 py-3 text-sm font-black text-black transition hover:bg-[var(--cf-cream)] hover:text-[var(--cf-ink)]"
               >
-                Daftar Sekarang <ArrowRight className="h-4 w-4" />
+                Daftarkan Manager Anda <ArrowRight className="h-4 w-4" />
               </button>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Users, Target, TrendingUp, Building2 } from 'lucide-react';
+import { Users, Target, TrendingUp, Building2, MessageCircleCode, Handshake } from 'lucide-react';
 import { FadeIn } from '../animations/FadeIn';
 import { StaggerContainer } from '../animations/StaggerContainer';
 import { motion } from 'framer-motion';
@@ -11,31 +11,43 @@ const LearningOutcomes: React.FC = () => {
     {
       number: '01',
       icon: Users,
-      title: 'Membuat Struktur Tim Sales yang Lebih Efektif',
-      desc: 'Memahami pembagian role agar sales bekerja lebih fokus, produktif, dan tidak saling menunggu.',
+      title: 'Bagaimana Manager Mendorong Tim Mencapai Target',
+      desc: 'Framework praktis agar aktivitas tim menghasilkan outcome bisnis yang berulang.',
     },
     {
       number: '02',
       icon: Target,
-      title: 'Menyusun Target dan Sistem Insentif Sales',
-      desc: 'Membuat target dan komisi yang meningkatkan motivasi tim tanpa mengorbankan profit bisnis.',
+      title: 'Accountability System',
+      desc: 'Membangun budaya tanggung jawab tanpa harus terus mengawasi.',
     },
     {
       number: '03',
       icon: TrendingUp,
-      title: 'Meningkatkan Conversion Leads Menjadi Revenue',
-      desc: 'Mengoptimalkan leads dari marketing agar lebih banyak berubah menjadi closing dan omzet.',
+      title: 'Effective Delegation',
+      desc: 'Delegasi yang membuat pekerjaan selesai dengan standar yang tepat.',
     },
     {
       number: '04',
       icon: Building2,
-      title: 'Exclusive Multi-Branch Sales Team Case Study',
-      desc: 'Belajar dari studi kasus sistem sales team pada bisnis multi-cabang dengan tim yang berkembang.',
+      title: 'Coaching & Performance Management',
+      desc: 'Teknik membina dan meningkatkan performa anggota tim secara konsisten.',
+    },
+    {
+      number: '05',
+      icon: MessageCircleCode,
+      title: 'Leadership Communication',
+      desc: 'Cara memberi arahan, feedback, dan ekspektasi dengan efektif.',
+    },
+    {
+      number: '06',
+      icon: Handshake,
+      title: 'Building High Performance Team',
+      desc: 'Membangun tim yang lebih mandiri, disiplin, dan fokus pada hasil.',
     },
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-zinc-950 md:min-h-screen md:flex md:flex-col md:justify-center">
+    <section id="learning-outcomes" className="scroll-mt-24 bg-zinc-950 py-20 md:py-28">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mb-12 md:mb-14">
           <FadeIn direction="up">
@@ -43,10 +55,12 @@ const LearningOutcomes: React.FC = () => {
               Materi sesi
             </p>
             <h2 className="font-serif text-3xl md:text-5xl font-bold text-white leading-tight">
-              Apa yang Akan
-              <br />
-              Anda Pelajari?
+              Enam Area yang Mengubah Manager dari Operator Menjadi Leader
             </h2>
+            <p className="mt-6 max-w-3xl text-base leading-relaxed text-zinc-400 md:text-lg">
+              Dalam sesi ini, peserta akan memahami framework dan praktik untuk membuat tim lebih
+              mandiri, disiplin, dan fokus pada hasil.
+            </p>
           </FadeIn>
         </div>
 
@@ -83,7 +97,7 @@ const LearningOutcomes: React.FC = () => {
               onClick={scrollToLeadForm}
               className="inline-flex items-center gap-2 rounded-full border border-gold-500/40 bg-zinc-900/60 px-6 py-3 text-sm font-black text-gold-300 transition hover:bg-[var(--cf-gold)] hover:text-black"
             >
-              Daftar Sekarang <ArrowRight className="h-4 w-4" />
+              Daftarkan Manager Anda <ArrowRight className="h-4 w-4" />
             </button>
           </div>
         </FadeIn>

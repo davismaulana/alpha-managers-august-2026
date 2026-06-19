@@ -36,6 +36,17 @@ const IndustryTrust: React.FC = () => {
             </picture>
           </div>
         </FadeIn>
+
+        <FadeIn direction="up" delay={0.4}>
+          <div className="mt-10 border border-white/10 bg-zinc-900/30 p-6 md:p-8">
+            <p className="text-[11px] font-black uppercase tracking-[0.22em] text-gold-400">
+              Testimonials
+            </p>
+            <h3 className="mt-3 font-serif text-2xl font-bold leading-tight text-white md:text-3xl">
+              Apa Kata Mereka Tentang Coach Ferly dan Alpha Leaders?
+            </h3>
+          </div>
+        </FadeIn>
       </div>
     </section>
   );

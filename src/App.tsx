@@ -7,10 +7,10 @@ import { Audience } from './components/sections/TargetAudience';
 import { NotForYou } from './components/sections/NotForYou';
 import { LearningOutcomes } from './components/sections/WhatYoullLearn';
 import { Speakers } from './components/sections/Speakers';
-import { Framework } from './components/sections/Framework';
 import { EventDetails } from './components/sections/EventFormat';
 import { ConsequenceUrgency } from './components/sections/ConsequenceUrgency';
 import { IndustryTrust } from './components/sections/IndustryTrust';
+import { FinalCTA } from './components/sections/FinalCTA';
 import { LeadCapture } from './components/sections/LeadCapture';
 import { FAQ } from './components/sections/FAQ';
 import { Footer } from './components/sections/Footer';
@@ -26,10 +26,10 @@ const App: React.FC = () => {
       <NotForYou />
       <LearningOutcomes />
       <Speakers />
-      <Framework />
       <EventDetails />
       <ConsequenceUrgency />
       <IndustryTrust />
+      <FinalCTA />
       <LeadCapture />
       <FAQ />
       <Footer />
