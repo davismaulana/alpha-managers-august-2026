@@ -8,7 +8,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const distDir = path.join(__dirname, 'dist');
 const port = Number(process.env.PORT || 80);
 const leadWebhookUrl =
-  process.env.LEAD_WEBHOOK_URL || 'https://n8n.sixzenith.com/webhook/cfr-august2026-leadform';
+  process.env.LEAD_WEBHOOK_URL || 'https://n8n.sixzenith.com/webhook/cfr-june2026-leadform';
 
 const CAMPAIGN_ID = 'cfr-august2026';
 const EVENT_NAME = 'Alpha Managers - 13 Agustus 2026';
@@ -32,8 +32,11 @@ const contentTypes = {
 const requiredFields = [
   'name',
   'whatsapp',
-  'business',
-  'challenge',
+  'company',
+  'role',
+  'city',
+  'participant_count',
+  'manager_challenge',
 ];
 
 const sendJson = (response, status, payload) => {
@@ -88,9 +91,14 @@ const normalizeLeadPayload = (payload, request) => {
   return {
     name: cleanText(payload.name, 120),
     whatsapp,
-    business: cleanText(payload.business, 160),
-    challenge: cleanText(payload.challenge, 1000),
     email: cleanText(payload.email, 160),
+    company: cleanText(payload.company || payload.business, 160),
+    business: cleanText(payload.company || payload.business, 160),
+    role: cleanText(payload.role, 80),
+    city: cleanText(payload.city || metadata.city, 120),
+    participant_count: cleanText(payload.participant_count, 80),
+    manager_challenge: cleanText(payload.manager_challenge || payload.challenge, 1000),
+    challenge: cleanText(payload.manager_challenge || payload.challenge, 1000),
     event_id: eventId,
     fbp: cleanText(payload.fbp, 180),
     fbc: cleanText(payload.fbc, 180),
@@ -104,8 +112,12 @@ const normalizeLeadPayload = (payload, request) => {
     campaign: CAMPAIGN_ID,
     business_category: cleanText(metadata.businessCategory, 120),
     monthly_revenue: cleanText(metadata.monthlyRevenue, 120),
-    city: cleanText(metadata.city, 120),
+    page_title: 'Alpha Managers August 2026',
     event_name: EVENT_NAME,
+    metadata: {
+      event_date: '2026-08-13',
+      event_name: EVENT_NAME,
+    },
   };
 };
 
@@ -141,7 +153,7 @@ const postLeadToWebhook = async (lead) => {
       ok: true,
       status: response.status,
       id: body.id || body.leadId || lead.event_id,
-      campaign: lead.campaign,
+      campaign: body.campaign || lead.campaign,
     };
   } catch (error) {
     const aborted = error instanceof Error && error.name === 'AbortError';
@@ -231,5 +243,5 @@ const server = createServer(async (request, response) => {
 });
 
 server.listen(port, '0.0.0.0', () => {
-  console.log(`autopilot-business-june2026 listening on ${port}`);
+  console.log(`autopilot-business-august2026 listening on ${port}`);
 });

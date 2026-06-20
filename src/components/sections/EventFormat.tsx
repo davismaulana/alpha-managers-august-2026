@@ -1,13 +1,12 @@
 import React from 'react';
-import { ArrowRight, Calendar, Clock, Lock, Users, MapPin, ArrowUpRight } from 'lucide-react';
+import { Calendar, Clock, Lock, Users, MapPin, ArrowUpRight } from 'lucide-react';
 import { FadeIn } from '../animations/FadeIn';
-import { scrollToLeadForm } from '../../lib/constants';
 
 const EventDetails: React.FC = () => {
   const steps = [
     'Isi profil perusahaan dan kebutuhan manager.',
     'Tim Alpha Leaders meninjau kecocokan dan konteks organisasi.',
-    'Tim menghubungi via WhatsApp untuk konfirmasi seat, investasi, dan instruksi kehadiran.',
+    'Tim menghubungi via WhatsApp untuk konfirmasi seat dan instruksi kehadiran.',
   ];
 
   const inclusions = [
@@ -17,13 +16,12 @@ const EventDetails: React.FC = () => {
     'Q&A dengan mentor.',
     'Pre-test dan post-test.',
     'Networking eksklusif managers.',
-    'Potongan untuk kelas berikutnya.',
   ];
 
   return (
     <section
       id="event-details"
-      className="py-20 md:py-28 bg-[var(--cf-ink)] relative overflow-hidden scroll-mt-24 md:min-h-screen md:flex md:flex-col md:justify-center"
+      className="py-20 md:py-28 bg-[var(--cf-ink)] relative overflow-hidden scroll-mt-24"
     >
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-30">
         <div className="absolute inset-0 bg-[linear-gradient(135deg,transparent_0%,transparent_44%,rgba(212,175,106,0.18)_44%,rgba(212,175,106,0.18)_45%,transparent_45%)]" />
@@ -95,28 +93,8 @@ const EventDetails: React.FC = () => {
 
         <FadeIn direction="up" delay={0.2}>
           <div className="max-w-5xl border border-white/10 bg-zinc-900/30 backdrop-blur-md">
-            <div className="grid grid-cols-1 md:grid-cols-5">
-              <div className="md:col-span-2 p-8 md:p-10 border-b md:border-b-0 md:border-r border-white/10 flex flex-col justify-between">
-                <div>
-                  <p className="text-[10px] uppercase tracking-[0.22em] text-zinc-400 mb-2">
-                    Investasi Program
-                  </p>
-                  <h3 className="font-serif text-2xl md:text-3xl font-bold text-white mb-2">
-                    Rp7.999.999 / peserta
-                  </h3>
-                  <p className="text-sm md:text-base text-zinc-400 leading-relaxed">
-                    Paket untuk menyiapkan manager dan tim leader Anda menjadi mesin eksekusi kinerja.
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={scrollToLeadForm}
-                  className="mt-7 inline-flex w-fit items-center gap-2 rounded-full border border-gold-500/40 px-6 py-3 text-sm font-black text-gold-300 transition hover:bg-[var(--cf-gold)] hover:text-black"
-                >
-                  Daftarkan Manager Anda <ArrowRight className="h-4 w-4" />
-                </button>
-              </div>
-              <div className="md:col-span-3 p-8 md:p-10 grid grid-cols-1 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-[1.15fr_0.85fr]">
+              <div className="p-8 md:p-10 grid grid-cols-1 gap-3 border-b border-white/10 md:border-b-0 md:border-r">
                 <h4 className="text-base md:text-lg font-black text-white mb-3">Termasuk</h4>
                 {inclusions.map((item) => (
                   <div key={item} className="flex items-start gap-3">
@@ -124,6 +102,20 @@ const EventDetails: React.FC = () => {
                     <p className="text-sm text-zinc-200 leading-relaxed">{item}</p>
                   </div>
                 ))}
+              </div>
+              <div className="p-8 md:p-10 flex flex-col justify-between">
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.22em] text-zinc-400 mb-2">
+                    Kurasi peserta
+                  </p>
+                  <h3 className="font-serif text-2xl md:text-3xl font-bold text-white mb-3">
+                    Executive session untuk owner, HR, dan L&amp;D yang siap membenahi layer manager.
+                  </h3>
+                  <p className="text-sm md:text-base text-zinc-400 leading-relaxed">
+                    Tim Alpha Leaders akan menilai konteks bisnis Anda lebih dulu agar sesi tetap
+                    relevan, padat, dan bisa langsung diturunkan menjadi tindakan nyata.
+                  </p>
+                </div>
               </div>
             </div>
           </div>

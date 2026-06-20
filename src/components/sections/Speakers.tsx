@@ -40,24 +40,44 @@ const Speakers: React.FC = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-14 items-start">
             <FadeIn direction="up" delay={0.1}>
-              <div className="relative">
-                <div className="absolute -left-3 -top-3 h-full w-full border border-gold-500/30" />
-                <div className="relative bg-zinc-900/60 border border-white/10 p-3">
+              <div className="grid gap-6">
+                <div className="relative">
+                  <div className="absolute -left-3 -top-3 h-full w-full border border-gold-500/30" />
+                  <div className="relative bg-zinc-900/60 border border-white/10 p-3">
+                    <img
+                      src="/coach-ferly.png"
+                      alt="Coach Ferly F. Raya"
+                      className="w-full aspect-[4/5] object-cover"
+                      style={{ objectPosition: '50% 12%' }}
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="absolute -bottom-4 left-6 right-6 z-10 bg-[var(--cf-cream)] px-5 py-3 text-zinc-950 shadow-xl">
+                    <p className="text-[10px] tracking-[0.22em] uppercase font-black text-gold-700">
+                      Senior Head Coach
+                    </p>
+                    <p className="text-sm font-bold mt-1 leading-snug">
+                      Senior Head Coach for Trillion-Scale Business Owner, Alpha Leaders Community.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="relative ml-auto w-full max-w-[320px] border border-white/10 bg-zinc-900/40 p-3">
                   <img
-                    src="/coach-ferly.png"
-                    alt="Coach Ferly F. Raya"
+                    src="/shoeb-kagda.jpg"
+                    alt="Shoeb Kagda"
                     className="w-full aspect-[4/5] object-cover"
-                    style={{ objectPosition: '50% 12%' }}
                     loading="lazy"
                   />
-                </div>
-                <div className="absolute -bottom-4 left-6 right-6 z-10 bg-[var(--cf-cream)] px-5 py-3 text-zinc-950 shadow-xl">
-                  <p className="text-[10px] tracking-[0.22em] uppercase font-black text-gold-700">
-                    Senior Head Coach
-                  </p>
-                  <p className="text-sm font-bold mt-1 leading-snug">
-                    Senior Head Coach for Trillion-Scale Business Owner, Alpha Leaders Community.
-                  </p>
+                  <div className="mt-3 border-t border-white/10 pt-3">
+                    <p className="text-[10px] uppercase tracking-[0.22em] text-gold-300">
+                      Shoeb Kagda
+                    </p>
+                    <p className="mt-1 text-sm text-zinc-200">
+                      Founder Globe Asia dan pengamat bisnis Asia Tenggara dengan pengalaman puluhan
+                      tahun memotret kepemimpinan dan ekonomi regional.
+                    </p>
+                  </div>
                 </div>
               </div>
             </FadeIn>

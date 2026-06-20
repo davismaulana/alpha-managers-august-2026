@@ -3,7 +3,7 @@ import { FadeIn } from '../animations/FadeIn';
 import { StaggerContainer } from '../animations/StaggerContainer';
 import { motion } from 'framer-motion';
 import { TrendingDown, Activity, Users2, ShieldAlert, UserCog } from 'lucide-react';
-import { scrollToLeadForm } from '../../lib/constants';
+import { CTA_LABEL, scrollToLeadForm } from '../../lib/constants';
 import { ArrowRight } from 'lucide-react';
 
 const Pain: React.FC = () => {
@@ -88,10 +88,10 @@ const Pain: React.FC = () => {
               </p>
               <button
                 type="button"
-                onClick={scrollToLeadForm}
+                onClick={() => scrollToLeadForm('problem')}
                 className="mt-6 inline-flex items-center gap-2 rounded-full bg-[var(--cf-gold)] px-6 py-3 text-sm font-black text-black transition hover:bg-[var(--cf-cream)] hover:text-[var(--cf-ink)]"
               >
-                Daftarkan Manager Anda <ArrowRight className="h-4 w-4" />
+                {CTA_LABEL} <ArrowRight className="h-4 w-4" />
               </button>
             </div>
           </div>

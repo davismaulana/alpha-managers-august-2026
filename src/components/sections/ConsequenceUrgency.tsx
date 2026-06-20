@@ -3,7 +3,7 @@ import { AlertTriangle, ArrowRight } from 'lucide-react';
 import { FadeIn } from '../animations/FadeIn';
 import { StaggerContainer } from '../animations/StaggerContainer';
 import { motion } from 'framer-motion';
-import { scrollToLeadForm } from '../../lib/constants';
+import { CTA_LABEL, scrollToLeadForm } from '../../lib/constants';
 
 const ConsequenceUrgency: React.FC = () => {
   const warnings = [
@@ -13,7 +13,7 @@ const ConsequenceUrgency: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-[var(--cf-ink)] md:min-h-screen md:flex md:flex-col md:justify-center">
+    <section className="py-20 md:py-28 bg-[var(--cf-ink)]">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-4xl">
           <FadeIn direction="up">
@@ -43,10 +43,10 @@ const ConsequenceUrgency: React.FC = () => {
           <FadeIn direction="up" delay={0.2}>
             <button
               type="button"
-              onClick={scrollToLeadForm}
+              onClick={() => scrollToLeadForm('consequence')}
               className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-gold-500/40 px-6 text-sm font-black text-gold-300 transition hover:bg-[var(--cf-gold)] hover:text-black"
             >
-              Daftarkan Manager Anda
+              {CTA_LABEL}
               <ArrowRight className="h-4 w-4" />
             </button>
           </FadeIn>

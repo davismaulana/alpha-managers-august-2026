@@ -1,42 +1,45 @@
 import React from 'react';
-import { Button } from '../ui/Button';
 import { ArrowRight } from 'lucide-react';
 import { FadeIn } from '../animations/FadeIn';
-import { scrollToLeadForm } from '../../lib/constants';
+import { CTA_LABEL, scrollToLeadForm } from '../../lib/constants';
 
 const FinalCTA: React.FC = () => {
   return (
-    <section className="py-24 bg-[#E5DBC7] text-zinc-900 overflow-hidden relative md:min-h-screen md:flex md:flex-col md:justify-center">
-      <div className="absolute left-0 top-0 h-2 w-full bg-black" />
-      <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
-        <FadeIn direction="up">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-normal">
-            Apply for Community Invitation
-          </h2>
-        </FadeIn>
+    <section className="bg-zinc-950 py-20 md:py-28">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="relative overflow-hidden border border-gold-500/30 bg-[linear-gradient(145deg,rgba(8,8,8,0.94),rgba(25,20,10,0.96))] px-6 py-12 md:px-12 md:py-16">
+          <div className="pointer-events-none absolute inset-0 opacity-[0.08] bg-[linear-gradient(118deg,transparent_35%,var(--cf-gold)_35%,var(--cf-gold)_36%,transparent_36%,transparent_64%,var(--cf-cream)_64%,var(--cf-cream)_64.8%,transparent_64.8%)]" />
+          <div className="relative max-w-4xl">
+            <FadeIn direction="up">
+              <p className="text-[11px] font-black uppercase tracking-[0.22em] text-gold-400">
+                Final Call
+              </p>
+              <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-white md:text-5xl">
+                Saat Manager Naik Kelas, Owner Tidak Perlu Menjadi Pemadam
+                <br />
+                <span className="text-gold-400">Kebakaran Setiap Hari</span>
+              </h2>
+            </FadeIn>
 
-        <FadeIn direction="up" delay={0.2}>
-          <p className="text-xl md:text-2xl font-medium text-zinc-600 mb-8 tracking-normal">
-            Jakarta | By Invitation Only | Manager Accountability Program
-          </p>
-        </FadeIn>
+            <FadeIn direction="up" delay={0.2}>
+              <p className="mt-6 max-w-3xl text-base leading-relaxed text-zinc-300 md:text-lg">
+                Mulai dari profil perusahaan. Tim Alpha Leaders akan membantu menilai apakah
+                program ini cocok untuk kebutuhan manager dan team leader Anda.
+              </p>
+            </FadeIn>
 
-        <FadeIn direction="up" delay={0.4}>
-          <div className="flex flex-col items-center">
-            <Button
-              variant="primary"
-              size="lg"
-              className="text-xl px-12 py-8 rounded-full shadow-2xl hover:shadow-gold-600/20 transform hover:-translate-y-1 transition-all mb-6"
-              onClick={scrollToLeadForm}
-            >
-              Apply Now <ArrowRight className="ml-2 w-6 h-6" />
-            </Button>
-
-            <p className="text-zinc-500 font-medium">
-              Tim Alpha Leaders meninjau profil Anda sebelum mengirim konfirmasi seat.
-            </p>
+            <FadeIn direction="up" delay={0.3}>
+              <button
+                type="button"
+                onClick={() => scrollToLeadForm('final-cta')}
+                className="mt-8 inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-[var(--cf-gold)] px-8 text-base font-black text-black transition hover:bg-[var(--cf-cream)] hover:text-[var(--cf-ink)]"
+              >
+                {CTA_LABEL}
+                <ArrowRight className="h-5 w-5" />
+              </button>
+            </FadeIn>
           </div>
-        </FadeIn>
+        </div>
       </div>
     </section>
   );

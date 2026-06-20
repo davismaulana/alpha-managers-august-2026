@@ -1,17 +1,17 @@
 import React, { useMemo, useState } from 'react';
 import { ArrowRight, CheckCircle2, Loader2, ShieldCheck } from 'lucide-react';
 import { FadeIn } from '../animations/FadeIn';
-import { FORM_SECTION_ID } from '../../lib/constants';
+import { CTA_LABEL, EVENT_NAME, FORM_SECTION_ID } from '../../lib/constants';
 
 type FormState = {
   name: string;
   email: string;
   whatsapp: string;
-  businessName: string;
-  businessCategory: string;
-  monthlyRevenue: string;
+  company: string;
+  role: string;
   city: string;
-  challenge: string;
+  participantCount: string;
+  managerChallenge: string;
 };
 
 type SubmitState =
@@ -24,34 +24,25 @@ const initialForm: FormState = {
   name: '',
   email: '',
   whatsapp: '',
-  businessName: '',
-  businessCategory: '',
-  monthlyRevenue: '',
+  company: '',
+  role: '',
   city: '',
-  challenge: '',
+  participantCount: '',
+  managerChallenge: '',
 };
 
-const revenueOptions = [
-  'Di bawah Rp50 juta/bulan',
-  'Rp50-100 juta/bulan',
-  'Rp100-500 juta/bulan',
-  'Rp500 juta-1 miliar/bulan',
-  'Di atas Rp1 miliar/bulan',
-];
-
-const categoryOptions = [
-  'F&B / restoran / cafe',
-  'Retail / distributor',
-  'Jasa profesional',
-  'Manufaktur / produksi',
-  'Online / digital commerce',
+const roleOptions = [
+  'Business Owner / Founder',
+  'HR Leader',
+  'Learning & Development',
+  'General Manager / COO',
+  'Manager / Team Leader',
   'Lainnya',
 ];
 
 const CAMPAIGN_PREFIX = 'cfr-august2026';
 const DEFAULT_UTM_CAMPAIGN = 'alpha-managers-august-2026';
 const DEFAULT_UTM_SOURCE = 'alpha-managers-august-lp';
-const EVENT_NAME_PIXEL = 'Alpha Managers - 13 Agustus 2026';
 
 const getCookie = (name: string) => {
   const match = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
@@ -70,7 +61,7 @@ const LeadCapture: React.FC = () => {
   const [submitState, setSubmitState] = useState<SubmitState>({
     status: 'idle',
     message:
-      'Isi profil perusahaan dan kebutuhan manager. Tim Alpha Leaders akan menilai kesesuaian.',
+      'Isi profil perusahaan, peran Anda, dan tantangan manager terpenting. Tim Alpha Leaders akan menilai kesesuaian.',
   });
 
   const sourceMeta = useMemo(() => {
@@ -95,7 +86,7 @@ const LeadCapture: React.FC = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmitState({ status: 'submitting', message: 'Mengirim profil owner...' });
+    setSubmitState({ status: 'submitting', message: 'Mengirim profil perusahaan...' });
 
     try {
       const eventId = createEventId();
@@ -106,8 +97,11 @@ const LeadCapture: React.FC = () => {
           name: form.name,
           email: form.email,
           whatsapp: form.whatsapp,
-          business: form.businessName,
-          challenge: form.challenge,
+          company: form.company,
+          role: form.role,
+          city: form.city,
+          participant_count: form.participantCount,
+          manager_challenge: form.managerChallenge,
           event_id: eventId,
           fbp: sourceMeta.fbp,
           fbc: sourceMeta.fbc,
@@ -117,11 +111,6 @@ const LeadCapture: React.FC = () => {
           utm_medium: sourceMeta.utmMedium,
           utm_campaign: sourceMeta.utmCampaign,
           utm_content: sourceMeta.utmContent,
-          metadata: {
-            businessCategory: form.businessCategory,
-            monthlyRevenue: form.monthlyRevenue,
-            city: form.city,
-          },
         }),
       });
       const body = await response.json();
@@ -132,7 +121,7 @@ const LeadCapture: React.FC = () => {
 
       if (typeof window.fbq === 'function') {
         window.fbq('track', 'Lead', {
-          content_name: EVENT_NAME_PIXEL,
+          content_name: EVENT_NAME,
           content_category: 'Alpha Leaders Managers Event',
           lead_id: body.leadId,
           event_id: eventId,
@@ -157,30 +146,30 @@ const LeadCapture: React.FC = () => {
   return (
     <section
       id={FORM_SECTION_ID}
-      className="scroll-mt-24 bg-[var(--cf-cream)] text-zinc-950 py-20 md:py-28 overflow-hidden md:min-h-screen md:flex md:flex-col md:justify-center"
-      aria-label="Owner Profile — Alpha Leaders"
+      className="scroll-mt-24 bg-[var(--cf-cream)] text-zinc-950 py-20 md:py-28 overflow-hidden"
+      aria-label="Application form — Alpha Leaders"
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-16 items-start">
           <FadeIn direction="up">
             <div className="lg:sticky lg:top-28">
               <p className="text-[11px] tracking-[0.22em] uppercase text-gold-700 font-black mb-4">
-                Owner Profile
+                Invitation profile
               </p>
               <h2 className="font-serif text-3xl md:text-5xl font-bold leading-tight tracking-normal">
-                Daftar Melalui Owner Profile
+                Apply untuk Undangan Secara Selektif
               </h2>
               <p className="mt-6 text-base md:text-lg leading-relaxed text-zinc-700 max-w-xl">
-                Mulai dari profil perusahaan dan kebutuhan manager. Tim Alpha Leaders akan menilai
-                kecocokan konteks bisnis Anda sebelum mengonfirmasi seat, investasi, dan instruksi
-                kehadiran.
+                Mulai dari profil perusahaan, peran Anda, dan tantangan manager paling krusial. Tim
+                Alpha Leaders akan menilai kecocokan konteks bisnis Anda sebelum mengonfirmasi seat
+                dan instruksi kehadiran.
               </p>
 
               <div className="mt-8 grid gap-4">
                 {[
                   'Data masuk sebagai calon peserta Alpha Managers Agustus 2026.',
-                  'Tim Alpha Leaders meninjau kecocokan peserta dan kebutuhan organisasi.',
-                  'Follow-up dilakukan via WhatsApp untuk konfirmasi seat dan instruksi berikutnya.',
+                  'Tim Alpha Leaders meninjau kesesuaian konteks organisasi dan prioritas manager Anda.',
+                  'Follow-up dilakukan via WhatsApp untuk konfirmasi seat dan langkah berikutnya.',
                 ].map((item) => (
                   <div
                     key={item}
@@ -205,7 +194,7 @@ const LeadCapture: React.FC = () => {
                     2 menit
                   </p>
                   <h3 className="text-xl md:text-2xl font-bold tracking-normal">
-                    Profil bisnis Anda
+                    Profil perusahaan Anda
                   </h3>
                 </div>
                 <ShieldCheck className="h-9 w-9 shrink-0 text-gold-700" />
@@ -241,8 +230,9 @@ const LeadCapture: React.FC = () => {
                 </label>
 
                 <label className="grid gap-2 text-sm font-bold text-zinc-800">
-                  Email opsional
+                  Email
                   <input
+                    required
                     name="email"
                     type="email"
                     autoComplete="email"
@@ -254,15 +244,33 @@ const LeadCapture: React.FC = () => {
                 </label>
 
                 <label className="grid gap-2 text-sm font-bold text-zinc-800">
-                  Nama bisnis
+                  Nama perusahaan
                   <input
                     required
-                    name="businessName"
-                    value={form.businessName}
-                    onChange={(event) => updateField('businessName', event.target.value)}
+                    name="company"
+                    value={form.company}
+                    onChange={(event) => updateField('company', event.target.value)}
                     className="min-h-12 rounded-lg border border-zinc-300 bg-white px-4 text-base font-medium outline-none focus:border-gold-600 focus:ring-4 focus:ring-gold-500/20"
                     placeholder="Contoh: Sari Rasa Group"
                   />
+                </label>
+
+                <label className="grid gap-2 text-sm font-bold text-zinc-800">
+                  Peran Anda
+                  <select
+                    required
+                    name="role"
+                    value={form.role}
+                    onChange={(event) => updateField('role', event.target.value)}
+                    className="min-h-12 rounded-lg border border-zinc-300 bg-white px-4 text-base font-medium outline-none focus:border-gold-600 focus:ring-4 focus:ring-gold-500/20"
+                  >
+                    <option value="">Pilih peran</option>
+                    {roleOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
                 </label>
 
                 <label className="grid gap-2 text-sm font-bold text-zinc-800">
@@ -278,52 +286,28 @@ const LeadCapture: React.FC = () => {
                   />
                 </label>
 
-                <label className="grid gap-2 text-sm font-bold text-zinc-800">
-                  Kategori bisnis
-                  <select
-                    required
-                    name="businessCategory"
-                    value={form.businessCategory}
-                    onChange={(event) => updateField('businessCategory', event.target.value)}
-                    className="min-h-12 rounded-lg border border-zinc-300 bg-white px-4 text-base font-medium outline-none focus:border-gold-600 focus:ring-4 focus:ring-gold-500/20"
-                  >
-                    <option value="">Pilih kategori</option>
-                    {categoryOptions.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-
                 <label className="grid gap-2 text-sm font-bold text-zinc-800 md:col-span-2">
-                  Omset bulanan
-                  <select
+                  Jumlah manager / team leader yang ingin Anda siapkan
+                  <input
                     required
-                    name="monthlyRevenue"
-                    value={form.monthlyRevenue}
-                    onChange={(event) => updateField('monthlyRevenue', event.target.value)}
+                    name="participantCount"
+                    value={form.participantCount}
+                    onChange={(event) => updateField('participantCount', event.target.value)}
                     className="min-h-12 rounded-lg border border-zinc-300 bg-white px-4 text-base font-medium outline-none focus:border-gold-600 focus:ring-4 focus:ring-gold-500/20"
-                  >
-                    <option value="">Pilih rentang</option>
-                    {revenueOptions.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
+                    placeholder="Contoh: 3 manager inti"
+                  />
                 </label>
               </div>
 
               <label className="mt-4 grid gap-2 text-sm font-bold text-zinc-800">
-                Tantangan terbesar saat ini
+                Tantangan manager yang paling ingin Anda ubah
                 <textarea
                   required
-                  name="challenge"
-                  value={form.challenge}
-                  onChange={(event) => updateField('challenge', event.target.value)}
+                  name="managerChallenge"
+                  value={form.managerChallenge}
+                  onChange={(event) => updateField('managerChallenge', event.target.value)}
                   className="min-h-28 rounded-lg border border-zinc-300 bg-white px-4 py-3 text-base font-medium outline-none focus:border-gold-600 focus:ring-4 focus:ring-gold-500/20"
-                  placeholder="Contoh: target tidak tercapai konsisten, manager sulit mendorong performa tim, atau owner masih harus turun tangan tiap hari."
+                  placeholder="Contoh: target tidak tercapai konsisten, delegasi tidak jalan, atau owner masih harus turun tangan tiap hari."
                 />
               </label>
 
@@ -340,7 +324,7 @@ const LeadCapture: React.FC = () => {
                     </>
                   ) : (
                     <>
-                      Daftarkan Manager Anda
+                      {CTA_LABEL}
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </>
                   )}
@@ -348,17 +332,15 @@ const LeadCapture: React.FC = () => {
 
                 <p
                   className={[
-                    'text-sm font-semibold leading-6',
-                    submitState.status === 'success' ? 'text-emerald-700' : '',
-                    submitState.status === 'error' ? 'text-red-700' : '',
-                    submitState.status === 'idle' || submitState.status === 'submitting'
-                      ? 'text-zinc-600'
-                      : '',
+                    'text-sm leading-relaxed',
+                    submitState.status === 'success'
+                      ? 'text-emerald-700'
+                      : submitState.status === 'error'
+                        ? 'text-rose-700'
+                        : 'text-zinc-600',
                   ].join(' ')}
-                  role={submitState.status === 'error' ? 'alert' : 'status'}
                 >
                   {submitState.message}
-                  {submitState.status === 'success' ? ` ID: ${submitState.leadId}` : ''}
                 </p>
               </div>
             </form>

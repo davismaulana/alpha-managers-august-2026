@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from '../ui/Button';
 import { cn } from '../../lib/utils';
 import { ArrowRight, Menu, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { scrollToLeadForm } from '../../lib/constants';
+import { CTA_LABEL, scrollToLeadForm } from '../../lib/constants';
 
 const navItems = [
   { label: 'Masalah', href: '#problem-section' },
-  { label: 'Framework', href: '#framework' },
   { label: 'Untuk Siapa', href: '#audience-fit' },
   { label: 'Materi', href: '#learning-outcomes' },
-  { label: 'Format', href: '#event-details' },
+  { label: 'Mentor', href: '#speakers' },
+  { label: 'Detail', href: '#event-details' },
   { label: 'FAQ', href: '#faq' },
 ];
 
@@ -38,8 +37,8 @@ const Navigation: React.FC = () => {
     };
   }, [menuOpen]);
 
-  const handleDaftarSekarang = () => {
-    scrollToLeadForm();
+  const handlePrimaryCta = (placement: string) => {
+    scrollToLeadForm(placement);
     setMenuOpen(false);
   };
 
@@ -57,7 +56,7 @@ const Navigation: React.FC = () => {
           <div className="size-8 rounded bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center font-bold text-black text-xs">
             AL
           </div>
-          <span className="text-xl font-bold tracking-normal bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
+          <span className="text-base md:text-lg font-bold tracking-[0.16em] bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
             ALPHA LEADERS
           </span>
         </div>
@@ -74,14 +73,15 @@ const Navigation: React.FC = () => {
           ))}
         </nav>
 
-        <Button
-          variant="primary"
-          size="sm"
-          className="hidden md:flex gap-2"
-          onClick={handleDaftarSekarang}
-        >
-          Apply Now <ArrowRight className="w-4 h-4" />
-        </Button>
+        {scrolled ? (
+          <button
+            type="button"
+            onClick={() => handlePrimaryCta('nav')}
+            className="hidden md:inline-flex items-center gap-2 rounded-full bg-[var(--cf-gold)] px-5 py-2.5 text-sm font-black text-black transition hover:bg-[var(--cf-cream)] hover:text-[var(--cf-ink)] cursor-pointer"
+          >
+            {CTA_LABEL} <ArrowRight className="w-4 h-4" />
+          </button>
+        ) : null}
 
         <button
           className="md:hidden p-2 text-gold-400 hover:text-gold-300 transition-colors"
@@ -116,10 +116,10 @@ const Navigation: React.FC = () => {
               </nav>
               <button
                 type="button"
-                onClick={handleDaftarSekarang}
+                onClick={() => handlePrimaryCta('mobile-menu')}
                 className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--cf-gold)] px-5 py-3 text-sm font-black text-black"
               >
-                Apply Now <ArrowRight className="w-4 h-4" />
+                {CTA_LABEL} <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           </motion.div>

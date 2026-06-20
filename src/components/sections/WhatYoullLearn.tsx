@@ -4,7 +4,7 @@ import { FadeIn } from '../animations/FadeIn';
 import { StaggerContainer } from '../animations/StaggerContainer';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import { scrollToLeadForm } from '../../lib/constants';
+import { CTA_LABEL, scrollToLeadForm } from '../../lib/constants';
 
 const LearningOutcomes: React.FC = () => {
   const modules = [
@@ -94,10 +94,10 @@ const LearningOutcomes: React.FC = () => {
           <div className="max-w-5xl">
             <button
               type="button"
-              onClick={scrollToLeadForm}
+              onClick={() => scrollToLeadForm('learning-outcomes')}
               className="inline-flex items-center gap-2 rounded-full border border-gold-500/40 bg-zinc-900/60 px-6 py-3 text-sm font-black text-gold-300 transition hover:bg-[var(--cf-gold)] hover:text-black"
             >
-              Daftarkan Manager Anda <ArrowRight className="h-4 w-4" />
+              {CTA_LABEL} <ArrowRight className="h-4 w-4" />
             </button>
           </div>
         </FadeIn>
