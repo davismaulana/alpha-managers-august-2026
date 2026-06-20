@@ -141,7 +141,7 @@ const postLeadToWebhook = async (lead) => {
       ok: true,
       status: response.status,
       id: body.id || body.leadId || lead.event_id,
-      campaign: body.campaign || lead.campaign,
+      campaign: lead.campaign,
     };
   } catch (error) {
     const aborted = error instanceof Error && error.name === 'AbortError';
