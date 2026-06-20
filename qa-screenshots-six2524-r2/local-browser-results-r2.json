@@ -1,0 +1,100 @@
+[
+  {
+    "name": "mobile-390-local-r2",
+    "width": 390,
+    "height": 844,
+    "clickedButton": {
+      "index": 2,
+      "text": "Daftar Sekarang",
+      "rect": {
+        "top": 720.75,
+        "bottom": 772.75,
+        "left": 20,
+        "right": 225.125,
+        "width": 205.125,
+        "height": 52
+      },
+      "visible": true
+    },
+    "visibleDaftarCount": 1,
+    "hash": "#owner-profile",
+    "scrollY": 12005,
+    "ownerTop": 211.609375,
+    "formTop": 646.2840576171875,
+    "labelTop": 216.455322265625,
+    "headlineTop": 248.955322265625,
+    "visibleHasOwnerProfile": true,
+    "formVisible": true,
+    "ownerVisible": true,
+    "rootInlineScrollBehavior": "",
+    "rootComputedScrollBehavior": "smooth",
+    "events": [
+      [
+        "init",
+        "1450465452874577"
+      ],
+      [
+        "track",
+        "PageView"
+      ],
+      [
+        "trackCustom",
+        "HeroCTAClick",
+        {
+          "content_name": "Sales Team Rp10M to Rp100M - 25 Juni 2026",
+          "content_category": "Alpha Leaders Sales System Event",
+          "campaign": "cfr-june2026"
+        }
+      ]
+    ]
+  },
+  {
+    "name": "desktop-1440-local-r2",
+    "width": 1440,
+    "height": 1000,
+    "clickedButton": {
+      "index": 0,
+      "text": "Daftar Sekarang",
+      "rect": {
+        "top": 20,
+        "bottom": 60,
+        "left": 1173.015625,
+        "right": 1336,
+        "width": 162.984375,
+        "height": 40
+      },
+      "visible": true
+    },
+    "visibleDaftarCount": 2,
+    "hash": "#owner-profile",
+    "scrollY": 11060,
+    "ownerTop": 72.234375,
+    "formTop": 87.8091812133789,
+    "labelTop": 76.60020446777344,
+    "headlineTop": 109.10020446777344,
+    "visibleHasOwnerProfile": true,
+    "formVisible": true,
+    "ownerVisible": true,
+    "rootInlineScrollBehavior": "",
+    "rootComputedScrollBehavior": "smooth",
+    "events": [
+      [
+        "init",
+        "1450465452874577"
+      ],
+      [
+        "track",
+        "PageView"
+      ],
+      [
+        "trackCustom",
+        "HeroCTAClick",
+        {
+          "content_name": "Sales Team Rp10M to Rp100M - 25 Juni 2026",
+          "content_category": "Alpha Leaders Sales System Event",
+          "campaign": "cfr-june2026"
+        }
+      ]
+    ]
+  }
+]

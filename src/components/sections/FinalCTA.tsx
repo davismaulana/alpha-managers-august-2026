@@ -1,45 +1,54 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { FadeIn } from '../animations/FadeIn';
-import { CTA_LABEL, scrollToLeadForm } from '../../lib/constants';
+import { openRegistrationCTA } from '../../lib/constants';
 
 const FinalCTA: React.FC = () => {
   return (
-    <section className="bg-zinc-950 py-20 md:py-28">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="relative overflow-hidden border border-gold-500/30 bg-[linear-gradient(145deg,rgba(8,8,8,0.94),rgba(25,20,10,0.96))] px-6 py-12 md:px-12 md:py-16">
-          <div className="pointer-events-none absolute inset-0 opacity-[0.08] bg-[linear-gradient(118deg,transparent_35%,var(--cf-gold)_35%,var(--cf-gold)_36%,transparent_36%,transparent_64%,var(--cf-cream)_64%,var(--cf-cream)_64.8%,transparent_64.8%)]" />
-          <div className="relative max-w-4xl">
-            <FadeIn direction="up">
-              <p className="text-[11px] font-black uppercase tracking-[0.22em] text-gold-400">
-                Final Call
-              </p>
-              <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-white md:text-5xl">
-                Saat Manager Naik Kelas, Owner Tidak Perlu Menjadi Pemadam
-                <br />
-                <span className="text-gold-400">Kebakaran Setiap Hari</span>
-              </h2>
-            </FadeIn>
+    <section className="py-24 bg-[var(--cf-cream)] text-zinc-900 overflow-hidden relative md:min-h-screen md:flex md:flex-col md:justify-center">
+      <div className="absolute top-0 left-0 w-64 h-64 bg-white/20 rounded-full blur-[50px] pointer-events-none" />
 
-            <FadeIn direction="up" delay={0.2}>
-              <p className="mt-6 max-w-3xl text-base leading-relaxed text-zinc-300 md:text-lg">
-                Mulai dari profil perusahaan. Tim Alpha Leaders akan membantu menilai apakah
-                program ini cocok untuk kebutuhan manager dan team leader Anda.
-              </p>
-            </FadeIn>
+      <div className="container mx-auto px-4 md:px-6 relative z-10 text-center max-w-4xl">
+        <FadeIn direction="up">
+          <h2 className="font-serif text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight">
+            Apply for Community Invitation
+          </h2>
+        </FadeIn>
 
-            <FadeIn direction="up" delay={0.3}>
-              <button
-                type="button"
-                onClick={() => scrollToLeadForm('final-cta')}
-                className="mt-8 inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-[var(--cf-gold)] px-8 text-base font-black text-black transition hover:bg-[var(--cf-cream)] hover:text-[var(--cf-ink)]"
-              >
-                {CTA_LABEL}
-                <ArrowRight className="h-5 w-5" />
-              </button>
-            </FadeIn>
+        <FadeIn direction="up" delay={0.15}>
+          <p className="text-base md:text-lg font-bold uppercase tracking-[0.2em] text-zinc-700 mb-8">
+            Owner-only | By Invitation Only | Online via Zoom
+          </p>
+        </FadeIn>
+
+        <FadeIn direction="up" delay={0.3}>
+          <p className="text-lg md:text-xl text-zinc-700 leading-relaxed mb-10 max-w-3xl mx-auto">
+            Masalah terbesar bisnis Anda mungkin bukan di produk atau marketing, tapi di sistem
+            sales team yang belum dibangun dengan benar.
+          </p>
+        </FadeIn>
+
+        <FadeIn direction="up" delay={0.38}>
+          <p className="text-lg md:text-xl text-zinc-700 leading-relaxed mb-10 max-w-3xl mx-auto">
+            Bisnis besar tidak bertumbuh karena owner bekerja lebih keras setiap hari. Bisnis besar
+            bertumbuh karena memiliki sales yang mampu menghasilkan revenue secara konsisten!
+          </p>
+        </FadeIn>
+
+        <FadeIn direction="up" delay={0.45}>
+          <div className="flex flex-col items-center">
+            <button
+              type="button"
+              onClick={openRegistrationCTA}
+              className="inline-flex items-center gap-2 rounded-full bg-[var(--cf-ink)] text-white px-10 md:px-14 py-5 md:py-6 text-lg md:text-xl font-black tracking-wide transition hover:bg-black hover:-translate-y-1 shadow-2xl cursor-pointer"
+            >
+              Apply <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
+            </button>
+            <p className="mt-5 text-sm md:text-base text-zinc-600 font-medium">
+              &lt;Button Apply&gt;
+            </p>
           </div>
-        </div>
+        </FadeIn>
       </div>
     </section>
   );

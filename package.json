@@ -1,5 +1,5 @@
 {
-  "name": "autopilot-business-august2026",
+  "name": "autopilot-business-june2026",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -19,7 +19,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
-    "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/postcss": "^4.1.18",
     "@tailwindcss/vite": "^4.1.18",
     "@types/node": "^25.0.3",

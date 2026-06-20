@@ -6,9 +6,9 @@ import { motion } from 'framer-motion';
 
 const NotForYou: React.FC = () => {
   const items = [
-    'Tidak cocok jika perusahaan Anda hanya mencari motivasi singkat tanpa perubahan sistem kerja.',
-    'Tidak cocok jika manager belum diberi target, peran, atau ruang memimpin yang jelas.',
-    'Tidak cocok jika leadership diperlakukan sebagai acara HR, bukan mesin performa bisnis.',
+    'Belum siap membangun sales team dengan target, KPI, dan sistem yang lebih terukur',
+    'Mencari strategi instan tanpa ingin membangun fondasi sales team yang kuat',
+    'Tidak ingin bisnis memiliki sistem penjualan yang bisa berjalan lebih konsisten tanpa bergantung penuh pada owner',
   ];
 
   return (
@@ -20,7 +20,7 @@ const NotForYou: React.FC = () => {
               Filter peserta
             </p>
             <h2 className="font-serif text-3xl md:text-5xl font-bold text-white leading-tight">
-              Bukan Untuk Anda Jika...
+              Bukan untuk Anda yang:
             </h2>
           </FadeIn>
 

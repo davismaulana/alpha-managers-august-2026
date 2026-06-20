@@ -1,27 +1,27 @@
 import React from 'react';
 import { FadeIn } from '../animations/FadeIn';
-import { GitBranch, Gauge, Workflow, ArrowRight } from 'lucide-react';
-import { scrollToLeadForm } from '../../lib/constants';
+import { ArrowRight, GitBranch, Gauge, Workflow } from 'lucide-react';
+import { openRegistrationCTA } from '../../lib/constants';
 
 const Framework: React.FC = () => {
   const rows = [
     {
       number: 'I',
       icon: GitBranch,
-      title: 'Manager Performance Architecture',
-      desc: 'Membangun pola kerja manager yang membuat tim bergerak tanpa supervision langsung owner.',
+      title: 'The Scalable Sales Team Structure',
+      desc: 'The Scalable Sales Team Structure: membangun tim sales yang tidak bergantung pada owner',
     },
     {
       number: 'II',
       icon: Gauge,
-      title: 'Accountability Control System',
-      desc: 'Membangun ritme kontrol performa, pelaporan, dan tindak lanjut yang konsisten.',
+      title: 'The Sales Target & Incentive Framework',
+      desc: 'The Sales Target & Incentive Framework: sistem target dan komisi untuk meningkatkan performa tim sales',
     },
     {
       number: 'III',
       icon: Workflow,
-      title: 'Leadership Communication',
-      desc: 'Membuat arahan, feedback, dan ekspektasi lebih jelas agar kualitas eksekusi meningkat.',
+      title: 'The Lead Conversion Strategy',
+      desc: 'The Lead Conversion Strategy: strategi meningkatkan conversion leads menjadi closing yang lebih konsisten',
     },
   ];
 
@@ -34,9 +34,7 @@ const Framework: React.FC = () => {
               Framework
             </p>
             <h2 className="font-serif text-3xl md:text-5xl font-bold text-white leading-tight">
-              Framework untuk Membangun
-              <br />
-              <span className="text-gold-400">Management Layer yang Akuntabel</span>
+              Akan Membongkar Framework untuk Membangun Sales Team:
             </h2>
           </FadeIn>
         </div>
@@ -68,10 +66,10 @@ const Framework: React.FC = () => {
           <FadeIn direction="up" delay={0.2}>
             <button
               type="button"
-              onClick={scrollToLeadForm}
+              onClick={openRegistrationCTA}
               className="mt-10 inline-flex items-center gap-2 rounded-full bg-[var(--cf-gold)] px-6 py-3 text-sm font-black text-black transition hover:bg-[var(--cf-cream)] hover:text-[var(--cf-ink)]"
             >
-              Daftarkan Manager Anda <ArrowRight className="h-4 w-4" />
+              Daftar Sekarang <ArrowRight className="h-4 w-4" />
             </button>
           </FadeIn>
         </div>

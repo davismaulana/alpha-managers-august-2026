@@ -1,19 +1,18 @@
 import React from 'react';
-import { AlertTriangle, ArrowRight } from 'lucide-react';
+import { AlertTriangle } from 'lucide-react';
 import { FadeIn } from '../animations/FadeIn';
 import { StaggerContainer } from '../animations/StaggerContainer';
 import { motion } from 'framer-motion';
-import { CTA_LABEL, scrollToLeadForm } from '../../lib/constants';
 
 const ConsequenceUrgency: React.FC = () => {
   const warnings = [
-    'Target perusahaan akan semakin sulit tercapai jika manager hanya mengawasi aktivitas tanpa mampu mendorong performa tim.',
-    'Karyawan yang potensial pun bisa kehilangan produktivitas jika dipimpin oleh manager tanpa kepemimpinan dan accountability kuat.',
-    'Selama owner masih harus turun tangan menyelesaikan masalah tim setiap hari, fungsi manajerial organisasi belum berjalan optimal.',
+    '⚠️ Revenue bisnis akan sulit stabil jika performa sales team terus naik turun dan tidak memiliki sistem yang jelas.',
+    '⚠️ Leads dan budget marketing akan terus terbuang sia-sia jika tim sales gagal mengubahnya menjadi closing dan revenue.',
+    '⚠️ Selama owner masih harus ikut mengejar closing setiap hari, berarti bisnis Anda masih belum memiliki sales system yang benar-benar kuat.',
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-[var(--cf-ink)]">
+    <section className="py-20 md:py-28 bg-[var(--cf-ink)] md:min-h-screen md:flex md:flex-col md:justify-center">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-4xl">
           <FadeIn direction="up">
@@ -21,9 +20,8 @@ const ConsequenceUrgency: React.FC = () => {
               Konsekuensi
             </p>
             <h2 className="font-serif text-3xl md:text-5xl font-bold text-white leading-tight">
-              Target Perusahaan Akan Makin Sulit
-              <br />
-              <span className="text-[var(--cf-accent)]">Jika Manager Hanya Mengawasi Aktivitas</span>
+              Jika Target Anda Rp100 Miliar, Sales Team Anda Tidak Bisa Beroperasi dengan Cara
+              Rp10 Miliar.
             </h2>
           </FadeIn>
 
@@ -39,17 +37,6 @@ const ConsequenceUrgency: React.FC = () => {
               </motion.div>
             ))}
           </StaggerContainer>
-
-          <FadeIn direction="up" delay={0.2}>
-            <button
-              type="button"
-              onClick={() => scrollToLeadForm('consequence')}
-              className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-gold-500/40 px-6 text-sm font-black text-gold-300 transition hover:bg-[var(--cf-gold)] hover:text-black"
-            >
-              {CTA_LABEL}
-              <ArrowRight className="h-4 w-4" />
-            </button>
-          </FadeIn>
         </div>
       </div>
     </section>

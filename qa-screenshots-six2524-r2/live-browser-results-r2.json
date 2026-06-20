@@ -1,0 +1,125 @@
+[
+  {
+    "name": "mobile-390-live-r2",
+    "width": 390,
+    "height": 844,
+    "firstViewport": {
+      "containsOS1Hook": true,
+      "containsOS2Hero": false,
+      "textSample": "ALPHA LEADERS | Exclusive Community Sharing | By Invitation Only | Sales team yang Membawa Bisnis ke Rp10 Miliar, Belum Tentu Bisa Membawanya ke Rp100 Miliar. | Belum Tentu Bisa Membawanya ke Rp100 Miliar. | Saat bisnis naik kelas, masalah sales bukan lagi sekadar jumlah orang. Owner perlu struktur, target, insentif, leadership rhythm, dan sistem konversi yang mampu membawa tim dari revenue yang dulu cukup menuju pertumbuhan yang jauh lebih besar. | Daftar Sekarang | Isi Owner Profile terlebih dahulu. Tim Alpha Leaders akan meninjau kecocokan sebelum undangan dikirim."
+    },
+    "visibleDaftarCount": 1,
+    "ctaResults": [
+      {
+        "clickedButton": {
+          "index": 2,
+          "text": "Daftar Sekarang",
+          "rect": {
+            "top": 693,
+            "bottom": 745,
+            "left": 20,
+            "right": 225,
+            "width": 205,
+            "height": 52
+          },
+          "visible": true
+        },
+        "metrics": {
+          "hash": "#owner-profile",
+          "scrollY": 12005,
+          "ownerTop": 212,
+          "formTop": 645,
+          "labelTop": 216,
+          "headlineTop": 249,
+          "visibleHasOwnerProfile": true,
+          "formVisible": true,
+          "ownerVisible": true,
+          "eventNames": [
+            "init:1450465452874577",
+            "track:PageView",
+            "trackCustom:HeroCTAClick"
+          ]
+        }
+      }
+    ],
+    "consoleErrors": [],
+    "requestFailures": []
+  },
+  {
+    "name": "desktop-1440-live-r2",
+    "width": 1440,
+    "height": 1000,
+    "firstViewport": {
+      "containsOS1Hook": true,
+      "containsOS2Hero": false,
+      "textSample": "ALPHA LEADERS | Daftar Sekarang | Exclusive Community Sharing | By Invitation Only | Sales team yang Membawa Bisnis ke Rp10 Miliar, Belum Tentu Bisa Membawanya ke Rp100 Miliar. | Belum Tentu Bisa Membawanya ke Rp100 Miliar. | Saat bisnis naik kelas, masalah sales bukan lagi sekadar jumlah orang. Owner perlu struktur, target, insentif, leadership rhythm, dan sistem konversi yang mampu membawa tim dari revenue yang dulu cukup menuju pertumbuhan yang jauh lebih besar. | Daftar Sekarang | Sales Scale Command Board | 01 | Rp10 Miliar Stage | Team can still rely on owner push | 02 | Scale Gap | Structure, KPI, cadence, leadership | 03 | Rp100 Miliar Target | System-led sales organization | Coach proof | Bersama Coach Ferly F. Raya | Senior Head Coach for Trillion-Scale Business Owner"
+    },
+    "visibleDaftarCount": 2,
+    "ctaResults": [
+      {
+        "clickedButton": {
+          "index": 0,
+          "text": "Daftar Sekarang",
+          "rect": {
+            "top": 20,
+            "bottom": 60,
+            "left": 1173,
+            "right": 1336,
+            "width": 163,
+            "height": 40
+          },
+          "visible": true
+        },
+        "metrics": {
+          "hash": "#owner-profile",
+          "scrollY": 11060,
+          "ownerTop": 72,
+          "formTop": 88,
+          "labelTop": 77,
+          "headlineTop": 109,
+          "visibleHasOwnerProfile": true,
+          "formVisible": true,
+          "ownerVisible": true,
+          "eventNames": [
+            "init:1450465452874577",
+            "track:PageView",
+            "trackCustom:HeroCTAClick"
+          ]
+        }
+      },
+      {
+        "clickedButton": {
+          "index": 2,
+          "text": "Daftar Sekarang",
+          "rect": {
+            "top": 978,
+            "bottom": 1038,
+            "left": 120,
+            "right": 371,
+            "width": 251,
+            "height": 60
+          },
+          "visible": true
+        },
+        "metrics": {
+          "hash": "#owner-profile",
+          "scrollY": 11060,
+          "ownerTop": 72,
+          "formTop": 89,
+          "labelTop": 77,
+          "headlineTop": 110,
+          "visibleHasOwnerProfile": true,
+          "formVisible": true,
+          "ownerVisible": true,
+          "eventNames": [
+            "init:1450465452874577",
+            "track:PageView",
+            "trackCustom:HeroCTAClick"
+          ]
+        }
+      }
+    ],
+    "consoleErrors": [],
+    "requestFailures": []
+  }
+]

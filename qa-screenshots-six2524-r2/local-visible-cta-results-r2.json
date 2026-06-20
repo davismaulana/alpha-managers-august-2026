@@ -1,0 +1,83 @@
+[
+  {
+    "viewport": "mobile-390",
+    "buttonIndex": 2,
+    "buttonText": "Daftar Sekarang",
+    "buttonRect": {
+      "top": 700.9290771484375,
+      "bottom": 752.9290771484375,
+      "left": 20,
+      "right": 225.125,
+      "width": 205.125,
+      "height": 52
+    },
+    "hash": "#owner-profile",
+    "scrollY": 12005,
+    "ownerTop": 212,
+    "formTop": 646,
+    "labelTop": 216,
+    "headlineTop": 249,
+    "visibleHasOwnerProfile": true,
+    "formVisible": true,
+    "ownerVisible": true,
+    "eventNames": [
+      "init:1450465452874577",
+      "track:PageView",
+      "trackCustom:HeroCTAClick"
+    ]
+  },
+  {
+    "viewport": "desktop-1440",
+    "buttonIndex": 0,
+    "buttonText": "Daftar Sekarang",
+    "buttonRect": {
+      "top": 20,
+      "bottom": 60,
+      "left": 1173.015625,
+      "right": 1336,
+      "width": 162.984375,
+      "height": 40
+    },
+    "hash": "#owner-profile",
+    "scrollY": 11060,
+    "ownerTop": 72,
+    "formTop": 89,
+    "labelTop": 77,
+    "headlineTop": 110,
+    "visibleHasOwnerProfile": true,
+    "formVisible": true,
+    "ownerVisible": true,
+    "eventNames": [
+      "init:1450465452874577",
+      "track:PageView",
+      "trackCustom:HeroCTAClick"
+    ]
+  },
+  {
+    "viewport": "desktop-1440",
+    "buttonIndex": 2,
+    "buttonText": "Daftar Sekarang",
+    "buttonRect": {
+      "top": 977.5,
+      "bottom": 1037.5,
+      "left": 120,
+      "right": 371.265625,
+      "width": 251.265625,
+      "height": 60
+    },
+    "hash": "#owner-profile",
+    "scrollY": 11060,
+    "ownerTop": 72,
+    "formTop": 91,
+    "labelTop": 78,
+    "headlineTop": 110,
+    "visibleHasOwnerProfile": true,
+    "formVisible": true,
+    "ownerVisible": true,
+    "eventNames": [
+      "init:1450465452874577",
+      "track:PageView",
+      "trackCustom:HeroCTAClick"
+    ]
+  }
+]

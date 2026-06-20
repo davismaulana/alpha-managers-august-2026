@@ -1,0 +1,80 @@
+[
+  {
+    "name": "desktop-1440",
+    "h1": "Sales team yang Membawa Bisnis ke Rp10 Miliar, Belum Tentu Bisa Membawanya ke Rp100 Miliar.",
+    "hasOwnerProfile": 1,
+    "hash": "#owner-profile",
+    "scrollY": 9399,
+    "heroContainsOS2": false,
+    "pixelEventsAfterCTA": [
+      [
+        "init",
+        "1450465452874577"
+      ],
+      [
+        "track",
+        "PageView"
+      ],
+      [
+        "trackCustom",
+        "HeroCTAClick",
+        {
+          "content_name": "Sales Team Rp10M to Rp100M - 25 Juni 2026",
+          "content_category": "Alpha Leaders Sales System Event",
+          "campaign": "cfr-june2026"
+        }
+      ]
+    ]
+  },
+  {
+    "name": "mobile-390",
+    "h1": "Sales team yang Membawa Bisnis ke Rp10 Miliar, Belum Tentu Bisa Membawanya ke Rp100 Miliar.",
+    "hasOwnerProfile": 1,
+    "hash": "#owner-profile",
+    "scrollY": 9797,
+    "heroContainsOS2": false,
+    "pixelEventsAfterCTA": [
+      [
+        "init",
+        "1450465452874577"
+      ],
+      [
+        "track",
+        "PageView"
+      ],
+      [
+        "trackCustom",
+        "HeroCTAClick",
+        {
+          "content_name": "Sales Team Rp10M to Rp100M - 25 Juni 2026",
+          "content_category": "Alpha Leaders Sales System Event",
+          "campaign": "cfr-june2026"
+        }
+      ]
+    ]
+  },
+  {
+    "name": "form-submit",
+    "formMessage": "Owner Profile terkirim. Tim Alpha Leaders akan meninjau kecocokan profil bisnis Anda.",
+    "postSubmitEvents": [
+      [
+        "init",
+        "1450465452874577"
+      ],
+      [
+        "track",
+        "PageView"
+      ],
+      [
+        "track",
+        "Lead",
+        {
+          "content_name": "Sales Team Rp10M to Rp100M - 25 Juni 2026",
+          "content_category": "Alpha Leaders Sales System Event",
+          "campaign": "cfr-june2026",
+          "event_id": "cfr-june2026-53b1c428-2af0-4769-b474-79dabf768429"
+        }
+      ]
+    ]
+  }
+]

@@ -8,37 +8,22 @@ const FAQ: React.FC = () => {
 
   const faqs = [
     {
-      question: 'Apakah harus manager?',
-      answer:
-        'Tidak. Program ini juga cocok untuk supervisor, team leader, atau karyawan yang sedang disiapkan menjadi manager.',
+      question: '1. Apakah benar-benar gratis?',
+      answer: 'Ya. Gratis. Tapi dikurasi.',
     },
     {
-      question: 'Apakah materi lebih teori atau praktik?',
-      answer:
-        'Fokus utamanya adalah implementasi dan studi kasus yang dapat langsung diterapkan di tempat kerja.',
+      question: '2. Kenapa harus apply dulu?',
+      answer: 'Agar diskusi setara & relevan.',
     },
     {
-      question: 'Apakah ada sesi tanya jawab?',
-      answer: 'Ya. Tersedia sesi diskusi dan Q&A bersama mentor.',
-    },
-    {
-      question: 'Apakah mendapatkan sertifikat?',
-      answer: 'Ya. Seluruh peserta akan menerima Certificate of Attendance.',
-    },
-    {
-      question: 'Bagaimana cara mendaftar?',
-      answer:
-        'Isi profil perusahaan melalui form di halaman ini. Tim Alpha Leaders akan meninjau kesesuaian, lalu menghubungi Anda via WhatsApp untuk konfirmasi seat dan instruksi berikutnya.',
-    },
-    {
-      question: 'Apakah terbuka untuk umum?',
-      answer:
-        'Tidak. Program ini by invitation only agar konteks diskusinya tetap relevan dengan kebutuhan business owner, HR, dan manager yang sedang membangun performa tim.',
+      question: '3. Apakah bisa bawa keluarga / tim?',
+      answer: 'By approval, tergantung konteks bisnis dan relevansi diskusi.',
+      compactAnswer: 'By approval, tergantung konteks bisnis.',
     },
   ];
 
   return (
-    <section id="faq" className="scroll-mt-24 bg-zinc-950 py-20 md:py-28">
+    <section className="py-20 md:py-28 bg-zinc-950 md:min-h-screen md:flex md:flex-col md:justify-center">
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
         <FadeIn direction="up">
           <p className="text-[11px] tracking-[0.22em] uppercase text-gold-400 font-black mb-4">
@@ -68,12 +53,12 @@ const FAQ: React.FC = () => {
                 <div
                   className={cn(
                     'overflow-hidden transition-all duration-300 ease-in-out px-5 md:px-6',
-                    openIndex === idx
-                      ? 'max-h-60 opacity-100 pb-5 md:pb-6'
-                      : 'max-h-0 opacity-0'
+                    openIndex === idx ? 'max-h-60 opacity-100 pb-5 md:pb-6' : 'max-h-0 opacity-0'
                   )}
                 >
-                  <p className="text-sm md:text-base text-zinc-300 leading-relaxed">{faq.answer}</p>
+                  <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
+                    {'compactAnswer' in faq ? faq.compactAnswer : faq.answer}
+                  </p>
                 </div>
               </div>
             </FadeIn>

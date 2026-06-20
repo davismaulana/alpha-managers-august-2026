@@ -4,7 +4,7 @@
   --cf-ink: #050505;
   --cf-cream: #E5DBC7;
   --cf-gold: #D4AF6A;
-  --cf-accent: #B8860B;
+  --cf-accent: #B42318;
   --cf-charcoal: #111111;
 }
 
@@ -19,18 +19,11 @@ body {
   letter-spacing: 0;
 }
 
-h1,
-h2,
-h3,
-.font-serif {
-  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-}
-
 @theme {
   --color-cf-ink: #050505;
   --color-cf-cream: #E5DBC7;
   --color-cf-gold: #D4AF6A;
-  --color-cf-accent: #B8860B;
+  --color-cf-accent: #B42318;
 
   --color-gold-200: #F3E0B5;
   --color-gold-300: #ECD49A;
