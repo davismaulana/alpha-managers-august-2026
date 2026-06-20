@@ -2,38 +2,38 @@ import React from 'react';
 import { Layout } from './components/layout/Layout';
 import { Navigation } from './components/sections/Navigation';
 import { Hero } from './components/sections/Hero';
-import { Pain } from './components/sections/ProblemStatement';
-import { Audience } from './components/sections/TargetAudience';
-import { NotForYou } from './components/sections/NotForYou';
-import { LearningOutcomes } from './components/sections/WhatYoullLearn';
-import { Speakers } from './components/sections/Speakers';
-import { EventDetails } from './components/sections/EventFormat';
-import { ConsequenceUrgency } from './components/sections/ConsequenceUrgency';
-import { IndustryTrust } from './components/sections/IndustryTrust';
-import { FinalCTA } from './components/sections/FinalCTA';
 import { LeadCapture } from './components/sections/LeadCapture';
+import { ProblemStatement } from './components/sections/ProblemStatement';
+import { WhyThisHappens } from './components/sections/WhyThisHappens';
+import { ShiftMindset } from './components/sections/ShiftMindset';
+import { TargetAudience } from './components/sections/TargetAudience';
+import { WhatYoullLearn } from './components/sections/WhatYoullLearn';
+import { Speakers } from './components/sections/Speakers';
+import { EventFormat } from './components/sections/EventFormat';
+import { LimitedSeats } from './components/sections/LimitedSeats';
+import { FinalCTA } from './components/sections/FinalCTA';
+import { ClosingPhilosophy } from './components/sections/ClosingPhilosophy';
 import { FAQ } from './components/sections/FAQ';
 import { Footer } from './components/sections/Footer';
-import { FloatingCTA } from './components/sections/FloatingCTA';
 
 const App: React.FC = () => {
   return (
     <Layout>
       <Navigation />
       <Hero />
-      <Pain />
-      <Audience />
-      <NotForYou />
-      <LearningOutcomes />
-      <Speakers />
-      <EventDetails />
-      <ConsequenceUrgency />
-      <IndustryTrust />
-      <FinalCTA />
       <LeadCapture />
+      <ProblemStatement />
+      <WhyThisHappens />
+      <ShiftMindset />
+      <TargetAudience />
+      <WhatYoullLearn />
+      <Speakers />
+      <EventFormat />
+      <LimitedSeats />
+      <FinalCTA />
+      <ClosingPhilosophy />
       <FAQ />
       <Footer />
-      <FloatingCTA />
     </Layout>
   );
 };
