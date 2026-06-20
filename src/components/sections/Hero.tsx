@@ -12,12 +12,12 @@ import {
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative w-full bg-[var(--cf-ink)] pt-28 pb-20 md:pt-32 md:pb-24 overflow-hidden">
+    <section className="relative w-full bg-[var(--cf-ink)] pt-24 pb-16 md:pt-28 md:pb-20 lg:pt-28 lg:pb-16 overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_8%,rgba(212,175,106,0.16),transparent_36%),linear-gradient(140deg,rgba(5,5,5,1)_0%,rgba(17,17,17,0.94)_55%,rgba(229,219,199,0.10)_100%)]" />
       <div className="absolute left-[44%] top-24 hidden h-[72%] w-[44%] -skew-y-6 border border-[var(--cf-gold)]/18 bg-[linear-gradient(180deg,rgba(229,219,199,0.08),rgba(212,175,106,0.04))] lg:block" />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-[5fr_1fr_6fr] gap-10 lg:gap-0 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[5fr_1fr_6fr] gap-10 lg:gap-0 items-start">
           <div>
             <FadeIn direction="up" delay={0}>
               <p className="text-[11px] md:text-xs font-black tracking-[0.18em] uppercase text-gold-300 mb-5">
@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
             </FadeIn>
 
             <FadeIn direction="up" delay={0.2}>
-              <h1 className="font-serif text-[2.35rem] md:text-6xl xl:text-7xl font-bold leading-[1.04] tracking-normal max-w-5xl">
+              <h1 className="font-serif text-[2.35rem] md:text-6xl xl:text-[4.15rem] font-bold leading-[1.04] tracking-normal max-w-5xl">
                 Ubah Manager Anda dari{' '}
                 <span className="text-gold-400">Pemadam Kebakaran</span> menjadi{' '}
                 <span className="text-gold-400">Penggerak Pertumbuhan Bisnis</span>
@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
             </FadeIn>
 
             <FadeIn direction="up" delay={0.4}>
-              <p className="mt-6 max-w-2xl text-base md:text-xl leading-7 md:leading-9 text-zinc-300">
+              <p className="mt-5 max-w-2xl text-base md:text-xl leading-7 md:leading-8 text-zinc-300">
                 Saatnya perusahaan Anda memiliki manager yang benar-benar bisa diandalkan untuk
                 mencapai hasil nyata di lapangan: memimpin tim, menjaga accountability, mendorong KPI,
                 dan mengurangi ketergantungan harian pada owner.
@@ -42,7 +42,7 @@ const Hero: React.FC = () => {
             </FadeIn>
 
             <FadeIn direction="up" delay={0.6}>
-              <div className="mt-8 flex flex-col sm:flex-row gap-4">
+              <div className="mt-6 flex flex-col sm:flex-row gap-4">
                 <button
                   onClick={() => scrollToLeadForm('hero')}
                   className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-[var(--cf-gold)] px-8 text-base md:text-lg font-black text-black transition hover:bg-[var(--cf-cream)] hover:text-[var(--cf-ink)] cursor-pointer"
@@ -58,7 +58,7 @@ const Hero: React.FC = () => {
             </FadeIn>
 
             <FadeIn direction="up" delay={0.8}>
-              <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl">
+              <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl">
                 {[
                   { icon: Calendar, label: 'Kamis, 13 Agustus 2026' },
                   { icon: Clock, label: '09.00-17.00 WIB' },
