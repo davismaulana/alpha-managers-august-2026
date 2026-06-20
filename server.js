@@ -7,13 +7,14 @@ import { randomUUID } from 'node:crypto';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const distDir = path.join(__dirname, 'dist');
 const port = Number(process.env.PORT || 80);
-const leadWebhookUrl = process.env.LEAD_WEBHOOK_URL || 'https://n8n.sixzenith.com/webhook/cfr-june2026-leadform';
+const leadWebhookUrl =
+  process.env.LEAD_WEBHOOK_URL || 'https://n8n.sixzenith.com/webhook/cfr-august2026-leadform';
 
-const CAMPAIGN_ID = 'cfr-june2026';
-const EVENT_NAME = 'Sales Team yang Scalable - 25 Juni 2026';
-const DEFAULT_UTM_CAMPAIGN = 'june-2026-event';
-const DEFAULT_UTM_SOURCE = 'june-2026-lp';
-const DEFAULT_SOURCE = 'june-2026-lp';
+const CAMPAIGN_ID = 'cfr-august2026';
+const EVENT_NAME = 'Alpha Managers - 13 Agustus 2026';
+const DEFAULT_UTM_CAMPAIGN = 'alpha-managers-august-2026';
+const DEFAULT_UTM_SOURCE = 'alpha-managers-august-lp';
+const DEFAULT_SOURCE = 'alpha-managers-august-lp';
 
 const contentTypes = {
   '.html': 'text/html; charset=utf-8',
