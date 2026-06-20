@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
             </FadeIn>
 
             <FadeIn direction="up" delay={0.2}>
-              <h1 className="font-serif text-[2.35rem] md:text-6xl xl:text-[4.15rem] font-bold leading-[1.04] tracking-normal max-w-5xl">
+              <h1 className="font-serif text-[2.35rem] md:text-6xl xl:text-[3.8rem] font-bold leading-[1.04] tracking-normal max-w-5xl">
                 Ubah Manager Anda dari{' '}
                 <span className="text-gold-400">Pemadam Kebakaran</span> menjadi{' '}
                 <span className="text-gold-400">Penggerak Pertumbuhan Bisnis</span>
@@ -34,7 +34,21 @@ const Hero: React.FC = () => {
             </FadeIn>
 
             <FadeIn direction="up" delay={0.4}>
-              <p className="mt-5 max-w-2xl text-base md:text-xl leading-7 md:leading-8 text-zinc-300">
+              <div className="mt-5 hidden lg:flex flex-col gap-4">
+                <button
+                  onClick={() => scrollToLeadForm('hero-desktop')}
+                  className="inline-flex w-fit min-h-14 items-center justify-center gap-2 rounded-full bg-[var(--cf-gold)] px-8 text-base md:text-lg font-black text-black transition hover:bg-[var(--cf-cream)] hover:text-[var(--cf-ink)] cursor-pointer"
+                >
+                  {CTA_LABEL}
+                  <ArrowRight className="h-5 w-5" />
+                </button>
+                <p className="max-w-2xl text-base md:text-xl leading-7 md:leading-8 text-zinc-300">
+                  Saatnya perusahaan Anda memiliki manager yang benar-benar bisa diandalkan untuk
+                  mencapai hasil nyata di lapangan: memimpin tim, menjaga accountability, mendorong KPI,
+                  dan mengurangi ketergantungan harian pada owner.
+                </p>
+              </div>
+              <p className="mt-5 max-w-2xl text-base md:text-xl leading-7 md:leading-8 text-zinc-300 lg:hidden">
                 Saatnya perusahaan Anda memiliki manager yang benar-benar bisa diandalkan untuk
                 mencapai hasil nyata di lapangan: memimpin tim, menjaga accountability, mendorong KPI,
                 dan mengurangi ketergantungan harian pada owner.
@@ -42,9 +56,9 @@ const Hero: React.FC = () => {
             </FadeIn>
 
             <FadeIn direction="up" delay={0.6}>
-              <div className="mt-6 flex flex-col sm:flex-row gap-4">
+              <div className="mt-6 flex flex-col sm:flex-row gap-4 lg:hidden">
                 <button
-                  onClick={() => scrollToLeadForm('hero')}
+                  onClick={() => scrollToLeadForm('hero-mobile')}
                   className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-[var(--cf-gold)] px-8 text-base md:text-lg font-black text-black transition hover:bg-[var(--cf-cream)] hover:text-[var(--cf-ink)] cursor-pointer"
                 >
                   {CTA_LABEL}
