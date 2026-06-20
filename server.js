@@ -7,8 +7,9 @@ import { randomUUID } from 'node:crypto';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const distDir = path.join(__dirname, 'dist');
 const port = Number(process.env.PORT || 80);
-const leadWebhookUrl =
-  process.env.LEAD_WEBHOOK_URL || 'https://n8n.sixzenith.com/webhook/cfr-june2026-leadform';
+const leadWebhookUrl = String(process.env.LEAD_WEBHOOK_URL || '').trim();
+const previewLeadMessage =
+  'Preview aktif. Profil belum tersimpan karena webhook Agustus belum dikonfigurasi.';
 
 const CAMPAIGN_ID = 'cfr-august2026';
 const EVENT_NAME = 'Alpha Managers - 13 Agustus 2026';
@@ -122,6 +123,18 @@ const normalizeLeadPayload = (payload, request) => {
 };
 
 const postLeadToWebhook = async (lead) => {
+  if (!leadWebhookUrl || !leadWebhookUrl.includes('cfr-august2026-leadform')) {
+    return {
+      ok: true,
+      preview: true,
+      persisted: false,
+      status: 202,
+      id: lead.event_id,
+      campaign: null,
+      message: previewLeadMessage,
+    };
+  }
+
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 12_000);
 
@@ -151,9 +164,12 @@ const postLeadToWebhook = async (lead) => {
 
     return {
       ok: true,
+      preview: false,
+      persisted: true,
       status: response.status,
       id: body.id || body.leadId || lead.event_id,
       campaign: body.campaign || lead.campaign,
+      message: 'Profil diterima. Tim Alpha Leaders akan meninjau kecocokan dan menghubungi Anda via WhatsApp.',
     };
   } catch (error) {
     const aborted = error instanceof Error && error.name === 'AbortError';
@@ -221,11 +237,14 @@ const server = createServer(async (request, response) => {
         return;
       }
 
-      sendJson(response, 200, {
+      sendJson(response, result.preview ? 202 : 200, {
         ok: true,
         leadId: String(result.id),
         eventId: payload.event_id,
         campaign: result.campaign,
+        persisted: result.persisted,
+        preview: result.preview,
+        message: result.message,
       });
       return;
     }

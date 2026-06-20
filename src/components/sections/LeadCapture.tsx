@@ -17,6 +17,7 @@ type FormState = {
 type SubmitState =
   | { status: 'idle'; message: string }
   | { status: 'submitting'; message: string }
+  | { status: 'preview'; message: string; leadId: string }
   | { status: 'success'; message: string; leadId: string }
   | { status: 'error'; message: string };
 
@@ -117,6 +118,17 @@ const LeadCapture: React.FC = () => {
 
       if (!response.ok || !body.ok) {
         throw new Error(body.error || 'Form belum berhasil dikirim.');
+      }
+
+      if (body.preview) {
+        setSubmitState({
+          status: 'preview',
+          leadId: body.leadId,
+          message:
+            body.message ||
+            'Preview aktif. Profil belum tersimpan ke sistem registrasi karena webhook Agustus belum dikonfigurasi.',
+        });
+        return;
       }
 
       if (typeof window.fbq === 'function') {
@@ -335,6 +347,8 @@ const LeadCapture: React.FC = () => {
                     'text-sm leading-relaxed',
                     submitState.status === 'success'
                       ? 'text-emerald-700'
+                      : submitState.status === 'preview'
+                        ? 'text-amber-700'
                       : submitState.status === 'error'
                         ? 'text-rose-700'
                         : 'text-zinc-600',

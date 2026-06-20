@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     environment:
-      - LEAD_WEBHOOK_URL=${LEAD_WEBHOOK_URL:-https://n8n.sixzenith.com/webhook/cfr-june2026-leadform}
+      - LEAD_WEBHOOK_URL=${LEAD_WEBHOOK_URL:-}
     networks:
       - dokploy-network
     labels:
