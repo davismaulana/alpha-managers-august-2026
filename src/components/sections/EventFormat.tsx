@@ -1,31 +1,22 @@
 import React from 'react';
-import { ArrowRight, Calendar, Clock, Video, Lock, Users } from 'lucide-react';
+import { Calendar, Clock, Lock, Users, MapPin, ArrowUpRight } from 'lucide-react';
 import { FadeIn } from '../animations/FadeIn';
-import { openRegistrationCTA } from '../../lib/constants';
 
 const EventDetails: React.FC = () => {
-  const steps = [
-    {
-      step: '01',
-      label: 'Mengisi Owner Profile',
-      sub: 'Setiap peserta: Mengisi Owner Profile',
-    },
-    {
-      step: '02',
-      label: 'Melalui internal assessment',
-      sub: 'Melalui internal assessment',
-    },
-    {
-      step: '03',
-      label: 'Invitation dikirim jika sesuai',
-      sub: 'Invitation dikirim jika sesuai',
-    },
+  const inclusions = [
+    'Breakfast, lunch, dan coffee break.',
+    'Handbook materi.',
+    'Sertifikat.',
+    'Q&A dengan mentor.',
+    'Pre-test dan post-test.',
+    'Networking eksklusif managers.',
+    'Potongan untuk kelas berikutnya.',
   ];
 
   return (
     <section
       id="event-details"
-      className="py-20 md:py-28 bg-[var(--cf-ink)] relative overflow-hidden scroll-mt-24 md:min-h-screen md:flex md:flex-col md:justify-center"
+      className="py-20 md:py-28 bg-[var(--cf-ink)] relative overflow-hidden scroll-mt-24"
     >
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-30">
         <div className="absolute inset-0 bg-[linear-gradient(135deg,transparent_0%,transparent_44%,rgba(212,175,106,0.18)_44%,rgba(212,175,106,0.18)_45%,transparent_45%)]" />
@@ -35,63 +26,57 @@ const EventDetails: React.FC = () => {
         <div className="max-w-3xl mb-10 md:mb-12">
           <FadeIn direction="up">
             <p className="text-[11px] tracking-[0.22em] uppercase text-gold-400 font-black mb-4">
-              Event details
+              Detail event
             </p>
             <h2 className="font-serif text-3xl md:text-5xl font-bold text-white leading-tight">
-              Event Details
+              Detail Program
             </h2>
           </FadeIn>
         </div>
 
         <FadeIn direction="up" delay={0.1}>
           <div className="max-w-5xl mb-12">
-            <div className="border border-gold-500/30 bg-gradient-to-br from-zinc-900/80 to-black/40 backdrop-blur-md p-8 md:p-10">
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
-                <div className="flex flex-col items-start">
-                  <div className="rounded-md border border-gold-500/30 bg-gold-500/10 p-2 text-gold-400 mb-3">
-                    <Lock className="w-4 h-4" />
-                  </div>
-                  <p className="text-[10px] uppercase tracking-[0.18em] text-zinc-400">Format</p>
-                  <p className="text-white font-bold text-sm md:text-base mt-1 leading-snug">
-                    Exclusive Community Sharing
-                  </p>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-6 border border-gold-500/30 bg-gradient-to-br from-zinc-900/80 to-black/40 backdrop-blur-md p-8 md:p-10">
+              <div className="flex flex-col items-start">
+                <div className="rounded-md border border-gold-500/30 bg-gold-500/10 p-2 text-gold-400 mb-3">
+                  <Lock className="w-4 h-4" />
                 </div>
-                <div className="flex flex-col items-start">
-                  <div className="rounded-md border border-gold-500/30 bg-gold-500/10 p-2 text-gold-400 mb-3">
-                    <Users className="w-4 h-4" />
-                  </div>
-                  <p className="text-[10px] uppercase tracking-[0.18em] text-zinc-400">Akses</p>
-                  <p className="text-white font-bold text-sm md:text-base mt-1 leading-snug">
-                    By Invitation Only
-                  </p>
+                <p className="text-[10px] uppercase tracking-[0.18em] text-zinc-400">Format</p>
+                  <p className="text-white font-bold text-sm md:text-base mt-1 leading-snug">Exclusive Community Sharing</p>
+              </div>
+              <div className="flex flex-col items-start">
+                <div className="rounded-md border border-gold-500/30 bg-gold-500/10 p-2 text-gold-400 mb-3">
+                  <Users className="w-4 h-4" />
                 </div>
-                <div className="flex flex-col items-start">
-                  <div className="rounded-md border border-gold-500/30 bg-gold-500/10 p-2 text-gold-400 mb-3">
-                    <Calendar className="w-4 h-4" />
-                  </div>
-                  <p className="text-[10px] uppercase tracking-[0.18em] text-zinc-400">Tanggal</p>
-                  <p className="text-white font-bold text-sm md:text-base mt-1 leading-snug">
-                    Rabu, 25 June 2026
-                  </p>
+                <p className="text-[10px] uppercase tracking-[0.18em] text-zinc-400">Akses</p>
+                  <p className="text-white font-bold text-sm md:text-base mt-1 leading-snug">By Invitation Only</p>
+              </div>
+              <div className="flex flex-col items-start">
+                <div className="rounded-md border border-gold-500/30 bg-gold-500/10 p-2 text-gold-400 mb-3">
+                  <Calendar className="w-4 h-4" />
                 </div>
-                <div className="flex flex-col items-start">
-                  <div className="rounded-md border border-gold-500/30 bg-gold-500/10 p-2 text-gold-400 mb-3">
-                    <Clock className="w-4 h-4" />
-                  </div>
-                  <p className="text-[10px] uppercase tracking-[0.18em] text-zinc-400">Jam</p>
-                  <p className="text-white font-bold text-sm md:text-base mt-1 leading-snug">
-                    08.00 - 12.00 WIB
-                  </p>
+                <p className="text-[10px] uppercase tracking-[0.18em] text-zinc-400">Tanggal</p>
+                <p className="text-white font-bold text-sm md:text-base mt-1 leading-snug">
+                  Kamis, 13 Agustus 2026
+                </p>
+              </div>
+              <div className="flex flex-col items-start">
+                <div className="rounded-md border border-gold-500/30 bg-gold-500/10 p-2 text-gold-400 mb-3">
+                  <Clock className="w-4 h-4" />
                 </div>
-                <div className="flex flex-col items-start col-span-2 md:col-span-1">
-                  <div className="rounded-md border border-gold-500/30 bg-gold-500/10 p-2 text-gold-400 mb-3">
-                    <Video className="w-4 h-4" />
-                  </div>
-                  <p className="text-[10px] uppercase tracking-[0.18em] text-zinc-400">Venue</p>
-                  <p className="text-white font-bold text-sm md:text-base mt-1 leading-snug">
-                    Online via Zoom
-                  </p>
+                <p className="text-[10px] uppercase tracking-[0.18em] text-zinc-400">Jam</p>
+                <p className="text-white font-bold text-sm md:text-base mt-1 leading-snug">
+                  09.00 – 17.00 WIB
+                </p>
+              </div>
+              <div className="flex flex-col items-start col-span-2 md:col-span-1">
+                <div className="rounded-md border border-gold-500/30 bg-gold-500/10 p-2 text-gold-400 mb-3">
+                  <MapPin className="w-4 h-4" />
                 </div>
+                <p className="text-[10px] uppercase tracking-[0.18em] text-zinc-400">Lokasi</p>
+                <p className="text-white font-bold text-sm md:text-base mt-1 leading-snug">
+                  Jakarta
+                </p>
               </div>
             </div>
           </div>
@@ -99,34 +84,36 @@ const EventDetails: React.FC = () => {
 
         <FadeIn direction="up" delay={0.2}>
           <div className="max-w-5xl border border-white/10 bg-zinc-900/30 backdrop-blur-md">
-            <div className="grid grid-cols-1 md:grid-cols-5">
-              <div className="md:col-span-2 p-8 md:p-10 border-b md:border-b-0 md:border-r border-white/10 flex flex-col justify-center">
-                <h3 className="font-serif text-2xl md:text-3xl font-bold text-white mb-4">
-                  Alur Peserta
-                </h3>
-                <p className="text-sm md:text-base text-zinc-400 mb-6 leading-relaxed">
-                  EXCLUSIVE COMMUNITY SHARING | BY INVITATION ONLY | FREE
-                </p>
-                <button
-                  type="button"
-                  onClick={openRegistrationCTA}
-                  className="inline-flex w-fit items-center gap-2 rounded-full border border-gold-500/40 px-6 py-3 text-sm font-black text-gold-300 transition hover:bg-[var(--cf-gold)] hover:text-black"
-                >
-                  Daftar Sekarang <ArrowRight className="h-4 w-4" />
-                </button>
-              </div>
-              <div className="md:col-span-3 p-8 md:p-10 grid grid-cols-1 gap-6">
-                {steps.map((s) => (
-                  <div key={s.step} className="flex items-start gap-5">
-                    <span className="font-serif text-4xl font-bold text-zinc-700 leading-none select-none">
-                      {s.step}
-                    </span>
-                    <div>
-                      <h4 className="text-base md:text-lg font-bold text-white mb-1">{s.label}</h4>
-                      <p className="text-sm text-zinc-500 leading-relaxed">{s.sub}</p>
-                    </div>
+            <div className="grid grid-cols-1 md:grid-cols-[1.05fr_0.95fr]">
+              <div className="p-8 md:p-10 grid grid-cols-1 gap-3 border-b border-white/10 md:border-b-0 md:border-r">
+                <h4 className="text-base md:text-lg font-black text-white mb-3">Termasuk</h4>
+                {inclusions.map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <ArrowUpRight className="h-4 w-4 mt-1 text-gold-400 shrink-0" />
+                    <p className="text-sm text-zinc-200 leading-relaxed">{item}</p>
                   </div>
                 ))}
+              </div>
+              <div className="p-8 md:p-10 flex flex-col justify-between">
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.22em] text-zinc-400 mb-2">Investasi program</p>
+                  <h3 className="font-serif text-2xl md:text-3xl font-bold text-white mb-3">
+                    Promo khusus presale
+                  </h3>
+                  <div className="flex items-end gap-3">
+                    <span className="text-lg font-semibold text-zinc-500 line-through md:text-2xl">
+                      9.999.999
+                    </span>
+                    <span className="font-serif text-4xl font-bold text-gold-300 md:text-5xl">
+                      7.999.999
+                    </span>
+                  </div>
+                  <p className="mt-4 text-sm md:text-base text-zinc-400 leading-relaxed">
+                    Untuk owner, HR, dan L&amp;D yang ingin membawa manager inti mereka ke sesi
+                    yang lebih terarah, lebih eksklusif, dan langsung bisa diterjemahkan ke
+                    performa lapangan.
+                  </p>
+                </div>
               </div>
             </div>
           </div>

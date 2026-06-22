@@ -8,22 +8,27 @@ const FAQ: React.FC = () => {
 
   const faqs = [
     {
-      question: '1. Apakah benar-benar gratis?',
-      answer: 'Ya. Gratis. Tapi dikurasi.',
+      question: 'Apakah harus manager?',
+      answer:
+        'Tidak. Program ini juga cocok untuk supervisor, team leader, atau karyawan yang sedang dipersiapkan menjadi manager.',
     },
     {
-      question: '2. Kenapa harus apply dulu?',
-      answer: 'Agar diskusi setara & relevan.',
+      question: 'Apakah materi lebih teori atau praktik?',
+      answer:
+        'Fokus utama program adalah implementasi dan studi kasus yang dapat langsung diterapkan di tempat kerja.',
     },
     {
-      question: '3. Apakah bisa bawa keluarga / tim?',
-      answer: 'By approval, tergantung konteks bisnis dan relevansi diskusi.',
-      compactAnswer: 'By approval, tergantung konteks bisnis.',
+      question: 'Apakah ada sesi tanya jawab?',
+      answer: 'Ya. Akan tersedia sesi diskusi dan Q&A bersama pemateri.',
+    },
+    {
+      question: 'Apakah mendapatkan sertifikat?',
+      answer: 'Ya, seluruh peserta akan mendapatkan Certificate of Attendance.',
     },
   ];
 
   return (
-    <section className="py-20 md:py-28 bg-zinc-950 md:min-h-screen md:flex md:flex-col md:justify-center">
+    <section id="faq" className="scroll-mt-24 bg-zinc-950 py-20 md:py-28">
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
         <FadeIn direction="up">
           <p className="text-[11px] tracking-[0.22em] uppercase text-gold-400 font-black mb-4">
@@ -53,12 +58,12 @@ const FAQ: React.FC = () => {
                 <div
                   className={cn(
                     'overflow-hidden transition-all duration-300 ease-in-out px-5 md:px-6',
-                    openIndex === idx ? 'max-h-60 opacity-100 pb-5 md:pb-6' : 'max-h-0 opacity-0'
+                    openIndex === idx
+                      ? 'max-h-60 opacity-100 pb-5 md:pb-6'
+                      : 'max-h-0 opacity-0'
                   )}
                 >
-                  <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
-                    {'compactAnswer' in faq ? faq.compactAnswer : faq.answer}
-                  </p>
+                  <p className="text-sm md:text-base text-zinc-300 leading-relaxed">{faq.answer}</p>
                 </div>
               </div>
             </FadeIn>

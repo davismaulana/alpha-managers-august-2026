@@ -6,24 +6,16 @@ import { randomUUID } from 'node:crypto';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const distDir = path.join(__dirname, 'dist');
-const augustDistDir = path.join(__dirname, 'dist-august');
 const port = Number(process.env.PORT || 80);
-const leadWebhookUrl = process.env.LEAD_WEBHOOK_URL || 'https://n8n.sixzenith.com/webhook/cfr-june2026-leadform';
-const augustPreviewLeadMessage =
+const leadWebhookUrl = String(process.env.LEAD_WEBHOOK_URL || '').trim();
+const previewLeadMessage =
   'Preview aktif. Profil belum tersimpan karena webhook Agustus belum dikonfigurasi.';
 
-const AUGUST_HOST = 'alpha-managers-august-2026-preview.zenova.id';
-
-const CAMPAIGN_ID = 'cfr-june2026';
-const EVENT_NAME = 'Sales Team yang Scalable - 25 Juni 2026';
-const DEFAULT_UTM_CAMPAIGN = 'june-2026-event';
-const DEFAULT_UTM_SOURCE = 'june-2026-lp';
-const DEFAULT_SOURCE = 'june-2026-lp';
-const AUGUST_CAMPAIGN_ID = 'cfr-august2026';
-const AUGUST_EVENT_NAME = 'Alpha Managers - 13 Agustus 2026';
-const AUGUST_DEFAULT_UTM_CAMPAIGN = 'alpha-managers-august-2026';
-const AUGUST_DEFAULT_UTM_SOURCE = 'alpha-managers-august-lp';
-const AUGUST_DEFAULT_SOURCE = 'alpha-managers-august-lp';
+const CAMPAIGN_ID = 'cfr-august2026';
+const EVENT_NAME = 'Alpha Managers - 13 Agustus 2026';
+const DEFAULT_UTM_CAMPAIGN = 'alpha-managers-august-2026';
+const DEFAULT_UTM_SOURCE = 'alpha-managers-august-lp';
+const DEFAULT_SOURCE = 'alpha-managers-august-lp';
 
 const contentTypes = {
   '.html': 'text/html; charset=utf-8',
@@ -39,12 +31,6 @@ const contentTypes = {
 };
 
 const requiredFields = [
-  'name',
-  'whatsapp',
-  'business',
-  'challenge',
-];
-const augustRequiredFields = [
   'name',
   'whatsapp',
   'company',
@@ -84,26 +70,8 @@ const normalizeWhatsapp = (value) => {
   return raw;
 };
 
-const getHostname = (request) => String(request.headers.host || '').split(':')[0].trim().toLowerCase();
-
-const isAugustPreviewHost = (request) => getHostname(request) === AUGUST_HOST;
-
 const validateLead = (payload) => {
   const missing = requiredFields.filter((field) => !cleanText(payload[field]));
-  if (missing.length > 0) {
-    return `Lengkapi field: ${missing.join(', ')}.`;
-  }
-
-  const whatsapp = normalizeWhatsapp(payload.whatsapp);
-  if (whatsapp.length < 10 || whatsapp.length > 16) {
-    return 'Nomor WhatsApp belum valid.';
-  }
-
-  return '';
-};
-
-const validateAugustLead = (payload) => {
-  const missing = augustRequiredFields.filter((field) => !cleanText(payload[field]));
   if (missing.length > 0) {
     return `Lengkapi field: ${missing.join(', ')}.`;
   }
@@ -124,9 +92,14 @@ const normalizeLeadPayload = (payload, request) => {
   return {
     name: cleanText(payload.name, 120),
     whatsapp,
-    business: cleanText(payload.business, 160),
-    challenge: cleanText(payload.challenge, 1000),
     email: cleanText(payload.email, 160),
+    company: cleanText(payload.company || payload.business, 160),
+    business: cleanText(payload.company || payload.business, 160),
+    role: cleanText(payload.role, 80),
+    city: cleanText(payload.city || metadata.city, 120),
+    participant_count: cleanText(payload.participant_count, 80),
+    manager_challenge: cleanText(payload.manager_challenge || payload.challenge, 1000),
+    challenge: cleanText(payload.manager_challenge || payload.challenge, 1000),
     event_id: eventId,
     fbp: cleanText(payload.fbp, 180),
     fbc: cleanText(payload.fbc, 180),
@@ -140,50 +113,28 @@ const normalizeLeadPayload = (payload, request) => {
     campaign: CAMPAIGN_ID,
     business_category: cleanText(metadata.businessCategory, 120),
     monthly_revenue: cleanText(metadata.monthlyRevenue, 120),
-    city: cleanText(metadata.city, 120),
-    event_name: EVENT_NAME,
-  };
-};
-
-const normalizeAugustLeadPayload = (payload, request) => {
-  const whatsapp = normalizeWhatsapp(payload.whatsapp);
-  const eventId = cleanText(payload.event_id || `${AUGUST_CAMPAIGN_ID}-${randomUUID()}`, 120);
-  const metadata = typeof payload.metadata === 'object' && payload.metadata ? payload.metadata : {};
-
-  return {
-    name: cleanText(payload.name, 120),
-    whatsapp,
-    email: cleanText(payload.email, 160),
-    company: cleanText(payload.company || payload.business, 160),
-    business: cleanText(payload.company || payload.business, 160),
-    role: cleanText(payload.role, 80),
-    city: cleanText(payload.city || metadata.city, 120),
-    participant_count: cleanText(payload.participant_count, 80),
-    manager_challenge: cleanText(payload.manager_challenge || payload.challenge, 1000),
-    challenge: cleanText(payload.manager_challenge || payload.challenge, 1000),
-    event_id: eventId,
-    fbp: cleanText(payload.fbp, 180),
-    fbc: cleanText(payload.fbc, 180),
-    source: cleanText(payload.source || AUGUST_DEFAULT_SOURCE, 120),
-    page_url: cleanText(payload.page_url, 500),
-    utm_source: cleanText(payload.utm_source || AUGUST_DEFAULT_UTM_SOURCE, 120),
-    utm_medium: cleanText(payload.utm_medium, 120),
-    utm_campaign: cleanText(payload.utm_campaign || AUGUST_DEFAULT_UTM_CAMPAIGN, 120),
-    utm_content: cleanText(payload.utm_content, 120),
-    user_agent: cleanText(request.headers['user-agent'], 300),
-    campaign: AUGUST_CAMPAIGN_ID,
-    business_category: cleanText(metadata.businessCategory, 120),
-    monthly_revenue: cleanText(metadata.monthlyRevenue, 120),
     page_title: 'Alpha Managers August 2026',
-    event_name: AUGUST_EVENT_NAME,
+    event_name: EVENT_NAME,
     metadata: {
       event_date: '2026-08-13',
-      event_name: AUGUST_EVENT_NAME,
+      event_name: EVENT_NAME,
     },
   };
 };
 
 const postLeadToWebhook = async (lead) => {
+  if (!leadWebhookUrl || !leadWebhookUrl.includes('cfr-august2026-leadform')) {
+    return {
+      ok: true,
+      preview: true,
+      persisted: false,
+      status: 202,
+      id: lead.event_id,
+      campaign: null,
+      message: previewLeadMessage,
+    };
+  }
+
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 12_000);
 
@@ -213,9 +164,12 @@ const postLeadToWebhook = async (lead) => {
 
     return {
       ok: true,
+      preview: false,
+      persisted: true,
       status: response.status,
       id: body.id || body.leadId || lead.event_id,
       campaign: body.campaign || lead.campaign,
+      message: 'Profil diterima. Tim Alpha Leaders akan meninjau kecocokan dan menghubungi Anda via WhatsApp.',
     };
   } catch (error) {
     const aborted = error instanceof Error && error.name === 'AbortError';
@@ -230,13 +184,12 @@ const postLeadToWebhook = async (lead) => {
 };
 
 const serveStatic = async (request, response) => {
-  const siteDistDir = isAugustPreviewHost(request) ? augustDistDir : distDir;
   const url = new URL(request.url || '/', 'http://localhost');
   const decodedPath = decodeURIComponent(url.pathname);
   const safePath = decodedPath === '/' ? '/index.html' : decodedPath;
-  const filePath = path.normalize(path.join(siteDistDir, safePath));
+  const filePath = path.normalize(path.join(distDir, safePath));
 
-  if (!filePath.startsWith(siteDistDir)) {
+  if (!filePath.startsWith(distDir)) {
     response.writeHead(403);
     response.end('Forbidden');
     return;
@@ -247,7 +200,7 @@ const serveStatic = async (request, response) => {
     const stat = await fs.stat(target);
     if (stat.isDirectory()) target = path.join(target, 'index.html');
   } catch {
-    target = path.join(siteDistDir, 'index.html');
+    target = path.join(distDir, 'index.html');
   }
 
   const extension = path.extname(target);
@@ -262,7 +215,6 @@ const serveStatic = async (request, response) => {
 const server = createServer(async (request, response) => {
   try {
     const url = new URL(request.url || '/', 'http://localhost');
-    const isAugust = isAugustPreviewHost(request);
 
     if (request.method === 'GET' && url.pathname === '/healthz') {
       sendJson(response, 200, { ok: true });
@@ -272,25 +224,10 @@ const server = createServer(async (request, response) => {
     if (request.method === 'POST' && url.pathname === '/api/leads') {
       const body = await readBody(request);
       const rawPayload = JSON.parse(body || '{}');
-      const payload = isAugust
-        ? normalizeAugustLeadPayload(rawPayload, request)
-        : normalizeLeadPayload(rawPayload, request);
-      const validationError = isAugust ? validateAugustLead(payload) : validateLead(payload);
+      const payload = normalizeLeadPayload(rawPayload, request);
+      const validationError = validateLead(payload);
       if (validationError) {
         sendJson(response, 400, { ok: false, error: validationError });
-        return;
-      }
-
-      if (isAugust) {
-        sendJson(response, 202, {
-          ok: true,
-          leadId: payload.event_id,
-          eventId: payload.event_id,
-          campaign: null,
-          persisted: false,
-          preview: true,
-          message: augustPreviewLeadMessage,
-        });
         return;
       }
 
@@ -300,11 +237,14 @@ const server = createServer(async (request, response) => {
         return;
       }
 
-      sendJson(response, 200, {
+      sendJson(response, result.preview ? 202 : 200, {
         ok: true,
         leadId: String(result.id),
         eventId: payload.event_id,
         campaign: result.campaign,
+        persisted: result.persisted,
+        preview: result.preview,
+        message: result.message,
       });
       return;
     }
@@ -322,5 +262,5 @@ const server = createServer(async (request, response) => {
 });
 
 server.listen(port, '0.0.0.0', () => {
-  console.log(`autopilot-business-june2026 listening on ${port}`);
+  console.log(`autopilot-business-august2026 listening on ${port}`);
 });

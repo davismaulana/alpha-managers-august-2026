@@ -2,15 +2,16 @@ import React from 'react';
 import { Layout } from './components/layout/Layout';
 import { Navigation } from './components/sections/Navigation';
 import { Hero } from './components/sections/Hero';
+import { LeadCapture } from './components/sections/LeadCapture';
 import { Pain } from './components/sections/ProblemStatement';
+import { StrategicExplanation } from './components/sections/StrategicExplanation';
 import { Audience } from './components/sections/TargetAudience';
-import { NotForYou } from './components/sections/NotForYou';
 import { LearningOutcomes } from './components/sections/WhatYoullLearn';
 import { Speakers } from './components/sections/Speakers';
-import { Framework } from './components/sections/Framework';
 import { EventDetails } from './components/sections/EventFormat';
 import { ConsequenceUrgency } from './components/sections/ConsequenceUrgency';
 import { IndustryTrust } from './components/sections/IndustryTrust';
+import { VideoProof } from './components/sections/VideoProof';
 import { FinalCTA } from './components/sections/FinalCTA';
 import { FAQ } from './components/sections/FAQ';
 import { Footer } from './components/sections/Footer';
@@ -22,15 +23,16 @@ const App: React.FC = () => {
       <Navigation />
       <Hero />
       <Pain />
+      <StrategicExplanation />
       <Audience />
-      <NotForYou />
       <LearningOutcomes />
       <Speakers />
-      <Framework />
       <EventDetails />
       <ConsequenceUrgency />
       <IndustryTrust />
+      <VideoProof />
       <FinalCTA />
+      <LeadCapture />
       <FAQ />
       <Footer />
       <FloatingCTA />
