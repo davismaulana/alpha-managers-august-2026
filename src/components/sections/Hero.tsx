@@ -24,11 +24,13 @@ const Hero: React.FC = () => {
                 <div className="absolute inset-3 border border-[var(--cf-gold)]/45 md:inset-4" />
                 <div className="absolute right-0 top-0 h-20 w-20 bg-[linear-gradient(135deg,transparent_48%,rgba(229,219,199,0.28)_48%)] md:h-28 md:w-28" />
                 <picture>
-                  <source srcSet="/event-poster.webp" type="image/webp" />
+                  <source media="(min-width: 768px)" srcSet="/hero-poster.webp?v=six3233" type="image/webp" />
+                  <source srcSet="/hero-poster-mobile.webp?v=six3233" type="image/webp" />
+                  <source media="(min-width: 768px)" srcSet="/hero-poster.jpg?v=six3233" />
                   <img
-                    src="/event-poster.jpg"
+                    src="/hero-poster-mobile.jpg?v=six3233"
                     alt="Poster Alpha Managers 13 Agustus 2026 bersama Coach Ferly F. Raya dan Shoeb Kagda"
-                    className="relative aspect-[4/5] w-full object-cover object-top"
+                    className="relative w-full"
                     loading="eager"
                     fetchPriority="high"
                   />

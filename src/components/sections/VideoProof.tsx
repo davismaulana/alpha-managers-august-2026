@@ -14,7 +14,7 @@ const proofCards = [
     title: 'Nuansa Session yang Terkurasi untuk Manager Level',
     note: 'Lapisan proof kedua menunjukkan atmosfer event dan kualitas experience yang diterima peserta saat hadir langsung.',
     src: '/waiting-room-proof.mp4',
-    poster: '/event-poster.jpg',
+    poster: '/alpha-managers-og.png',
   },
 ];
 
