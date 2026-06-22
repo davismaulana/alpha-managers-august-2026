@@ -7,6 +7,7 @@ const FloatingCTA: React.FC = () => {
 
   useEffect(() => {
     const target = document.getElementById(FORM_SECTION_ID);
+    const hero = document.querySelector<HTMLElement>('main section, section');
     let pastHero = false;
     let formVisible = false;
 
@@ -16,7 +17,11 @@ const FloatingCTA: React.FC = () => {
     };
 
     const handleScroll = () => {
-      pastHero = window.scrollY > window.innerHeight * 0.6;
+      if (hero) {
+        pastHero = window.scrollY >= hero.offsetTop + hero.offsetHeight;
+      } else {
+        pastHero = window.scrollY > window.innerHeight;
+      }
       update();
     };
 
