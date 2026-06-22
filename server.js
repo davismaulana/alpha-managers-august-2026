@@ -2,10 +2,28 @@ import { createServer } from 'node:http';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { randomUUID } from 'node:crypto';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const distDir = path.join(__dirname, 'dist');
+const augustDistDir = path.join(__dirname, 'dist-august');
 const port = Number(process.env.PORT || 80);
+const leadWebhookUrl = process.env.LEAD_WEBHOOK_URL || 'https://n8n.sixzenith.com/webhook/cfr-june2026-leadform';
+const augustPreviewLeadMessage =
+  'Preview aktif. Profil belum tersimpan karena webhook Agustus belum dikonfigurasi.';
+
+const AUGUST_HOST = 'alpha-managers-august-2026-preview.zenova.id';
+
+const CAMPAIGN_ID = 'cfr-june2026';
+const EVENT_NAME = 'Sales Team yang Scalable - 25 Juni 2026';
+const DEFAULT_UTM_CAMPAIGN = 'june-2026-event';
+const DEFAULT_UTM_SOURCE = 'june-2026-lp';
+const DEFAULT_SOURCE = 'june-2026-lp';
+const AUGUST_CAMPAIGN_ID = 'cfr-august2026';
+const AUGUST_EVENT_NAME = 'Alpha Managers - 13 Agustus 2026';
+const AUGUST_DEFAULT_UTM_CAMPAIGN = 'alpha-managers-august-2026';
+const AUGUST_DEFAULT_UTM_SOURCE = 'alpha-managers-august-lp';
+const AUGUST_DEFAULT_SOURCE = 'alpha-managers-august-lp';
 
 const contentTypes = {
   '.html': 'text/html; charset=utf-8',
@@ -20,6 +38,22 @@ const contentTypes = {
   '.ico': 'image/x-icon',
 };
 
+const requiredFields = [
+  'name',
+  'whatsapp',
+  'business',
+  'challenge',
+];
+const augustRequiredFields = [
+  'name',
+  'whatsapp',
+  'company',
+  'role',
+  'city',
+  'participant_count',
+  'manager_challenge',
+];
+
 const sendJson = (response, status, payload) => {
   response.writeHead(status, {
     'Content-Type': 'application/json; charset=utf-8',
@@ -28,13 +62,181 @@ const sendJson = (response, status, payload) => {
   response.end(JSON.stringify(payload));
 };
 
+const readBody = async (request) => {
+  const chunks = [];
+  let size = 0;
+  for await (const chunk of request) {
+    size += chunk.length;
+    if (size > 100_000) {
+      throw new Error('Payload terlalu besar.');
+    }
+    chunks.push(chunk);
+  }
+  return Buffer.concat(chunks).toString('utf8');
+};
+
+const cleanText = (value, maxLength = 240) => String(value || '').trim().slice(0, maxLength);
+
+const normalizeWhatsapp = (value) => {
+  let raw = cleanText(value, 40).replace(/\D/g, '');
+  if (raw.startsWith('0')) raw = `62${raw.slice(1)}`;
+  if (!raw.startsWith('62')) raw = `62${raw}`;
+  return raw;
+};
+
+const getHostname = (request) => String(request.headers.host || '').split(':')[0].trim().toLowerCase();
+
+const isAugustPreviewHost = (request) => getHostname(request) === AUGUST_HOST;
+
+const validateLead = (payload) => {
+  const missing = requiredFields.filter((field) => !cleanText(payload[field]));
+  if (missing.length > 0) {
+    return `Lengkapi field: ${missing.join(', ')}.`;
+  }
+
+  const whatsapp = normalizeWhatsapp(payload.whatsapp);
+  if (whatsapp.length < 10 || whatsapp.length > 16) {
+    return 'Nomor WhatsApp belum valid.';
+  }
+
+  return '';
+};
+
+const validateAugustLead = (payload) => {
+  const missing = augustRequiredFields.filter((field) => !cleanText(payload[field]));
+  if (missing.length > 0) {
+    return `Lengkapi field: ${missing.join(', ')}.`;
+  }
+
+  const whatsapp = normalizeWhatsapp(payload.whatsapp);
+  if (whatsapp.length < 10 || whatsapp.length > 16) {
+    return 'Nomor WhatsApp belum valid.';
+  }
+
+  return '';
+};
+
+const normalizeLeadPayload = (payload, request) => {
+  const whatsapp = normalizeWhatsapp(payload.whatsapp);
+  const eventId = cleanText(payload.event_id || `${CAMPAIGN_ID}-${randomUUID()}`, 120);
+  const metadata = typeof payload.metadata === 'object' && payload.metadata ? payload.metadata : {};
+
+  return {
+    name: cleanText(payload.name, 120),
+    whatsapp,
+    business: cleanText(payload.business, 160),
+    challenge: cleanText(payload.challenge, 1000),
+    email: cleanText(payload.email, 160),
+    event_id: eventId,
+    fbp: cleanText(payload.fbp, 180),
+    fbc: cleanText(payload.fbc, 180),
+    source: cleanText(payload.source || DEFAULT_SOURCE, 120),
+    page_url: cleanText(payload.page_url, 500),
+    utm_source: cleanText(payload.utm_source || DEFAULT_UTM_SOURCE, 120),
+    utm_medium: cleanText(payload.utm_medium, 120),
+    utm_campaign: cleanText(payload.utm_campaign || DEFAULT_UTM_CAMPAIGN, 120),
+    utm_content: cleanText(payload.utm_content, 120),
+    user_agent: cleanText(request.headers['user-agent'], 300),
+    campaign: CAMPAIGN_ID,
+    business_category: cleanText(metadata.businessCategory, 120),
+    monthly_revenue: cleanText(metadata.monthlyRevenue, 120),
+    city: cleanText(metadata.city, 120),
+    event_name: EVENT_NAME,
+  };
+};
+
+const normalizeAugustLeadPayload = (payload, request) => {
+  const whatsapp = normalizeWhatsapp(payload.whatsapp);
+  const eventId = cleanText(payload.event_id || `${AUGUST_CAMPAIGN_ID}-${randomUUID()}`, 120);
+  const metadata = typeof payload.metadata === 'object' && payload.metadata ? payload.metadata : {};
+
+  return {
+    name: cleanText(payload.name, 120),
+    whatsapp,
+    email: cleanText(payload.email, 160),
+    company: cleanText(payload.company || payload.business, 160),
+    business: cleanText(payload.company || payload.business, 160),
+    role: cleanText(payload.role, 80),
+    city: cleanText(payload.city || metadata.city, 120),
+    participant_count: cleanText(payload.participant_count, 80),
+    manager_challenge: cleanText(payload.manager_challenge || payload.challenge, 1000),
+    challenge: cleanText(payload.manager_challenge || payload.challenge, 1000),
+    event_id: eventId,
+    fbp: cleanText(payload.fbp, 180),
+    fbc: cleanText(payload.fbc, 180),
+    source: cleanText(payload.source || AUGUST_DEFAULT_SOURCE, 120),
+    page_url: cleanText(payload.page_url, 500),
+    utm_source: cleanText(payload.utm_source || AUGUST_DEFAULT_UTM_SOURCE, 120),
+    utm_medium: cleanText(payload.utm_medium, 120),
+    utm_campaign: cleanText(payload.utm_campaign || AUGUST_DEFAULT_UTM_CAMPAIGN, 120),
+    utm_content: cleanText(payload.utm_content, 120),
+    user_agent: cleanText(request.headers['user-agent'], 300),
+    campaign: AUGUST_CAMPAIGN_ID,
+    business_category: cleanText(metadata.businessCategory, 120),
+    monthly_revenue: cleanText(metadata.monthlyRevenue, 120),
+    page_title: 'Alpha Managers August 2026',
+    event_name: AUGUST_EVENT_NAME,
+    metadata: {
+      event_date: '2026-08-13',
+      event_name: AUGUST_EVENT_NAME,
+    },
+  };
+};
+
+const postLeadToWebhook = async (lead) => {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 12_000);
+
+  try {
+    const response = await fetch(leadWebhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(lead),
+      signal: controller.signal,
+    });
+    const text = await response.text();
+    let body = {};
+
+    try {
+      body = text ? JSON.parse(text) : {};
+    } catch {
+      body = { raw: text.slice(0, 500) };
+    }
+
+    if (!response.ok || body.ok === false) {
+      return {
+        ok: false,
+        status: response.status,
+        error: cleanText(body.error || body.message || 'Lead belum berhasil tersimpan.', 240),
+      };
+    }
+
+    return {
+      ok: true,
+      status: response.status,
+      id: body.id || body.leadId || lead.event_id,
+      campaign: body.campaign || lead.campaign,
+    };
+  } catch (error) {
+    const aborted = error instanceof Error && error.name === 'AbortError';
+    return {
+      ok: false,
+      status: 502,
+      error: aborted ? 'Lead capture timeout. Coba kirim ulang.' : 'Lead capture belum tersedia. Coba beberapa saat lagi.',
+    };
+  } finally {
+    clearTimeout(timeout);
+  }
+};
+
 const serveStatic = async (request, response) => {
+  const siteDistDir = isAugustPreviewHost(request) ? augustDistDir : distDir;
   const url = new URL(request.url || '/', 'http://localhost');
   const decodedPath = decodeURIComponent(url.pathname);
   const safePath = decodedPath === '/' ? '/index.html' : decodedPath;
-  const filePath = path.normalize(path.join(distDir, safePath));
+  const filePath = path.normalize(path.join(siteDistDir, safePath));
 
-  if (!filePath.startsWith(distDir)) {
+  if (!filePath.startsWith(siteDistDir)) {
     response.writeHead(403);
     response.end('Forbidden');
     return;
@@ -45,7 +247,7 @@ const serveStatic = async (request, response) => {
     const stat = await fs.stat(target);
     if (stat.isDirectory()) target = path.join(target, 'index.html');
   } catch {
-    target = path.join(distDir, 'index.html');
+    target = path.join(siteDistDir, 'index.html');
   }
 
   const extension = path.extname(target);
@@ -60,9 +262,50 @@ const serveStatic = async (request, response) => {
 const server = createServer(async (request, response) => {
   try {
     const url = new URL(request.url || '/', 'http://localhost');
+    const isAugust = isAugustPreviewHost(request);
 
     if (request.method === 'GET' && url.pathname === '/healthz') {
       sendJson(response, 200, { ok: true });
+      return;
+    }
+
+    if (request.method === 'POST' && url.pathname === '/api/leads') {
+      const body = await readBody(request);
+      const rawPayload = JSON.parse(body || '{}');
+      const payload = isAugust
+        ? normalizeAugustLeadPayload(rawPayload, request)
+        : normalizeLeadPayload(rawPayload, request);
+      const validationError = isAugust ? validateAugustLead(payload) : validateLead(payload);
+      if (validationError) {
+        sendJson(response, 400, { ok: false, error: validationError });
+        return;
+      }
+
+      if (isAugust) {
+        sendJson(response, 202, {
+          ok: true,
+          leadId: payload.event_id,
+          eventId: payload.event_id,
+          campaign: null,
+          persisted: false,
+          preview: true,
+          message: augustPreviewLeadMessage,
+        });
+        return;
+      }
+
+      const result = await postLeadToWebhook(payload);
+      if (!result.ok) {
+        sendJson(response, result.status || 502, { ok: false, error: result.error });
+        return;
+      }
+
+      sendJson(response, 200, {
+        ok: true,
+        leadId: String(result.id),
+        eventId: payload.event_id,
+        campaign: result.campaign,
+      });
       return;
     }
 

@@ -10,6 +10,7 @@ RUN npm run build
 FROM node:22-alpine
 WORKDIR /app
 COPY --from=build /app/dist ./dist
+COPY --from=build /app/dist-august ./dist-august
 COPY server.js ./server.js
 ENV NODE_ENV=production
 EXPOSE 80
