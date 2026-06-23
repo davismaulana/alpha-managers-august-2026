@@ -2,40 +2,36 @@ import React from 'react';
 import { Layout } from './components/layout/Layout';
 import { Navigation } from './components/sections/Navigation';
 import { Hero } from './components/sections/Hero';
-import { LeadCapture } from './components/sections/LeadCapture';
-import { Pain } from './components/sections/ProblemStatement';
-import { StrategicExplanation } from './components/sections/StrategicExplanation';
-import { Audience } from './components/sections/TargetAudience';
-import { LearningOutcomes } from './components/sections/WhatYoullLearn';
+import { ProblemStatement } from './components/sections/ProblemStatement';
+import { WhyThisHappens } from './components/sections/WhyThisHappens';
+import { ShiftMindset } from './components/sections/ShiftMindset';
+import { TargetAudience } from './components/sections/TargetAudience';
+import { WhatYoullLearn } from './components/sections/WhatYoullLearn';
 import { Speakers } from './components/sections/Speakers';
-import { EventDetails } from './components/sections/EventFormat';
-import { ConsequenceUrgency } from './components/sections/ConsequenceUrgency';
-import { IndustryTrust } from './components/sections/IndustryTrust';
-import { VideoProof } from './components/sections/VideoProof';
+import { EventFormat } from './components/sections/EventFormat';
+import { LimitedSeats } from './components/sections/LimitedSeats';
 import { FinalCTA } from './components/sections/FinalCTA';
+import { ClosingPhilosophy } from './components/sections/ClosingPhilosophy';
 import { FAQ } from './components/sections/FAQ';
 import { Footer } from './components/sections/Footer';
-import { FloatingCTA } from './components/sections/FloatingCTA';
 
 const App: React.FC = () => {
   return (
     <Layout>
       <Navigation />
       <Hero />
-      <Pain />
-      <StrategicExplanation />
-      <Audience />
-      <LearningOutcomes />
+      <ProblemStatement />
+      <WhyThisHappens />
+      <ShiftMindset />
+      <TargetAudience />
+      <WhatYoullLearn />
       <Speakers />
-      <EventDetails />
-      <ConsequenceUrgency />
-      <IndustryTrust />
-      <VideoProof />
+      <EventFormat />
+      <LimitedSeats />
       <FinalCTA />
-      <LeadCapture />
+      <ClosingPhilosophy />
       <FAQ />
       <Footer />
-      <FloatingCTA />
     </Layout>
   );
 };

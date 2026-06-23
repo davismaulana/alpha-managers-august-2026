@@ -1,37 +1,15 @@
 @import "tailwindcss";
 
-:root {
-  --cf-ink: #050505;
-  --cf-cream: #E5DBC7;
-  --cf-gold: #D4AF6A;
-  --cf-accent: #B8860B;
-  --cf-charcoal: #111111;
-}
-
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--cf-ink);
+  background-color: #000000;
   color: #fff;
-  font-family: "Aptos", "Segoe UI", system-ui, sans-serif;
-  letter-spacing: 0;
-}
-
-h1,
-h2,
-h3,
-.font-serif {
-  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
 }
 
 @theme {
-  --color-cf-ink: #050505;
-  --color-cf-cream: #E5DBC7;
-  --color-cf-gold: #D4AF6A;
-  --color-cf-accent: #B8860B;
-
   --color-gold-200: #F3E0B5;
   --color-gold-300: #ECD49A;
   --color-gold-400: #E5C88A;
@@ -39,7 +17,7 @@ h3,
   --color-gold-600: #C9A05F;
   --color-gold-700: #B8860B;
 
-  --color-dark-850: #111111;
+  --color-dark-850: #111827;
   --color-dark-800: #1A1A1A;
   --color-dark-700: #1F2937;
 }
@@ -65,10 +43,4 @@ h3,
 .bg-clip-text {
   -webkit-background-clip: text;
   background-clip: text;
-}
-
-@supports (padding: max(0px)) {
-  .pb-safe {
-    padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
-  }
 }

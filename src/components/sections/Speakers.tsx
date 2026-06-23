@@ -1,124 +1,120 @@
 import React from 'react';
+import { Card } from '../ui/Card';
+import { Badge } from '../ui/Badge';
 import { FadeIn } from '../animations/FadeIn';
 
 const Speakers: React.FC = () => {
-  const proofs = [
-    '10+ tahun sebagai Senior Head Business Coach di salah satu coaching firm terbaik di Asia Tenggara.',
-    'Former Vice President di perusahaan telekomunikasi multinasional.',
-    'Pengalaman lebih dari 20 tahun di industri garmen dengan klien brand-brand multinasional.',
-    'Business owner dengan visi membawa bisnis menuju IPO Ready 2030.',
-    'Founder dan Advisor Alpha Leaders Community.',
-    'Telah didampingi ratusan business owner skala ratusan miliar hingga triliunan rupiah.',
-    'Mengadopsi pendekatan performa yang presisi, bukan motivasi sesaat.',
-  ];
-
-  const coMentor = [
-    'Founder Globe Asia and Indonesia Economic Forum.',
-    'Mantan Group Editor in Chief BeritaSatu Media Holdings.',
-    'Pengalaman lebih dari 35 tahun mengamati dinamika bisnis, ekonomi, dan kepemimpinan di Asia Tenggara.',
-    'Mewawancarai dan berdiskusi dengan ratusan CEO, investor, entrepreneur, dan leader terkemuka.',
-    'Pembicara dan moderator di berbagai forum bisnis, ekonomi, dan kepemimpinan nasional.',
-  ];
-
   return (
-    <section id="speakers" className="scroll-mt-24 bg-gradient-to-b from-[var(--cf-ink)] to-zinc-950 py-20 md:py-28">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="max-w-6xl mx-auto">
+    <section className="py-16 sm:py-20 md:py-24 bg-black md:min-h-screen md:flex md:flex-col md:justify-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Header */}
+        <div className="text-center mb-12 md:mb-16">
           <FadeIn direction="up">
-            <div className="mb-12 md:mb-14">
-              <p className="text-[11px] tracking-[0.22em] uppercase text-gold-400 font-black mb-4">
-                Mentor
-              </p>
-              <h2 className="font-serif text-3xl md:text-5xl font-bold text-white leading-tight">
-                Digembleng Langsung oleh Praktisi yang Membentuk Pemimpin Bisnis
-              </h2>
-              <p className="mt-4 text-base md:text-lg text-zinc-300 font-medium">
-                Dipandu langsung oleh Coach Ferly F. Raya dan Shoeb Kagda.
-              </p>
-            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
+              Pembicara
+            </h2>
+          </FadeIn>
+        </div>
+
+        {/* Two speakers side by side */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
+
+          {/* Main Speaker — Coach Ferly */}
+          <FadeIn direction="left" delay={0.1} className="h-full">
+            <Card className="p-6 sm:p-8 border-gold-600/30 bg-zinc-900/50 group hover:border-gold-500/50 h-full backdrop-blur-sm">
+              <Badge className="mb-4 sm:mb-6 bg-gold-500 text-black font-bold border-none px-3 py-1 text-xs sm:text-sm">
+                MAIN SPEAKER
+              </Badge>
+
+              <div className="flex flex-col items-center text-center mb-6 sm:mb-8">
+                {/* Photo */}
+                <div className="relative mb-5 sm:mb-6">
+                  <div className="absolute inset-0 w-36 h-36 sm:w-40 sm:h-40 rounded-full bg-gradient-to-br from-gold-500/30 via-gold-600/20 to-transparent blur-xl group-hover:blur-2xl transition-all duration-700 opacity-60 group-hover:opacity-80" />
+                  <div className="relative w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 bg-gradient-to-br from-gold-400/60 via-gold-500/40 to-gold-600/30 group-hover:from-gold-400/80 group-hover:via-gold-500/60 group-hover:to-gold-600/50 transition-all duration-500">
+                    <div className="w-full h-full rounded-full overflow-hidden bg-zinc-900 ring-1 ring-white/5">
+                      <img
+                        src="/coach-ferly.png"
+                        alt="Coach Ferly F. Raya"
+                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                        style={{ objectPosition: '50% 15%' }}
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">Coach Ferly F. Raya</h3>
+                <p className="text-gold-400 font-medium mb-1 text-sm sm:text-base">Strategic Framework & Recruitment System</p>
+                <p className="text-gray-500 text-xs sm:text-sm">Alpha Leaders Community</p>
+              </div>
+
+              <div className="space-y-3 sm:space-y-4 border-t border-zinc-700/50 pt-5 sm:pt-6">
+                <p className="text-gray-300 font-medium text-sm sm:text-base">Akan membagikan:</p>
+                <ul className="space-y-2 text-gray-400 text-sm sm:text-base">
+                  {[
+                    "Bagaimana manager mendorong tim mencapai target secara konsisten",
+                    "Cara membangun accountability system dan delegation flow yang benar",
+                    "Strategi mengubah manager dari eksekutor menjadi penggerak pertumbuhan"
+                  ].map((point, idx) => (
+                    <li key={idx} className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold-500 mt-2 flex-shrink-0" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-gold-500/80 italic text-xs sm:text-sm mt-4 text-center">
+                  "Bukan motivator. Fokus pada strategic design & execution."
+                </p>
+              </div>
+            </Card>
           </FadeIn>
 
-          <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-14 items-start">
-            <FadeIn direction="up" delay={0.1}>
-              <div className="grid gap-6">
-                <div className="relative">
-                  <div className="absolute -left-3 -top-3 h-full w-full border border-gold-500/30" />
-                  <div className="relative bg-zinc-900/60 border border-white/10 p-3">
-                    <img
-                      src="/coach-ferly.png"
-                      alt="Coach Ferly F. Raya"
-                      className="w-full aspect-[4/5] object-cover"
-                      style={{ objectPosition: '50% 12%' }}
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="absolute -bottom-4 left-6 right-6 z-10 bg-[var(--cf-cream)] px-5 py-3 text-zinc-950 shadow-xl">
-                    <p className="text-[10px] tracking-[0.22em] uppercase font-black text-gold-700">
-                      Senior Head Coach
-                    </p>
-                    <p className="text-sm font-bold mt-1 leading-snug">
-                      Senior Head Coach for Trillion-Scale Business Owner, Alpha Leaders Community.
-                    </p>
+          {/* Guest Speaker — Malvin Haryanto */}
+          <FadeIn direction="right" delay={0.3} className="h-full">
+            <Card className="p-6 sm:p-8 border-gold-600/30 bg-zinc-900/50 group hover:border-gold-500/50 h-full backdrop-blur-sm">
+              <Badge className="mb-4 sm:mb-6 bg-transparent border-gold-500 text-gold-500 font-bold px-3 py-1 text-xs sm:text-sm">
+                SPECIAL GUEST SPEAKER
+              </Badge>
+
+              <div className="flex flex-col items-center text-center mb-6 sm:mb-8">
+                <div className="relative mb-5 sm:mb-6">
+                  <div className="absolute inset-0 w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-gradient-to-br from-gold-500/20 via-gold-600/10 to-transparent blur-xl opacity-50" />
+                  <div className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-full p-1 bg-gradient-to-br from-gold-400/40 via-gold-500/30 to-gold-600/20">
+                    <div className="w-full h-full rounded-full overflow-hidden bg-zinc-900 ring-1 ring-white/5">
+                      <img src="/malvin.jpg" alt="Malvin Haryanto" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" style={{ objectPosition: '50% 20%', transform: 'scale(1.0)' }} loading="lazy" />
+                    </div>
                   </div>
                 </div>
 
-                <div className="relative ml-auto w-full max-w-[320px] border border-white/10 bg-zinc-900/40 p-3">
-                  <img
-                    src="/shoeb-kagda.jpg"
-                    alt="Shoeb Kagda"
-                    className="w-full aspect-[4/5] object-cover"
-                    loading="lazy"
-                  />
-                  <div className="mt-3 border-t border-white/10 pt-3">
-                    <p className="text-[10px] uppercase tracking-[0.22em] text-gold-300">
-                      Shoeb Kagda
-                    </p>
-                    <p className="mt-1 text-sm text-zinc-200">
-                      Founder Globe Asia dan pengamat bisnis Asia Tenggara dengan pengalaman puluhan
-                      tahun memotret kepemimpinan dan ekonomi regional.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </FadeIn>
-
-            <FadeIn direction="up" delay={0.2}>
-              <div className="space-y-3 mb-6">
-                <p className="text-sm uppercase tracking-[0.22em] text-gold-300 font-black">
-                  Coach Ferly F. Raya
-                </p>
-                {proofs.map((p, idx) => (
-                  <div
-                    key={idx}
-                    className="flex items-start gap-4 border border-white/10 bg-zinc-900/30 p-4 md:p-5"
-                  >
-                    <span className="font-serif text-xl md:text-2xl text-gold-400 leading-none w-8 shrink-0">
-                      {String(idx + 1).padStart(2, '0')}
-                    </span>
-                    <p className="text-sm md:text-base text-zinc-200 leading-relaxed">{p}</p>
-                  </div>
-                ))}
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">Malvin Haryanto</h3>
+                <p className="text-gold-400 font-medium mb-1 text-sm sm:text-base">Studi Kasus Praktisi Bisnis</p>
+                <p className="text-gray-500 text-xs sm:text-sm">Applied leadership & operational growth insight</p>
               </div>
 
-              <div className="space-y-3">
-                <p className="text-sm uppercase tracking-[0.22em] text-gold-300 font-black">
-                  Shoeb Kagda
+              <div className="space-y-3 sm:space-y-4 border-t border-zinc-700/50 pt-5 sm:pt-6">
+                <p className="text-gray-300 font-medium text-sm sm:text-base">Akan berbagi:</p>
+                <ul className="space-y-2 text-gray-400 text-sm sm:text-base">
+                  {[
+                    "Tantangan nyata menjaga tim tetap accountable ketika bisnis terus bergerak",
+                    "Pelajaran praktis mengubah ritme tim dari reaktif menjadi lebih terarah",
+                    "Mengapa kualitas manager menentukan stabilitas eksekusi bisnis"
+                  ].map((point, idx) => (
+                    <li key={idx} className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold-500 mt-2 flex-shrink-0" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-gold-500/80 italic text-xs sm:text-sm mt-4 text-center">
+                  "Bukan teori. Dibawa ke konteks bisnis nyata."
                 </p>
-                {coMentor.map((p, idx) => (
-                  <div
-                    key={idx}
-                    className="flex items-start gap-4 border border-white/10 bg-zinc-900/30 p-4 md:p-5"
-                  >
-                    <span className="font-serif text-xl md:text-2xl text-gold-400 leading-none w-8 shrink-0">
-                      {String(idx + 1).padStart(2, '0')}
-                    </span>
-                    <p className="text-sm md:text-base text-zinc-200 leading-relaxed">{p}</p>
-                  </div>
-                ))}
               </div>
-            </FadeIn>
-          </div>
+            </Card>
+          </FadeIn>
+
         </div>
+
       </div>
     </section>
   );
