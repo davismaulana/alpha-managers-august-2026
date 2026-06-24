@@ -5,30 +5,30 @@ import { openRegistrationCTA } from '../../lib/constants';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative w-full bg-black pt-16 pb-4 md:pt-0 md:pb-0 md:min-h-screen md:flex md:items-center md:justify-center overflow-hidden">
-
-      {/* Main Hero Image */}
+    <section className="relative w-full bg-black pt-16 pb-10 md:pt-24 md:pb-12 overflow-hidden">
       <div className="relative w-full max-w-[1920px] mx-auto">
         <FadeIn duration={1.2}>
-          <img
-            src="/main-poster.png"
-            alt="Poster event Alpha Managers Agustus 2026"
-            className="w-full h-auto object-contain"
-          />
+          <picture>
+            <source media="(max-width: 767px)" srcSet="/august-vertical.webp" type="image/webp" />
+            <source media="(min-width: 768px)" srcSet="/august-horizontal.webp" type="image/webp" />
+            <source media="(max-width: 767px)" srcSet="/august-vertical.png" type="image/png" />
+            <img
+              src="/august-horizontal.png"
+              alt="Poster event Alpha Managers Agustus 2026"
+              className="w-full h-auto object-contain"
+            />
+          </picture>
         </FadeIn>
 
-        {/* Interactive Overlay Button */}
-        {/* Mobile: Always visible | Desktop: Hover to reveal */}
-        <div className="absolute inset-x-0 bottom-[5%] md:bottom-[15%] flex justify-center z-10 opacity-100 md:opacity-0 md:hover:opacity-100 transition-opacity duration-300">
-           <Button
-             className="w-[200px] h-[50px] md:w-[300px] md:h-[60px] cursor-pointer"
-             onClick={openRegistrationCTA}
-           >
-             Apply untuk Undangan
-           </Button>
+        <div className="mt-6 flex justify-center px-4">
+          <Button
+            className="min-w-[220px] h-[52px] md:min-w-[320px] md:h-[60px] cursor-pointer"
+            onClick={openRegistrationCTA}
+          >
+            Apply untuk Undangan
+          </Button>
         </div>
       </div>
-
     </section>
   );
 };

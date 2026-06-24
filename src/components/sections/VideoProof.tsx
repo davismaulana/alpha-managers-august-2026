@@ -5,16 +5,16 @@ const proofCards = [
   {
     label: 'Testimoni client',
     title: 'Apa Kata Mereka Tentang Coach Ferly & Alpha Leaders',
-    note: 'Testimoni client ditampilkan dalam treatment gelap dan premium agar tetap terasa seperti invitation page, bukan galeri video generik.',
+    note: 'Treatment video mempertahankan grammar pre-ABM: dark frame, poster-led preview, dan playback native agar proof terasa premium, bukan galeri biasa.',
     src: '/testimonial-proof.mp4',
-    poster: '/alpha-managers-og.png',
+    poster: '/august-horizontal.webp',
   },
   {
-    label: 'Atmosfer waiting room',
-    title: 'Nuansa Session yang Terkurasi untuk Manager Level',
-    note: 'Lapisan proof kedua menunjukkan atmosfer event dan kualitas experience yang diterima peserta saat hadir langsung.',
+    label: 'Atmosfer session',
+    title: 'Nuansa Experience yang Diterima Peserta Saat Hadir',
+    note: 'Video kedua memperlihatkan atmosfer session yang terkurasi untuk leader dan manager level.',
     src: '/waiting-room-proof.mp4',
-    poster: '/alpha-managers-og.png',
+    poster: '/august-horizontal.webp',
   },
 ];
 
@@ -25,18 +25,15 @@ const VideoProof: React.FC = () => {
         <div className="max-w-3xl mb-10 md:mb-12">
           <FadeIn direction="up">
             <p className="text-[11px] tracking-[0.22em] uppercase text-gold-400 font-black mb-4">
-              Proof video
+              Social proof
             </p>
             <h2 className="font-serif text-3xl md:text-5xl font-bold text-white leading-tight">
-              Proof Layer untuk Menunjukkan
-              <br />
-              Kaliber Session dan Pengalaman Pesertanya
+              Apa Kata Mereka Tentang Coach Ferly &amp; Alpha Leaders?
             </h2>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>
             <p className="mt-5 text-base md:text-lg text-zinc-400 leading-relaxed max-w-2xl">
-              Presentasi videonya mengikuti grammar pre-ABM: poster-led, native playback, dan
-              tetap berada di bawah fold agar hero tetap bersih dan poster-first.
+              Video di bawah mengikuti styling pre-ABM seperti yang diminta, dengan preview premium dan native playback.
             </p>
           </FadeIn>
         </div>

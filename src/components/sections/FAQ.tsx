@@ -9,20 +9,20 @@ const FAQ: React.FC = () => {
 
   const faqs = [
     {
-      question: "Apakah harus manager untuk bisa ikut?",
-      answer: "Tidak harus. Sesi ini relevan untuk owner, HR, L&D, dan pihak yang bertanggung jawab memperkuat kualitas kepemimpinan manager."
+      question: "Apakah harus manager?",
+      answer: "Tidak. Program ini juga cocok untuk supervisor, team leader, atau karyawan yang sedang dipersiapkan menjadi manager."
     },
     {
       question: "Apakah materi lebih teori atau praktik?",
-      answer: "Fokusnya praktik. Anda akan mendapatkan framework, ritme kerja, dan contoh penerapan yang bisa langsung dibawa ke konteks tim Anda."
+      answer: "Fokus utama program adalah implementasi dan studi kasus yang dapat langsung diterapkan di tempat kerja."
     },
     {
       question: "Apakah ada sesi tanya jawab?",
-      answer: "Ada. Kami menyediakan ruang tanya jawab agar peserta bisa mengaitkan materi dengan tantangan manajerial di bisnis masing-masing."
+      answer: "Ya. Akan tersedia sesi diskusi dan Q&A bersama pemateri."
     },
     {
       question: "Apakah mendapatkan sertifikat?",
-      answer: "Ya. Peserta yang hadir akan mendapatkan sertifikat partisipasi."
+      answer: "Ya, seluruh peserta akan mendapatkan Certificate of Attendance."
     }
   ];
 

@@ -44,12 +44,15 @@ const Navigation: React.FC = () => {
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center font-bold text-black text-sm">
-            CF
+          <img
+            src="/alpha-leaders-logo-yellow.png"
+            alt="Alpha Leaders Community"
+            className="h-10 w-auto md:h-12"
+          />
+          <div className="leading-none">
+            <p className="text-[10px] md:text-xs tracking-[0.28em] uppercase text-white/85">Alpha Leaders</p>
+            <p className="mt-1 text-sm md:text-base tracking-[0.32em] uppercase text-white">Community</p>
           </div>
-          <span className="text-lg md:text-xl font-bold tracking-widest bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
-            COACH FERLY
-          </span>
         </div>
 
         <div className="hidden md:flex items-center gap-4">
