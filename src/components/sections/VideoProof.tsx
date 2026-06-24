@@ -34,6 +34,20 @@ const VideoProof: React.FC = () => {
     setPlayingIndex(index);
   };
 
+  const handleTogglePlayback = (index: number) => {
+    const video = videoRefs.current[index];
+    if (!video) return;
+
+    if (video.paused) {
+      video.play();
+      setPlayingIndex(index);
+      return;
+    }
+
+    video.pause();
+    setPlayingIndex((current) => (current === index ? null : current));
+  };
+
   return (
     <section id="video" className="py-20 bg-[#F5F0E8] relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
@@ -69,12 +83,13 @@ const VideoProof: React.FC = () => {
                       videoRefs.current[index] = node;
                     }}
                     className="w-full aspect-video bg-gray-100 object-cover"
-                    controls={playingIndex === index}
                     preload="none"
                     playsInline
                     poster={card.poster}
                     onPlay={() => setPlayingIndex(index)}
                     onPause={() => setPlayingIndex((current) => (current === index ? null : current))}
+                    onEnded={() => setPlayingIndex((current) => (current === index ? null : current))}
+                    onClick={() => handleTogglePlayback(index)}
                   >
                     <source src={card.src} type="video/mp4" />
                     Browser Anda tidak mendukung pemutaran video.
