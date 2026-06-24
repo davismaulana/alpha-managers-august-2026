@@ -27,7 +27,7 @@ const FAQ: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-zinc-950 md:min-h-screen md:flex md:flex-col md:justify-center">
+    <section className="py-24 bg-zinc-950">
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
         <FadeIn direction="up">
           <h2 className="text-3xl font-bold text-white text-center mb-12">FAQ</h2>

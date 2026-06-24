@@ -16,7 +16,7 @@ const EventFormat: React.FC = () => {
   ];
 
   return (
-    <section className="py-32 bg-zinc-950 relative overflow-hidden md:min-h-screen md:flex md:flex-col md:justify-center">
+    <section className="py-32 bg-zinc-950 relative overflow-hidden">
 
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">

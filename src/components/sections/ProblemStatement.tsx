@@ -40,7 +40,7 @@ const ProblemStatement: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-black to-zinc-900 md:min-h-screen md:flex md:flex-col md:justify-center">
+    <section className="py-24 bg-gradient-to-b from-black to-zinc-900">
       <div className="container mx-auto px-4 md:px-6">
 
         {/* Headline */}

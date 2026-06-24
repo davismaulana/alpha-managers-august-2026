@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 
 const LimitedSeats: React.FC = () => {
   return (
-    <section className="py-24 bg-black md:min-h-screen md:flex md:flex-col md:justify-center">
+    <section className="py-24 bg-black">
       <div className="container mx-auto px-4 md:px-6">
 
         <div className="flex flex-col items-center max-w-4xl mx-auto">

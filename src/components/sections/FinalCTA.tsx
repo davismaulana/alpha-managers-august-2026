@@ -6,7 +6,7 @@ import { openRegistrationCTA } from '../../lib/constants';
 
 const FinalCTA: React.FC = () => {
   return (
-    <section className="py-24 bg-[#E5DBC7] text-zinc-900 overflow-hidden relative md:min-h-screen md:flex md:flex-col md:justify-center">
+    <section className="py-24 bg-[#E5DBC7] text-zinc-900 overflow-hidden relative">
        {/* Decorative Elements */}
        <div className="absolute top-0 left-0 w-64 h-64 bg-white/20 rounded-full blur-[50px] pointer-events-none" />
 

@@ -21,7 +21,7 @@ const TargetAudience: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-zinc-900 overflow-hidden md:min-h-screen md:flex md:flex-col md:justify-center">
+    <section className="py-24 bg-zinc-900 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
 
         {/* Header */}
