@@ -4,18 +4,22 @@ import { Play } from 'lucide-react';
 
 const proofCards = [
   {
-    label: 'Testimoni client',
+    eyebrow: 'Bukti Nyata',
     title: 'Apa Kata Mereka Tentang Coach Ferly & Alpha Leaders',
-    note: 'Treatment video mempertahankan grammar pre-ABM: dark frame, poster-led preview, dan playback native agar proof terasa premium, bukan galeri biasa.',
+    description:
+      'Testimoni ini menunjukkan bagaimana peserta dan client merasakan dampak nyata dari framework leadership dan execution yang diajarkan.',
     src: '/testimonial-proof.mp4',
     poster: '/august-horizontal.webp',
+    duration: 'Durasi: ±2 menit',
   },
   {
-    label: 'Atmosfer session',
-    title: 'Nuansa Experience yang Diterima Peserta Saat Hadir',
-    note: 'Video kedua memperlihatkan atmosfer session yang terkurasi untuk leader dan manager level.',
+    eyebrow: 'Atmosfer Session',
+    title: 'Nuansa Executive Session yang Akan Diterima Peserta',
+    description:
+      'Lihat bagaimana kualitas room, delivery, dan intensity session dibangun agar para manager dan leader masuk ke ruang belajar yang serius.',
     src: '/waiting-room-proof.mp4',
     poster: '/august-horizontal.webp',
+    duration: 'Durasi: ±1 menit',
   },
 ];
 
@@ -31,73 +35,77 @@ const VideoProof: React.FC = () => {
   };
 
   return (
-    <section className="bg-zinc-950 py-20 md:py-28">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="max-w-3xl mb-10 md:mb-12">
+    <section id="video" className="py-20 bg-[#F5F0E8] relative overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gold-500/5 rounded-full blur-[120px]" />
+      </div>
+
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="text-center mb-12">
           <FadeIn direction="up">
-            <p className="text-[11px] tracking-[0.22em] uppercase text-gold-400 font-black mb-4">
-              Social proof
-            </p>
-            <h2 className="font-serif text-3xl md:text-5xl font-bold text-white leading-tight">
-              Apa Kata Mereka Tentang Coach Ferly &amp; Alpha Leaders?
+            <span className="text-gold-500 text-sm font-semibold uppercase tracking-widest">Langkah Pertama</span>
+            <h2 className="text-3xl md:text-5xl font-bold mt-3 mb-4 text-gray-900">
+              Tonton Bukti Nyata Ini <br />
+              <span className="bg-gradient-to-r from-gold-300 to-gold-500 bg-clip-text text-transparent">
+                Sebelum Anda Apply
+              </span>
             </h2>
           </FadeIn>
-          <FadeIn direction="up" delay={0.2}>
-            <p className="mt-5 text-base md:text-lg text-zinc-400 leading-relaxed max-w-2xl">
-              Video di bawah mengikuti styling pre-ABM seperti yang diminta, dengan preview premium dan native playback.
+          <FadeIn direction="up" delay={0.15}>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Section ini sekarang mengikuti struktur Pre-ABM secara penuh: background, header, player shell,
+              overlay play button, dan caption area di bawah video.
             </p>
           </FadeIn>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-2">
+        <div className="max-w-4xl mx-auto space-y-10">
           {proofCards.map((card, index) => (
-            <FadeIn key={card.title} direction="up" delay={0.15 * (index + 1)}>
-              <div className="relative overflow-hidden border border-white/10 bg-[linear-gradient(155deg,rgba(12,12,12,0.96),rgba(24,20,11,0.94))] p-4 md:p-5">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(212,175,106,0.14),transparent_32%)]" />
-                <div className="relative overflow-hidden rounded-[24px] border border-gold-500/30 shadow-[0_8px_40px_-10px_rgba(212,175,106,0.15)]">
+            <div key={card.title}>
+              <FadeIn direction="up" delay={0.2 + index * 0.1}>
+                <div className="relative rounded-2xl overflow-hidden border border-gold-500/30 shadow-[0_8px_40px_-10px_rgba(212,175,106,0.15)]">
                   <video
                     ref={(node) => {
                       videoRefs.current[index] = node;
                     }}
+                    className="w-full aspect-video bg-gray-100 object-cover"
                     controls={playingIndex === index}
                     preload="none"
                     playsInline
+                    poster={card.poster}
                     onPlay={() => setPlayingIndex(index)}
                     onPause={() => setPlayingIndex((current) => (current === index ? null : current))}
-                    className="aspect-[16/10] w-full bg-black object-cover"
-                    poster={card.poster}
                   >
                     <source src={card.src} type="video/mp4" />
+                    Browser Anda tidak mendukung pemutaran video.
                   </video>
 
                   {playingIndex !== index && (
                     <button
                       type="button"
-                      className="absolute inset-0 group cursor-pointer bg-black/28"
+                      className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 cursor-pointer group"
                       onClick={() => handlePlay(index)}
                       aria-label={`Putar video ${card.title}`}
                     >
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-full bg-gold-400 group-hover:bg-gold-300 transition-all duration-200 shadow-[0_8px_30px_-4px_rgba(212,175,106,0.55)] group-hover:scale-105">
-                          <svg className="w-12 h-12 md:w-16 md:h-16 text-black drop-shadow-lg ml-1" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M8 5v14l11-7z"></path>
-                          </svg>
-                        </span>
+                      <div className="absolute w-28 h-28 rounded-full bg-gold-500/20 blur-md group-hover:bg-gold-500/30 transition-all duration-300" />
+                      <div className="relative w-20 h-20 rounded-full bg-gold-500/90 flex items-center justify-center shadow-2xl group-hover:scale-110 group-hover:bg-gold-400 transition-all duration-300 border-2 border-gold-300/50">
+                        <Play className="w-8 h-8 text-black fill-black ml-1" />
                       </div>
+                      <p className="mt-5 text-white/80 text-sm font-medium tracking-wider uppercase">Putar Video</p>
                     </button>
                   )}
                 </div>
-                <div className="relative px-2 pt-5 text-center">
-                  <p className="text-[10px] font-black uppercase tracking-[0.22em] text-gold-300">
-                    {card.label}
-                  </p>
-                  <p className="mt-3 font-serif text-2xl text-white md:text-3xl">{card.title}</p>
-                  <p className="mt-3 text-sm italic leading-relaxed text-gold-300/80 md:text-base">
-                    {card.note}
-                  </p>
+              </FadeIn>
+
+              <FadeIn direction="up" delay={0.35 + index * 0.1}>
+                <div className="mt-6 text-center">
+                  <p className="text-gold-500 font-semibold text-sm uppercase tracking-[0.2em]">{card.eyebrow}</p>
+                  <p className="text-gray-900 font-semibold text-xl md:text-2xl mt-3">{card.title}</p>
+                  <p className="text-gray-600 text-sm md:text-base mt-3 max-w-2xl mx-auto">{card.description}</p>
+                  <p className="text-gray-500 text-sm mt-2">{card.duration} • Bahasa Indonesia</p>
                 </div>
-              </div>
-            </FadeIn>
+              </FadeIn>
+            </div>
           ))}
         </div>
       </div>
