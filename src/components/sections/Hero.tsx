@@ -25,7 +25,7 @@ const Hero: React.FC = () => {
             className="min-w-[220px] h-[52px] md:min-w-[320px] md:h-[60px] cursor-pointer"
             onClick={openRegistrationCTA}
           >
-            Apply untuk Undangan
+            Daftar via WA
           </Button>
         </div>
       </div>

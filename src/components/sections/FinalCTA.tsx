@@ -14,13 +14,13 @@ const FinalCTA: React.FC = () => {
 
          <FadeIn direction="up">
            <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-             Apply untuk Undangan Eksklusif
+             Daftarkan Manager Anda Sekarang!
            </h2>
          </FadeIn>
 
          <FadeIn direction="up" delay={0.2}>
            <p className="text-xl md:text-2xl font-medium text-zinc-600 mb-8 tracking-wide">
-             Jakarta | 13 Agustus 2026 | By Invitation Only
+             Aloft Hotel by Marriott, Jakarta Barat | Kamis, 13 Agustus 2026
            </p>
          </FadeIn>
 
@@ -32,12 +32,8 @@ const FinalCTA: React.FC = () => {
                className="text-xl px-12 py-8 rounded-full shadow-2xl hover:shadow-gold-600/20 transform hover:-translate-y-1 transition-all mb-6"
                onClick={openRegistrationCTA}
              >
-               Apply untuk Undangan <ArrowRight className="ml-2 w-6 h-6" />
+               Daftar via WA <ArrowRight className="ml-2 w-6 h-6" />
              </Button>
-
-             <p className="text-zinc-500 font-medium">
-               Peserta terpilih akan menerima detail sesi dari tim kami
-             </p>
            </div>
          </FadeIn>
 
