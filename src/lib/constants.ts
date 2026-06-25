@@ -16,5 +16,6 @@ export const openRegistrationCTA = () => {
     content_category: CONTENT_CATEGORY,
   });
 
-  window.open(CTA_URL, '_blank', 'noopener,noreferrer');
+  const targetUrl = new URL(CTA_URL);
+  window.open(targetUrl.toString(), '_blank', 'noopener,noreferrer');
 };
