@@ -1,5 +1,5 @@
 services:
-  august-web:
+  august-web-r2:
     build:
       context: .
       dockerfile: Dockerfile
