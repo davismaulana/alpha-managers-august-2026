@@ -7,6 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
+    "verify:isolation": "node scripts/verify-event-isolation.mjs",
+    "verify:isolation:live": "node scripts/verify-event-isolation.mjs --live",
     "preview": "vite preview"
   },
   "dependencies": {

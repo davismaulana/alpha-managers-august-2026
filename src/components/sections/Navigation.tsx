@@ -67,7 +67,7 @@ const Navigation: React.FC = () => {
             className="hidden md:flex gap-2"
             onClick={handleApplyNow}
           >
-            Apply untuk Undangan <ArrowRight className="w-4 h-4" />
+            Daftar via WA <ArrowRight className="w-4 h-4" />
           </Button>
         </div>
 
@@ -98,7 +98,7 @@ const Navigation: React.FC = () => {
                 className="w-full flex gap-2 justify-center"
                 onClick={handleApplyNow}
               >
-                Apply untuk Undangan <ArrowRight className="w-4 h-4" />
+                Daftar via WA <ArrowRight className="w-4 h-4" />
               </Button>
             </div>
           </motion.div>

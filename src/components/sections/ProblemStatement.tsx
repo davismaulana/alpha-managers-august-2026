@@ -42,19 +42,11 @@ const ProblemStatement: React.FC = () => {
   return (
     <section className="py-24 bg-gradient-to-b from-black to-zinc-900">
       <div className="container mx-auto px-4 md:px-6">
-
-        {/* Headline */}
         <div className="text-center mb-16">
           <FadeIn direction="up">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-white block mb-2">Inikah yang Terjadi Pada Anda?</span>
-              <span className="text-gray-400">Jika iya, masalahnya sering kali bukan pada kemampuan teknis manager.</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-white">
+              Inikah yang Terjadi Pada Anda?
             </h2>
-          </FadeIn>
-          <FadeIn direction="up" delay={0.2}>
-            <p className="text-lg text-gray-500 mt-6 max-w-3xl mx-auto">
-              Melainkan kemampuan mereka dalam <span className="text-white">memimpin</span>, <span className="text-white">mengarahkan</span>, dan <span className="text-white">mengelola performa tim</span>.
-            </p>
           </FadeIn>
         </div>
 
@@ -72,18 +64,16 @@ const ProblemStatement: React.FC = () => {
           ))}
         </StaggerContainer>
 
-        {/* Bottom Banner */}
         <FadeIn direction="up" delay={0.4}>
           <div className="max-w-4xl mx-auto text-center relative">
-              <div className="absolute inset-0 bg-gold-500/20 blur-3xl rounded-full opacity-20" />
-              <div className="relative border border-gold-500/30 bg-black/40 backdrop-blur-md rounded-2xl p-8 md:p-12">
-                  <p className="text-2xl md:text-3xl font-semibold text-white leading-normal italic">
-                    "Saatnya perusahaan Anda memiliki manager yang benar-benar bisa diandalkan untuk <span className="text-gold-500">mencapai hasil nyata di lapangan.</span>"
-                  </p>
-              </div>
+            <div className="absolute inset-0 bg-gold-500/20 blur-3xl rounded-full opacity-20" />
+            <div className="relative border border-gold-500/30 bg-black/40 backdrop-blur-md rounded-2xl p-8 md:p-12">
+              <p className="text-xl md:text-3xl font-semibold text-white leading-normal">
+                Jika iya, masalahnya sering kali bukan pada kemampuan teknis manager, melainkan kemampuan mereka dalam memimpin, mengarahkan, dan mengelola performa tim.
+              </p>
+            </div>
           </div>
         </FadeIn>
-
       </div>
     </section>
   );

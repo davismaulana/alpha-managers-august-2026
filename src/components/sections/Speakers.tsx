@@ -50,7 +50,6 @@ const Speakers: React.FC = () => {
               </div>
 
               <div className="space-y-3 sm:space-y-4 border-t border-zinc-700/50 pt-5 sm:pt-6">
-                <p className="text-gray-300 font-medium text-sm sm:text-base">Akan membagikan:</p>
                 <ul className="space-y-2 text-gray-400 text-sm sm:text-base">
                   {[
                     "10+ tahun sebagai Senior Head Business Coach di salah satu coaching firm terbaik di Asia Tenggara",
@@ -94,7 +93,6 @@ const Speakers: React.FC = () => {
               </div>
 
               <div className="space-y-3 sm:space-y-4 border-t border-zinc-700/50 pt-5 sm:pt-6">
-                <p className="text-gray-300 font-medium text-sm sm:text-base">Akan berbagi:</p>
                 <ul className="space-y-2 text-gray-400 text-sm sm:text-base">
                   {[
                     "Founder Globe Asia & Indonesia Economic Forum",

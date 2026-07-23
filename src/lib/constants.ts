@@ -1,7 +1,8 @@
-export const CTA_URL = 'https://zenichat.id/api/wa/52c7314c-e9b8-406e-aa5a-690d5e83afbb/august-event';
-export const CAMPAIGN_ID = 'cfr-august2026';
-export const CONTENT_NAME = 'Alpha Managers - 13 Agustus 2026';
-export const CONTENT_CATEGORY = 'Alpha Leaders Manager Event';
+export const EVENT_NAME = 'Alpha Managers 3.0 Exclusive Workshop - 13 Agustus 2026';
+export const CTA_LABEL = 'Daftar Sekarang';
+export const CTA_EVENT_NAME = 'august_zenith_cta_click';
+export const FORM_SECTION_ID = 'lead-capture';
+export const FORM_CARD_ID = 'august-zenith-form-card';
 
 declare global {
   interface Window {
@@ -9,12 +10,13 @@ declare global {
   }
 }
 
-export const openRegistrationCTA = () => {
-  window.fbq?.('trackCustom', 'HeroCTAClick', {
-    campaign_id: CAMPAIGN_ID,
-    content_name: CONTENT_NAME,
-    content_category: CONTENT_CATEGORY,
+export const openRegistrationCTA = (placement = 'onsite') => {
+  window.fbq?.('trackCustom', CTA_EVENT_NAME, {
+    cta_label: CTA_LABEL,
+    content_name: EVENT_NAME,
+    placement,
   });
 
-  window.open(CTA_URL, '_blank', 'noopener,noreferrer');
+  const target = document.getElementById(FORM_CARD_ID) || document.getElementById(FORM_SECTION_ID);
+  target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 };
