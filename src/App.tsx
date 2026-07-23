@@ -89,7 +89,7 @@ const config: PageConfig = {
     'Halaman ini sengaja menyeleksi kecocokan. Yang dicari bukan peserta sebanyak-banyaknya, tetapi bisnis yang memang siap membangun sistem manajemen lebih tegas.',
   investmentTitle: 'Jika manager belum memegang hasil, owner akan terus memikul beban eksekusi.',
   investmentBody:
-    'Isi validasi singkat. Detail nama, WhatsApp, dan bisnis akan dilanjutkan di chatbot setelah Anda masuk ke percakapan.',
+    'Isi validasi singkat. Detail nama, WhatsApp, dan bisnis akan dilanjutkan setelah Anda masuk ke percakapan.',
   waUrl: 'https://zenichat.com/api/wa/52c7314c-e9b8-406e-aa5a-690d5e83afbb/august-zenith-prior1',
   campaign: '@august_zen',
 };
@@ -194,7 +194,7 @@ function App() {
           <p className="lead">{config.heroLead}</p>
           <div className="hero-actions">
             <button type="button" className="gold-button" onClick={scrollToForm}>{config.primaryCta}<ArrowRight size={18} /></button>
-            <span>Validasi singkat dulu. Identitas lanjut di chatbot.</span>
+            <span>Validasi singkat dulu. Identitas lanjut di WhatsApp.</span>
           </div>
         </div>
         <figure className="poster-frame reveal">
@@ -260,8 +260,8 @@ function App() {
         >
           {submitted ? (
             <div className="submit-result">
-              <h3>Cocok. Lanjutkan ke WhatsApp untuk data peserta.</h3>
-              <a className="wa-button" href={waHref}><MessageCircle size={18} /> Lanjut ke Chatbot WhatsApp</a>
+              <h3>Cocok. Lanjutkan ke WhatsApp untuk validasi lanjutan.</h3>
+              <a className="wa-button" href={waHref}><MessageCircle size={18} /> Lanjut ke WhatsApp</a>
             </div>
           ) : (
             <>
@@ -307,6 +307,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
