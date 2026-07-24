@@ -38,35 +38,35 @@ const config: PageConfig = {
   eyebrow: 'Alpha Managers Exclusive Workshop',
   brand: 'Coach Ferly',
   date: 'Aloft Jakarta Barat - 13 Agustus 2026',
-  heroTitle: 'Manager Anda Sibuk. Tapi Hasilnya Masih Harus Anda Kejar?',
+  heroTitle: 'Dari Owner yang Mengurus Semua, Menjadi Owner yang Memimpin Sistem',
   heroLead:
-    'Untuk bisnis yang ingin manager lebih memegang target, KPI, ritme eksekusi, dan tanggung jawab performa tim.',
+    'Untuk bisnis dengan omzet 5M+/bulan yang ingin manager lebih jelas memegang target, keputusan, dan hasil kerja tim.',
   poster: '/main-poster.png',
   posterAlt: 'Alpha Managers August workshop poster',
-  primaryCta: 'Cek Kesiapan Manager Anda',
-  painIntro: 'Kalau semua masih harus dikejar owner, masalahnya bukan kurang orang. Masalahnya akuntabilitas.',
+  primaryCta: 'Cek Kualifikasi',
+  painIntro: 'Manager sudah ada. Tapi hasil tetap sering harus dikejar owner.',
   pains: [
     {
-      title: 'KPI ada, tapi tidak jadi kendali',
-      body: 'Angka sudah dibuat, tetapi tidak benar-benar menggerakkan keputusan dan prioritas harian tim.',
+      title: 'Manager sibuk, tetapi belum memegang hasil',
+      body: 'Aktivitas terlihat berjalan. Namun target, keputusan, dan follow-up penting masih sering kembali ke owner.',
     },
     {
-      title: 'Manager melapor aktivitas, bukan hasil',
-      body: 'Meeting jalan, update ada, namun ownership terhadap target belum terasa kuat.',
+      title: 'KPI tidak menjadi alat kendali',
+      body: 'Angka sudah dibuat, tetapi belum cukup dipakai untuk membaca prioritas dan memperbaiki eksekusi harian.',
     },
     {
-      title: 'Tim berjalan dengan standar masing-masing',
-      body: 'Setiap divisi punya ritme sendiri. Owner akhirnya kembali menjadi pengingat utama.',
+      title: 'Standar kerja berbeda-beda',
+      body: 'Setiap orang punya cara sendiri. Owner akhirnya menjadi pengingat, penengah, dan penjaga kualitas.',
     },
     {
-      title: 'Feedback terasa tidak konsisten',
-      body: 'Performa rendah dibahas terlambat, coaching tidak rutin, dan accountability mudah kabur.',
+      title: 'Feedback datang terlambat',
+      body: 'Performa rendah baru dibahas saat masalah sudah terasa besar. Coaching belum menjadi ritme yang konsisten.',
     },
   ],
-  shiftTitle: 'Manager yang baik bukan hanya sibuk. Mereka memegang hasil.',
+  shiftTitle: 'Manager yang kuat bukan hanya banyak bergerak. Mereka tahu hasil apa yang harus dipegang.',
   shiftBody:
-    'Sesi ini membantu bisnis membangun ritme manager: target jelas, KPI dipakai, feedback berjalan, dan tim punya standar eksekusi yang sama.',
-  curriculumTitle: 'Yang dibangun dalam Alpha Managers',
+    'Sesi ini membantu bisnis membangun ritme manajemen yang lebih tegas: target jelas, KPI hidup, feedback berjalan, dan tanggung jawab tidak mudah kabur.',
+  curriculumTitle: 'Yang dirapikan dalam Alpha Managers',
   curriculum: [
     {
       day: '01',
@@ -76,7 +76,7 @@ const config: PageConfig = {
     {
       day: '02',
       title: 'Ritme performance management',
-      points: ['Feedback tanpa drama', 'Coaching lebih terstruktur', 'Evaluasi performa lebih objektif'],
+      points: ['Feedback lebih tenang dan jelas', 'Coaching lebih terstruktur', 'Evaluasi performa lebih objektif'],
     },
     {
       day: '03',
@@ -84,16 +84,15 @@ const config: PageConfig = {
       points: ['Manager tidak hanya menunggu instruksi', 'Follow-up lebih tegas', 'Owner tidak menjadi pengingat utama'],
     },
   ],
-  proofTitle: 'Untuk owner, HR, dan leader yang ingin manager naik kelas.',
+  proofTitle: 'Untuk owner dan leader yang ingin manager naik kelas secara nyata.',
   proofBody:
-    'Halaman ini sengaja menyeleksi kecocokan. Yang dicari bukan peserta sebanyak-banyaknya, tetapi bisnis yang memang siap membangun sistem manajemen lebih tegas.',
+    'Coach Ferly membantu melihat apakah masalah bisnis ada pada orangnya, ritmenya, atau sistem manajemen yang belum cukup tegas.',
   investmentTitle: 'Jika manager belum memegang hasil, owner akan terus memikul beban eksekusi.',
   investmentBody:
-    'Isi validasi singkat. Detail nama, WhatsApp, dan bisnis akan dilanjutkan setelah Anda masuk ke percakapan.',
+    'Isi kualifikasi singkat. Detail lanjutan akan diteruskan setelah Anda masuk ke percakapan WhatsApp.',
   waUrl: 'https://zenichat.com/api/wa/52c7314c-e9b8-406e-aa5a-690d5e83afbb/august-zenith-prior1',
   campaign: '@august_zen',
 };
-
 const initialForm: FormState = {
   monthlyRevenue: '',
   teamSize: '',
@@ -103,15 +102,15 @@ const initialForm: FormState = {
 };
 
 const options: Record<FormKey, string[]> = {
-  monthlyRevenue: ['< Rp500 juta', 'Rp500 juta - Rp1 miliar', 'Rp1 miliar - Rp5 miliar', '> Rp5 miliar'],
+  monthlyRevenue: ['< Rp5 juta', 'Rp5 juta - Rp25 juta', 'Rp25 juta - Rp100 juta', '> Rp100 juta'],
   teamSize: ['1-5 orang', '6-15 orang', '16-50 orang', '51-100 orang', '> 100 orang'],
   ownerLoad: ['Sesekali turun tangan', 'Masih sering mengejar manager', 'Hampir semua hasil tetap saya follow-up'],
-  mainPain: ['KPI tidak berjalan', 'Manager belum ownership', 'Tim tidak konsisten', 'Performance review tidak rapi'],
+  mainPain: ['KPI tidak berjalan', 'Manager belum memegang hasil', 'Standar tim tidak konsisten', 'Performance review belum rapi'],
   desiredFix: ['Manager lebih accountable', 'KPI lebih hidup', 'Ritme eksekusi lebih jelas', 'Owner tidak terus mengejar hasil'],
 };
 
 const formSteps: { key: FormKey; label: string; prompt: string }[] = [
-  { key: 'monthlyRevenue', label: 'Omset per bulan', prompt: 'Saat ini bisnis Anda ada di level omset yang mana?' },
+  { key: 'monthlyRevenue', label: 'Omzet per bulan', prompt: 'Saat ini bisnis Anda ada di level omzet yang mana?' },
   { key: 'teamSize', label: 'Jumlah tim', prompt: 'Seberapa besar tim yang sekarang dikelola manager?' },
   { key: 'ownerLoad', label: 'Beban owner', prompt: 'Seberapa sering owner masih mengejar hasil?' },
   { key: 'mainPain', label: 'Tantangan utama', prompt: 'Masalah manager mana yang paling terasa sekarang?' },
@@ -122,10 +121,10 @@ const scrollToForm = () => document.getElementById('lead-form')?.scrollIntoView(
 
 function buildWaText(form: FormState) {
   return [
-    'Halo tim Coach Ferly, saya sudah mengisi validasi awal Alpha Managers.',
+    'Halo tim Coach Ferly, saya sudah mengisi kualifikasi awal Alpha Managers.',
     '',
     `Campaign: ${config.campaign}`,
-    `Omset: ${form.monthlyRevenue}`,
+    `Omzet: ${form.monthlyRevenue}`,
     `Jumlah tim: ${form.teamSize}`,
     `Kondisi owner: ${form.ownerLoad}`,
     `Tantangan utama: ${form.mainPain}`,
@@ -194,7 +193,7 @@ function App() {
           <p className="lead">{config.heroLead}</p>
           <div className="hero-actions">
             <button type="button" className="gold-button" onClick={scrollToForm}>{config.primaryCta}<ArrowRight size={18} /></button>
-            <span>Validasi singkat dulu. Identitas lanjut di WhatsApp.</span>
+            <span>Kualifikasi singkat dulu. Lanjutan via WhatsApp.</span>
           </div>
         </div>
         <figure className="poster-frame reveal">
@@ -247,7 +246,7 @@ function App() {
 
       <section id="lead-form" className="form-band reveal">
         <div className="form-copy">
-          <p className="kicker">Validasi seat</p>
+          <p className="kicker">Kualifikasi</p>
           <h2>{config.investmentTitle}</h2>
           <p>{config.investmentBody}</p>
         </div>
@@ -260,7 +259,7 @@ function App() {
         >
           {submitted ? (
             <div className="submit-result">
-              <h3>Cocok. Lanjutkan ke WhatsApp untuk validasi lanjutan.</h3>
+              <h3>Cocok. Lanjutkan percakapan di WhatsApp.</h3>
               <a className="wa-button" href={waHref}><MessageCircle size={18} /> Lanjut ke WhatsApp</a>
             </div>
           ) : (
@@ -295,7 +294,7 @@ function App() {
                   <ArrowLeft size={17} /> Kembali
                 </button>
                 <button className="gold-button" type="submit" disabled={!currentValue}>
-                  {isLastStep ? 'Selesaikan Validasi' : 'Lanjut'}<ArrowRight size={18} />
+                  {isLastStep ? 'Selesaikan Kualifikasi' : 'Lanjut'}<ArrowRight size={18} />
                 </button>
               </div>
             </>
@@ -307,6 +306,8 @@ function App() {
 }
 
 export default App;
+
+
 
 
 
