@@ -1,6 +1,6 @@
 services:
-  # Dokploy domain binding for august-zenith.zenova.id targets this service name.
-  august-zenith-web:
+  # Dokploy domain binding for oct-2026.zenova.id targets this service name.
+  oct-2026-web:
     build:
       context: .
       dockerfile: Dockerfile

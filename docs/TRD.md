@@ -22,3 +22,10 @@ Use the existing single-page React app. Keep changes scoped to landing-page sour
 
 ## Verification
 Run `npm run build`, confirm local preview loads, and review final result against CEO feedback.
+
+## Approved October Revision - 2026-08-08
+
+- Add `public/october-event-poster.png` and `public/industry-trust-october.png` without deleting the previous August assets.
+- Update the active `App` content configuration and server lead metadata to the October event.
+- Keep the existing `/api/leads` contract and change only campaign/event identifiers and the WhatsApp route slug.
+- Verify build, lint, event-isolation checks, asset loading, and deployment health.

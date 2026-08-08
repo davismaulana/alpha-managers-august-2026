@@ -37,12 +37,12 @@ type PageConfig = {
 const config: PageConfig = {
   eyebrow: 'Alpha Managers Exclusive Workshop',
   brand: 'Coach Ferly',
-  date: 'Aloft Jakarta Barat - 13 Agustus 2026',
-  heroTitle: 'Dari Owner yang Mengurus Semua, Menjadi Owner yang Memimpin Sistem',
+  date: 'Aloft Jakarta Barat - 1 Oktober 2026',
+  heroTitle: 'Manager Anda Belum Kerja Seperti Yang Anda Harapkan? Semua Masih Anda Yang Harus Kerjakan Sendiri?',
   heroLead:
     'Untuk bisnis dengan omzet 5M+/bulan yang ingin manager lebih jelas memegang target, keputusan, dan hasil kerja tim.',
-  poster: '/main-poster.png',
-  posterAlt: 'Alpha Managers August workshop poster',
+  poster: '/october-event-poster.png',
+  posterAlt: 'Alpha Managers October 2026 workshop poster',
   primaryCta: 'Cek Kualifikasi',
   painIntro: 'Manager sudah ada. Tapi hasil tetap sering harus dikejar owner.',
   pains: [
@@ -90,8 +90,8 @@ const config: PageConfig = {
   investmentTitle: 'Jika manager belum memegang hasil, owner akan terus memikul beban eksekusi.',
   investmentBody:
     'Isi kualifikasi singkat. Detail lanjutan akan diteruskan setelah Anda masuk ke percakapan WhatsApp.',
-  waUrl: 'https://zenichat.com/api/wa/52c7314c-e9b8-406e-aa5a-690d5e83afbb/august-zenith-prior1',
-  campaign: '@august_zen',
+  waUrl: 'https://zenichat.com/api/wa/52c7314c-e9b8-406e-aa5a-690d5e83afbb/oct-2026',
+  campaign: '@oct_2026',
 };
 const initialForm: FormState = {
   monthlyRevenue: '',
@@ -241,7 +241,7 @@ function App() {
           <h2>{config.proofTitle}</h2>
           <p>{config.proofBody}</p>
         </div>
-        <img src="/industry-trust-client.png" alt="Client and company proof" />
+        <img src="/industry-trust-october.png" alt="Client and company proof" />
       </section>
 
       <section id="lead-form" className="form-band reveal">

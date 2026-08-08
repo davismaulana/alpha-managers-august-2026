@@ -11,11 +11,11 @@ const leadWebhookUrl = String(process.env.LEAD_WEBHOOK_URL || '').trim();
 const previewLeadMessage =
   'Preview aktif. Profil undangan belum tersimpan karena webhook Event Ini belum dikonfigurasi.';
 
-const CAMPAIGN_ID = 'cfr-august-zenith';
-const EVENT_NAME = 'Alpha Managers 3.0 Exclusive Workshop - 13 Agustus 2026';
-const DEFAULT_UTM_CAMPAIGN = 'alpha-managers-august-zenith-2026';
-const DEFAULT_UTM_SOURCE = 'alpha-managers-august-zenith-lp';
-const DEFAULT_SOURCE = 'alpha-managers-august-zenith-lp';
+const CAMPAIGN_ID = 'cfr-oct-2026';
+const EVENT_NAME = 'Alpha Managers 3.0 Exclusive Workshop - 1 Oktober 2026';
+const DEFAULT_UTM_CAMPAIGN = 'alpha-managers-oct-2026';
+const DEFAULT_UTM_SOURCE = 'alpha-managers-oct-2026-lp';
+const DEFAULT_SOURCE = 'alpha-managers-oct-2026-lp';
 
 const contentTypes = {
   '.html': 'text/html; charset=utf-8',
@@ -142,7 +142,7 @@ const normalizeLeadPayload = (payload, request) => {
     page_title: 'Alpha Managers 3.0 Event Ini 2026',
     event_name: EVENT_NAME,
     metadata: {
-      event_date: '2026-08-13',
+      event_date: '2026-10-01',
       event_name: EVENT_NAME,
       form_style: 'abm-stepper',
     },
@@ -150,7 +150,7 @@ const normalizeLeadPayload = (payload, request) => {
 };
 
 const postLeadToWebhook = async (lead) => {
-  if (!leadWebhookUrl || !leadWebhookUrl.includes('cfr-august')) {
+  if (!leadWebhookUrl || !leadWebhookUrl.includes('cfr-oct')) {
     return {
       ok: true,
       preview: true,
@@ -299,5 +299,5 @@ const server = createServer(async (request, response) => {
 });
 
 server.listen(port, () => {
-  console.log(`August Zenith LP server listening on :${port}`);
+  console.log(`October 2026 Alpha Managers LP server listening on :${port}`);
 });

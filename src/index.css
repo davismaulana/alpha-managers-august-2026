@@ -119,8 +119,17 @@ button:disabled { cursor: not-allowed; opacity: 0.44; }
 
 h1, h2, h3 { margin: 0; letter-spacing: 0; }
 h1, h2 { font-family: "Playfair Display", Georgia, "Times New Roman", serif; font-weight: 700; }
-h1 {`r`n  max-width: 980px;`r`n  font-size: clamp(2.55rem, 4.1vw, 3.9rem);`r`n  line-height: 1.05;`r`n}
-h2 {`r`n  max-width: 920px;`r`n  margin-inline: auto;`r`n  font-size: clamp(1.95rem, 3.2vw, 3.25rem);`r`n  line-height: 1.04;`r`n}
+h1 {
+  max-width: 980px;
+  font-size: clamp(2.55rem, 4.1vw, 3.9rem);
+  line-height: 1.05;
+}
+h2 {
+  max-width: 920px;
+  margin-inline: auto;
+  font-size: clamp(1.95rem, 3.2vw, 3.25rem);
+  line-height: 1.04;
+}
 h3 { font-size: 1.12rem; line-height: 1.32; }
 
 .lead {

@@ -26,3 +26,11 @@ Do not ask name, WhatsApp number, or business name on the page form. Those belon
 - Poster/proof appears early and feels premium.
 - Form qualifies fit and reveals WhatsApp only after completion.
 - Build passes and local preview loads.
+
+## Approved October Revision - 2026-08-08
+
+- Replace the event poster with the CEO-provided October poster asset.
+- Replace the industry/client proof strip with the CEO-provided logo collage.
+- Change the event date to 1 Oktober 2026.
+- Set the hero headline to: "Manager Anda Belum Kerja Seperti Yang Anda Harapkan? Semua Masih Anda Yang Harus Kerjakan Sendiri?"
+- Use `oct-2026` for the public WhatsApp campaign route and October tracking identifiers.
