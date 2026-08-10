@@ -53,3 +53,19 @@ Run `npm run build`, confirm local preview loads, and review final result agains
   only when caused by approved October event imagery or text.
 - Deployed-link Playwright QA is release-gated and must be run after Head
   Manager coordinates deployment; it must target the current production domain.
+
+## Approved Comparison-Price Correction - 2026-08-10 (NAG-20260810-234659-801)
+
+### Implementation boundary
+
+- Change only the active crossed-out comparison-price text in
+  `src/components/sections/EventFormat.tsx`.
+- Preserve the `line-through` visual treatment, active offer price, CTA URLs,
+  section composition, deployment configuration, and production target.
+
+### Technical checks
+
+- Assert source contains the active offer `3.999.999` and the sole crossed-out
+  comparison value `9.999.000`; reject `7.999.999` from the active source.
+- Run build, lint, event-isolation verification, and rendered local/live page
+  checks that confirm the displayed values and crossed-out comparison styling.

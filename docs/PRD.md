@@ -68,3 +68,17 @@ October event and campaign data.
   `oct-2026` route in a new tab.
 - No August date, WhatsApp route, campaign identifier, or UTM default remains
   in active landing-page code or server metadata.
+
+## Approved Comparison-Price Correction - 2026-08-10 (NAG-20260810-234659-801)
+
+### Objective
+
+Correct the crossed-out comparison price in the existing October 2026 landing
+page to exactly `9.999.000`.
+
+### Acceptance criteria
+
+- The active offer price remains `3.999.999`.
+- The adjacent crossed-out comparison price renders exactly `9.999.000`, using
+  Indonesian dot grouping with no currency, locale, CTA, or positioning change.
+- No other visible price claim or production target is changed.
