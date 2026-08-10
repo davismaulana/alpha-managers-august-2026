@@ -21,6 +21,7 @@ const requiredMarkers = [
   '/october-event-poster.png',
   '/industry-trust-october.png',
   'oct_2026_cta_click',
+  'Manager Anda Belum Kerja Seperti Yang Anda Harapkan?',
 ];
 const forbiddenMarkers = [
   'august-event',
@@ -29,7 +30,6 @@ const forbiddenMarkers = [
   'alpha-managers-august-lp',
   '13 Agustus 2026',
   'Validasi awal dalam 8 langkah.',
-  'Manager Anda Belum Kerja Seperti Yang Anda Harapkan?',
 ];
 const files = [
   'src/App.tsx',

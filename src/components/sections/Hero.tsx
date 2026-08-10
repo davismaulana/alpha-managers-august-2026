@@ -11,7 +11,7 @@ const Hero: React.FC = () => {
         <FadeIn direction="up" duration={0.9}>
           <div className="mx-auto max-w-4xl text-center mb-8 md:mb-12">
             <h1 className="text-white text-4xl md:text-6xl font-bold leading-tight tracking-[-0.03em]">
-              Manager Anda Masih Sering Jadi Pemadam Kebakaran dan Belum Bikin Bisnis Bertumbuh?
+              Manager Anda Belum Kerja Seperti Yang Anda Harapkan? Semua Masih Anda Yang Harus Kerjakan Sendiri?
             </h1>
             <p className="mt-5 text-lg md:text-2xl text-zinc-300 leading-relaxed max-w-3xl mx-auto">
               Saatnya perusahaan Anda memiliki manager yang benar-benar bisa diandalkan untuk mencapai hasil nyata di lapangan.
