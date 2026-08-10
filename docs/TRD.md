@@ -1,4 +1,4 @@
-﻿# TRD - August Zenith Landing Page
+﻿# TRD - Alpha Managers October 2026 Landing Page
 
 ## Stack
 Vite, React, TypeScript, CSS, lucide-react.
@@ -29,3 +29,27 @@ Run `npm run build`, confirm local preview loads, and review final result agains
 - Update the active `App` content configuration and server lead metadata to the October event.
 - Keep the existing `/api/leads` contract and change only campaign/event identifiers and the WhatsApp route slug.
 - Verify build, lint, event-isolation checks, asset loading, and deployment health.
+
+## Approved October Parity Restoration - 2026-08-10 (NAG-20260810-100745-251)
+
+### Implementation boundary
+
+- Treat `origin/main` as the authoritative implementation for App composition,
+  section components, CSS, breakpoints, and client interactions.
+- Treat `deploy-six3161` as authoritative only for October event data, active
+  assets, WhatsApp route, campaign/server IDs, metadata, pixel configuration,
+  and production-domain configuration.
+- Do not change the GitHub remote, deployment configuration, or deploy state.
+
+### Technical checks
+
+- Assert the ordered 11-section `App` composition and direct WhatsApp CTA
+  implementation in local source.
+- Assert October poster/proof assets, `1 Oktober 2026`, `oct-2026`, and
+  `cfr-oct-2026`; reject August date/route/campaign/UTM markers.
+- Build and lint successfully, then use Playwright at 1440 × 1000 and
+  390 × 844 to check section count, section/style parity, no mobile x-overflow,
+  menu/FAQ/video behavior, and CTA targets. Height differences are acceptable
+  only when caused by approved October event imagery or text.
+- Deployed-link Playwright QA is release-gated and must be run after Head
+  Manager coordinates deployment; it must target the current production domain.

@@ -1,4 +1,4 @@
-﻿# PRD - August Zenith Landing Page
+﻿# PRD - Alpha Managers October 2026 Landing Page
 
 ## Outcome
 Rebuild the August Ferly landing page as a premium black/gold, pain-first executive landing page for businesses that need stronger manager accountability.
@@ -34,3 +34,37 @@ Do not ask name, WhatsApp number, or business name on the page form. Those belon
 - Change the event date to 1 Oktober 2026.
 - Set the hero headline to: "Manager Anda Belum Kerja Seperti Yang Anda Harapkan? Semua Masih Anda Yang Harus Kerjakan Sendiri?"
 - Use `oct-2026` for the public WhatsApp campaign route and October tracking identifiers.
+
+## Approved October Parity Restoration - 2026-08-10 (NAG-20260810-100745-251)
+
+### Objective
+
+Restore the October landing page to the live August reference design and user
+experience, using `origin/main` as the source baseline. Retain only approved
+October event and campaign data.
+
+### Preserved October data
+
+- Event date: Kamis, 1 Oktober 2026.
+- Hero/event asset: `public/october-event-poster.png`.
+- Client-proof asset: `public/industry-trust-october.png`.
+- WhatsApp route: `/oct-2026` on the approved ZeniChat campaign URL.
+- October metadata, Meta Pixel configuration, campaign/server identifiers, and
+  production domain configuration already on `deploy-six3161`.
+
+### Acceptance criteria
+
+- The rendered component order is exactly Hero, ProblemStatement,
+  TargetAudience, WhatYoullLearn, Speakers, EventFormat, LimitedSeats,
+  IndustryTrust, VideoProof, FinalCTA, and FAQ; Footer remains after FAQ.
+- Desktop (1440 × 1000) and mobile (390 × 844) each have the same 11-section
+  structure, spacing system, and responsive behavior as the reference, with no
+  horizontal overflow. Document height may differ only where approved October
+  imagery or event text has different intrinsic dimensions.
+- The August visual system, copy structure/text, animation behavior, navigation,
+  video controls, FAQ interaction, and responsive layout are retained except
+  for October-specific data above.
+- Navigation, hero, final, ticket, and FAQ WhatsApp CTAs open the approved
+  `oct-2026` route in a new tab.
+- No August date, WhatsApp route, campaign identifier, or UTM default remains
+  in active landing-page code or server metadata.

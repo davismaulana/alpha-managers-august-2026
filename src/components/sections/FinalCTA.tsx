@@ -20,7 +20,7 @@ const FinalCTA: React.FC = () => {
 
          <FadeIn direction="up" delay={0.2}>
            <p className="text-xl md:text-2xl font-medium text-zinc-600 mb-8 tracking-wide">
-             Aloft Hotel by Marriott, Jakarta Barat | Kamis, 13 Agustus 2026
+             Aloft Hotel by Marriott, Jakarta Barat | Kamis, 1 Oktober 2026
            </p>
          </FadeIn>
 

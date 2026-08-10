@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 
 const TargetAudience: React.FC = () => {
   const audiencePoints = [
-    'Meningkatkan performa manager dan team leaders Anda',
+    'Meningkatkan performa manager dan team leader',
     'Membangun middle management yang lebih kuat',
     'Mengurangi ketergantungan tim terhadap owner',
     'Meningkatkan efektivitas tim melalui peningkatan kualitas leadership',
@@ -24,6 +24,9 @@ const TargetAudience: React.FC = () => {
             <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">
               Acara Ini Cocok untuk Anda yang:
             </h2>
+            <p className="text-xl text-gray-400">
+              Didesain untuk owner, HR, dan leader yang ingin manager lebih bisa diandalkan di lapangan.
+            </p>
           </FadeIn>
         </div>
 

@@ -1,8 +1,9 @@
-export const EVENT_NAME = 'Alpha Managers 3.0 Exclusive Workshop - 1 Oktober 2026';
-export const CTA_LABEL = 'Daftar Sekarang';
+export const CTA_URL = 'https://zenichat.id/api/wa/52c7314c-e9b8-406e-aa5a-690d5e83afbb/oct-2026';
+export const CAMPAIGN_ID = 'cfr-oct-2026';
+export const CONTENT_NAME = 'Alpha Managers 3.0 Exclusive Workshop - 1 Oktober 2026';
+export const CONTENT_CATEGORY = 'Alpha Leaders Manager Event';
 export const CTA_EVENT_NAME = 'oct_2026_cta_click';
-export const FORM_SECTION_ID = 'lead-capture';
-export const FORM_CARD_ID = 'oct-2026-form-card';
+export const CTA_LABEL = 'Daftar Sekarang';
 
 declare global {
   interface Window {
@@ -10,13 +11,15 @@ declare global {
   }
 }
 
-export const openRegistrationCTA = (placement = 'onsite') => {
+export const openRegistrationCTA = () => {
   window.fbq?.('trackCustom', CTA_EVENT_NAME, {
     cta_label: CTA_LABEL,
-    content_name: EVENT_NAME,
-    placement,
+    campaign_id: CAMPAIGN_ID,
+    content_name: CONTENT_NAME,
+    content_category: CONTENT_CATEGORY,
+    placement: 'whatsapp-cta',
   });
 
-  const target = document.getElementById(FORM_CARD_ID) || document.getElementById(FORM_SECTION_ID);
-  target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const targetUrl = new URL(CTA_URL);
+  window.open(targetUrl.toString(), '_blank', 'noopener,noreferrer');
 };

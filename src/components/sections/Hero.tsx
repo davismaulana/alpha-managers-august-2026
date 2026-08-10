@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
         <FadeIn direction="up" duration={0.9}>
           <div className="mx-auto max-w-4xl text-center mb-8 md:mb-12">
             <h1 className="text-white text-4xl md:text-6xl font-bold leading-tight tracking-[-0.03em]">
-              Manager Anda Belum Kerja Seperti Yang Anda Harapkan? Semua Masih Anda Yang Harus Kerjakan Sendiri?
+              Manager Anda Masih Sering Jadi Pemadam Kebakaran dan Belum Bikin Bisnis Bertumbuh?
             </h1>
             <p className="mt-5 text-lg md:text-2xl text-zinc-300 leading-relaxed max-w-3xl mx-auto">
               Saatnya perusahaan Anda memiliki manager yang benar-benar bisa diandalkan untuk mencapai hasil nyata di lapangan.
@@ -20,16 +20,11 @@ const Hero: React.FC = () => {
 
         <FadeIn duration={1.2}>
           <div className="rounded-[28px] border border-white/10 bg-zinc-950/80 shadow-[0_30px_120px_rgba(0,0,0,0.45)] overflow-hidden">
-            <picture>
-              <source media="(max-width: 767px)" srcSet="/august-vertical.webp" type="image/webp" />
-              <source media="(min-width: 768px)" srcSet="/august-horizontal.webp" type="image/webp" />
-              <source media="(max-width: 767px)" srcSet="/august-vertical.png" type="image/png" />
-              <img
-                src="/august-horizontal.png"
-                alt="Poster event Alpha Managers Agustus 2026"
-                className="w-full h-auto object-contain"
-              />
-            </picture>
+            <img
+              src="/october-event-poster.png"
+              alt="Poster event Alpha Managers 1 Oktober 2026"
+              className="w-full h-auto object-contain"
+            />
           </div>
         </FadeIn>
 

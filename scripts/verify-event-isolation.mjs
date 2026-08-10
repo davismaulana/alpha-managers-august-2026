@@ -1,64 +1,84 @@
 import { readFileSync } from 'node:fs';
 
 const octoberHost = 'https://oct-2026.zenova.id';
-const julyHost = 'https://july-zenith.zenova.id';
-const augustMarkers = [
-  'Manager Anda Belum Kerja Seperti Yang Anda Harapkan? Semua Masih Anda Yang Harus Kerjakan Sendiri?',
-  'Daftar via WA',
-  'Validasi awal dalam 8 langkah.',
-  'oct-2026-form-card',
-  'workshopFocus',
+const sectionOrder = [
+  'Hero',
+  'ProblemStatement',
+  'TargetAudience',
+  'WhatYoullLearn',
+  'Speakers',
+  'EventFormat',
+  'LimitedSeats',
+  'IndustryTrust',
+  'VideoProof',
+  'FinalCTA',
+  'FAQ',
 ];
-const julyMarkers = ['Workshop Eksklusif Cash Flow', '6 Agustus 2026'];
+const requiredMarkers = [
+  'oct-2026',
+  'cfr-oct-2026',
+  '1 Oktober 2026',
+  '/october-event-poster.png',
+  '/industry-trust-october.png',
+  'oct_2026_cta_click',
+];
+const forbiddenMarkers = [
+  'august-event',
+  'cfr-august2026',
+  'alpha-managers-august-2026',
+  'alpha-managers-august-lp',
+  '13 Agustus 2026',
+  'Validasi awal dalam 8 langkah.',
+  'Manager Anda Belum Kerja Seperti Yang Anda Harapkan?',
+];
+const files = [
+  'src/App.tsx',
+  'src/lib/constants.ts',
+  'src/components/sections/Hero.tsx',
+  'src/components/sections/EventFormat.tsx',
+  'src/components/sections/IndustryTrust.tsx',
+  'src/components/sections/VideoProof.tsx',
+  'src/components/sections/FinalCTA.tsx',
+  'src/components/sections/Footer.tsx',
+  'src/components/sections/LeadCapture.tsx',
+  'server.js',
+];
 
-function assertIncludes(content, markers, label) {
+const assert = (condition, message) => {
+  if (!condition) throw new Error(message);
+};
+
+const assertIncludes = (content, markers, label) => {
   const missing = markers.filter((marker) => !content.includes(marker));
-  if (missing.length) throw new Error(`${label} missing: ${missing.join(' | ')}`);
-}
+  assert(missing.length === 0, `${label} missing: ${missing.join(' | ')}`);
+};
 
-function assertOctober(content, label) {
-  assertIncludes(content, augustMarkers, label);
-  const foreign = julyMarkers.filter((marker) => content.includes(marker));
-  if (foreign.length) throw new Error(`${label} contains July marker(s): ${foreign.join(' | ')}`);
-}
+const assertExcludes = (content, markers, label) => {
+  const found = markers.filter((marker) => content.includes(marker));
+  assert(found.length === 0, `${label} contains forbidden marker(s): ${found.join(' | ')}`);
+};
 
-function expectFailure(label, fn) {
-  try {
-    fn();
-  } catch (error) {
-    console.log(`${label}: FAIL as expected — ${error.message}`);
-    return;
+const assertSectionOrder = (appSource) => {
+  let previous = -1;
+  for (const section of sectionOrder) {
+    const position = appSource.indexOf(`<${section} />`);
+    assert(position > previous, `App section order is missing or invalid at ${section}.`);
+    previous = position;
   }
-  throw new Error(`${label} unexpectedly passed`);
-}
+};
 
-function localSource() {
-  return [
-    readFileSync('src/components/sections/Hero.tsx', 'utf8'),
-    readFileSync('src/lib/constants.ts', 'utf8'),
-    readFileSync('src/components/sections/LeadCapture.tsx', 'utf8'),
-  ].join('\n');
-}
-
-async function liveBundle(host) {
-  const html = await (await fetch(`${host}/`)).text();
-  const asset = html.match(/assets\/index-[A-Za-z0-9_-]+\.js/)?.[0];
-  if (!asset) throw new Error(`${host} did not expose an entry bundle`);
-  return (await fetch(`${host}/${asset}`)).text();
-}
-
-const source = localSource();
-assertOctober(source, 'local October source');
-expectFailure('swapped missing-stepper fixture', () => assertOctober(source.replace('Validasi awal dalam 8 langkah.', ''), 'swapped stepper fixture'));
-expectFailure('swapped July fixture', () => assertOctober(`${source}\n${julyMarkers.join('\n')}`, 'swapped July fixture'));
-console.log('Local October source: PASS');
+const source = files.map((file) => readFileSync(file, 'utf8')).join('\n');
+assertSectionOrder(readFileSync('src/App.tsx', 'utf8'));
+assertIncludes(source, requiredMarkers, 'local October source');
+assertExcludes(source, forbiddenMarkers, 'local October source');
+console.log('Local October parity and event isolation: PASS');
 
 if (process.argv.includes('--live')) {
-  const [october, july] = await Promise.all([liveBundle(octoberHost), liveBundle(julyHost)]);
-  assertOctober(october, 'live October bundle');
-  assertIncludes(july, julyMarkers, 'live July bundle');
-  const leaked = augustMarkers.filter((marker) => july.includes(marker));
-  if (leaked.length) throw new Error(`live July bundle contains October marker(s): ${leaked.join(' | ')}`);
-  console.log('Live October domain: PASS');
-  console.log('Live July domain: PASS');
+  const html = await (await fetch(`${octoberHost}/`)).text();
+  const asset = html.match(/assets\/index-[A-Za-z0-9_-]+\.js/)?.[0];
+  assert(asset, `${octoberHost} did not expose an entry bundle.`);
+  const bundle = await (await fetch(`${octoberHost}/${asset}`)).text();
+  assertIncludes(bundle, ['oct-2026', '1 Oktober 2026'], 'live October bundle');
+  assertExcludes(bundle, ['13 Agustus 2026', 'cfr-august2026'], 'live October bundle');
+  console.log('Live October event isolation: PASS');
 }
