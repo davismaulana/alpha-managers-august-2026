@@ -34,11 +34,6 @@ const venueImages = [
     title: 'W XYZ lounge',
     alt: 'W XYZ lounge at Aloft by Marriott Jakarta Kebon Jeruk',
   },
-  {
-    src: '/oct-2026/venue/venue-restaurant.jpg',
-    title: 'Dining area',
-    alt: 'Dining area with Jakarta skyline views at Aloft by Marriott Jakarta Kebon Jeruk',
-  },
 ];
 
 type EventScheduleProps = {
@@ -148,7 +143,7 @@ const VenueGallery: React.FC = () => {
               <FadeIn key={image.src} direction="up" delay={0.12 + index * 0.05}>
                 <button
                   type="button"
-                  className={`group relative block aspect-[4/3] w-full overflow-hidden border border-white/10 bg-zinc-900 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 ${index === 4 ? 'col-span-2' : ''}`}
+                  className="group relative block aspect-[4/3] w-full overflow-hidden border border-white/10 bg-zinc-900 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400"
                   onClick={() => setOpenIndex(index + 1)}
                   aria-label={`Buka foto ${image.title}`}
                 >
