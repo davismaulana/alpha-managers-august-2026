@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from '../ui/Button';
 import { FadeIn } from '../animations/FadeIn';
 import { openRegistrationCTA } from '../../lib/constants';
+import { EventSchedule } from './VenueGallery';
 
 const Hero: React.FC = () => {
   return (
@@ -27,6 +28,8 @@ const Hero: React.FC = () => {
             />
           </div>
         </FadeIn>
+
+        <EventSchedule className="mx-auto mt-6 max-w-4xl" />
 
         <div className="mt-6 flex justify-center">
           <Button

@@ -1,5 +1,5 @@
 export const CTA_URL = 'https://zenichat.id/api/wa/52c7314c-e9b8-406e-aa5a-690d5e83afbb/oct-2026';
-export const TICKET_URL = 'https://alphaleaders.myr.id/pl/the-alpha-managers';
+export const TICKET_URL = 'https://alphaleaders.myr.id/pl/the-alpha-managers/';
 export const CAMPAIGN_ID = 'cfr-oct-2026';
 export const CONTENT_NAME = 'Alpha Managers 3.0 Exclusive Workshop - 1 Oktober 2026';
 export const CONTENT_CATEGORY = 'Alpha Leaders Manager Event';

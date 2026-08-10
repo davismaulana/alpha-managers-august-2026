@@ -7,6 +7,7 @@ import {
   trackTicketCTA,
   trackWhatsAppCTA,
 } from '../../lib/constants';
+import { EventSchedule } from './VenueGallery';
 
 const packageItems = [
   'Breakfast, lunch, dan coffee break',
@@ -47,6 +48,7 @@ const EventFormat: React.FC = () => (
           <div className="relative flex flex-col justify-between p-6 md:min-h-[360px] md:p-9">
             <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(135deg,transparent_0%,transparent_52%,rgba(212,175,106,0.08)_52%,rgba(212,175,106,0.08)_54%,transparent_54%)]" />
             <div className="relative">
+              <EventSchedule compact className="mb-7 border-b border-white/10 pb-6" />
               <div className="mb-7 flex items-center gap-3">
                 <span className="flex h-10 w-10 items-center justify-center rounded-md border border-gold-500/30 bg-gold-500/10 text-gold-300">
                   <Ticket className="h-5 w-5" />
