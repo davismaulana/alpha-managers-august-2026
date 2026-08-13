@@ -69,3 +69,15 @@ Run `npm run build`, confirm local preview loads, and review final result agains
   comparison value `9.999.000`; reject `7.999.999` from the active source.
 - Run build, lint, event-isolation verification, and rendered local/live page
   checks that confirm the displayed values and crossed-out comparison styling.
+
+## Approved WhatsApp CTA Revision - 2026-08-13
+
+### Implementation boundary
+
+- Update only centralized `CTA_URL` in `src/lib/constants.ts` to `https://zenichat.com/api/wa/2be594bf-19e8-4195-98a3-4094fce74ea8/tam`.
+- Preserve `TICKET_URL`, CTA tracking, visual behavior, and deployment configuration.
+
+### Technical checks
+
+- Require the exact approved endpoint and reject the exact former `zenichat.id` October endpoint in the event-isolation verification.
+- Run lint, production build, and event-isolation verification; confirm the former endpoint is absent from active source and generated `dist` output.

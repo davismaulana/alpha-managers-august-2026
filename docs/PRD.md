@@ -82,3 +82,15 @@ page to exactly `9.999.000`.
 - The adjacent crossed-out comparison price renders exactly `9.999.000`, using
   Indonesian dot grouping with no currency, locale, CTA, or positioning change.
 - No other visible price claim or production target is changed.
+
+## Approved WhatsApp CTA Revision - 2026-08-13
+
+### Objective
+
+Route every WhatsApp CTA to the CEO-approved ZeniChat TAM endpoint.
+
+### Acceptance criteria
+
+- All WhatsApp CTAs use `https://zenichat.com/api/wa/2be594bf-19e8-4195-98a3-4094fce74ea8/tam`.
+- The Alpha Leaders ticket checkout URL remains unchanged.
+- CTA behavior, tracking events, copy, pricing, layout, and deployment target remain unchanged.

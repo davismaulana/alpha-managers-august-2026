@@ -1,6 +1,8 @@
 import { readFileSync } from 'node:fs';
 
 const octoberHost = 'https://oct-2026.zenova.id';
+const approvedWhatsAppCtaUrl = 'https://zenichat.com/api/wa/2be594bf-19e8-4195-98a3-4094fce74ea8/tam';
+const formerWhatsAppCtaUrl = 'https://zenichat.id/api/wa/52c7314c-e9b8-406e-aa5a-690d5e83afbb/oct-2026';
 const sectionOrder = [
   'Hero',
   'ProblemStatement',
@@ -22,6 +24,7 @@ const requiredMarkers = [
   '/industry-trust-october.png',
   'oct_2026_cta_click',
   'Manager Anda Belum Kerja Seperti Yang Anda Harapkan?',
+  approvedWhatsAppCtaUrl,
 ];
 const forbiddenMarkers = [
   'august-event',
@@ -30,6 +33,7 @@ const forbiddenMarkers = [
   'alpha-managers-august-lp',
   '13 Agustus 2026',
   'Validasi awal dalam 8 langkah.',
+  formerWhatsAppCtaUrl,
 ];
 const files = [
   'src/App.tsx',
