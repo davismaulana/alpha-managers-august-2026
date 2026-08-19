@@ -40,12 +40,12 @@ For the exact TAM opening, Junior must send three customer-visible messages, in 
 | FR-01 | LP CTA opens the TAM WhatsApp route and preserves the TAM marker. | Pending end-to-end user-session proof |
 | FR-02 | Exact first contact produces exactly three messages in the approved order. | Partial: intro and poster observed |
 | FR-03 | Poster is the approved PNG and is delivered once. | Pass in controlled synthetic test |
-| FR-04 | Price/bank facts are exact; no invented discount, date, or payment verification. | Blocked: price send hit WAHA timeout |
-| FR-05 | 2- or 4-seat selection is acknowledged and registration handoff uses only the approved route. | Not executed |
-| FR-06 | Event questions are answered only from the approved event facts; unknown facts go to a human. | Prompt implemented; scenario proof pending |
-| FR-07 | Unqualified/off-topic/ABM questions are redirected without Julia/ABM qualification behavior. | Prompt implemented; scenario proof pending |
-| FR-08 | Payment claims switch to human handling and never claim verification. | Prompt implemented; scenario proof pending |
-| FR-09 | No chatbot/debug/internal-policy language, empty replies, or repeat-yourself loops. | No empty/duplicate loop observed; 20-case proof pending |
+| FR-04 | Price/bank facts are exact; no invented discount, date, or payment verification. | Pass for explicit payment-detail request; first-contact pricing transport passed |
+| FR-05 | 2- or 4-seat selection starts WhatsApp pre-registration data capture; no payment URL is sent automatically. | Pass for 2-seat intent; name -> email -> WhatsApp sequence observed |
+| FR-06 | Event questions are answered only from the approved event facts; unknown facts go to a human. | Pass: date/venue, topics, and inclusions |
+| FR-07 | Unqualified/off-topic/ABM questions are redirected without Julia/ABM qualification behavior. | Pass: ABM/Julia and student cases |
+| FR-08 | Payment claims switch to human handling and never claim verification. | Pass: transfer confirmation and refund cases |
+| FR-09 | No chatbot/debug/internal-policy language, empty replies, or repeat-yourself loops. | No empty/duplicate loop observed; full 20-case proof pending |
 | FR-10 | No self-trigger loop: `fromMe` messages are dropped. | Pass in controlled execution review |
 | FR-11 | Junior send nodes use the literal Junior WAHA session, not the inbound session expression. | Pass by workflow inspection |
 | FR-12 | Workflow stays disabled until all release gates pass. | Pass |
@@ -80,18 +80,22 @@ Expected: concise Indonesian reply, only approved facts, one clear next question
 
 Expected: polite clarification or human handoff; never hallucinate, qualify as ABM, repeat the prompt, or send an empty/debug response.
 
+### Data-capture revision (2026-08-19)
+
+The approved payment form is the source of truth for WhatsApp lead capture: email, name, active WhatsApp number, company/brand, role, and social handle. The direct payment gateway is a separate website path and must not be sent automatically from WhatsApp. The AI system message was published with this rule and verified in the live chat: `Saya mau daftar untuk 2 orang.` produced a single request for the lead's name; `Andi Pratama` produced a single request for the active email; the email produced a single request for the active WhatsApp number.
+
 ## Executed evidence and gate
 
 ### Latest smoke-test update (2026-08-19)
 
 - The personal WhatsApp Web profile was verified as the originating test number `+62 821-4320-8119`.
-- The exact LP-click -> Share on WhatsApp -> Continue to WhatsApp Web flow was executed again. The sent opening was delivered to Junior, but no inbound webhook execution arrived while WAHA presence was `offline`; the full three-message sequence remains unproven.
-- The earlier pricing failure contained a malformed `chatId` with leading whitespace. The expression was corrected and published; Junior was deactivated immediately after the follow-up smoke test.
+- The exact LP-click -> Share on WhatsApp -> Continue to WhatsApp Web flow was executed with the authenticated originating profile. Junior delivered the intro, approved poster, and pricing message in order.
+- The earlier pricing failure contained a malformed `chatId` with leading whitespace. The expression was corrected and published; the subsequent Notion null `decision_maker` failure was also fixed and the follow-up execution completed successfully.
 
 - LP CTA was inspected and confirmed to target the TAM route.
 - Junior WAHA session `zenichat_2be594bf_msst9tp4` is `WORKING` and has both the production webhook and the n8n webhook with `message.any` and `session.status` plus the configured `x-api-key` header.
-- Controlled synthetic inbound test reached Junior: intro and poster were delivered once; the price node failed with WAHA `failed to get device list ... usync query timed out`.
+- Controlled WhatsApp Web cases reached Junior successfully after the pricing and Notion fixes; no WAHA send timeout occurred in the subsequent runs.
 - No empty-message or self-trigger duplicate loop was observed; `If5` drops `fromMe` events.
-- The available WhatsApp Web tab is authenticated as the Junior account, not the user’s originating number. Therefore the exact LP-click → user-inbound WhatsApp Web flow and the full 20-case matrix are not release evidence yet.
+- The authenticated WhatsApp Web tab is being used as the originating test profile for the Junior chat. The full 20-case matrix is still pending, so these controlled cases are not production-release evidence yet.
 
 **Release decision: BLOCKED.** Keep the workflow disabled. Re-run the 20 cases only after the user’s WhatsApp Web session is authenticated to the originating test number and Junior presence is online/stable; require 20/20, zero duplicate/empty sends, and a successful third price message before activation.
