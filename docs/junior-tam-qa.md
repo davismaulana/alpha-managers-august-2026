@@ -82,7 +82,7 @@ Expected: polite clarification or human handoff; never hallucinate, qualify as A
 
 ### Data-capture revision (2026-08-19)
 
-The approved payment form is the source of truth for WhatsApp lead capture: email, name, active WhatsApp number, company/brand, role, and social handle. The direct payment gateway is a separate website path and must not be sent automatically from WhatsApp. The AI system message was published with this rule and verified in the live chat: `Saya mau daftar untuk 2 orang.` produced a single request for the lead's name; `Andi Pratama` produced a single request for the active email; the email produced a single request for the active WhatsApp number.
+The approved payment form is the source of truth for WhatsApp lead capture: email, name, active WhatsApp number, company/brand, role, and social handle. The direct payment gateway is a separate website path and must not be sent automatically from WhatsApp. The AI system message was published with this rule and verified in the live chat: `Saya mau daftar untuk 2 orang.` produced a single request for the lead's name; `Andi Pratama` produced a single request for the active email; the email produced a single request for the active WhatsApp number. A first iteration incorrectly repeated the name on a link request; a field-order override was published, and the repeated link request then correctly asked for the next missing WhatsApp number without sending a URL.
 
 ## Executed evidence and gate
 
