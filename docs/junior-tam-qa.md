@@ -82,6 +82,12 @@ Expected: polite clarification or human handoff; never hallucinate, qualify as A
 
 ## Executed evidence and gate
 
+### Latest smoke-test update (2026-08-19)
+
+- The personal WhatsApp Web profile was verified as the originating test number `+62 821-4320-8119`.
+- The exact LP-click -> Share on WhatsApp -> Continue to WhatsApp Web flow was executed again. The sent opening was delivered to Junior, but no inbound webhook execution arrived while WAHA presence was `offline`; the full three-message sequence remains unproven.
+- The earlier pricing failure contained a malformed `chatId` with leading whitespace. The expression was corrected and published; Junior was deactivated immediately after the follow-up smoke test.
+
 - LP CTA was inspected and confirmed to target the TAM route.
 - Junior WAHA session `zenichat_2be594bf_msst9tp4` is `WORKING` and has both the production webhook and the n8n webhook with `message.any` and `session.status` plus the configured `x-api-key` header.
 - Controlled synthetic inbound test reached Junior: intro and poster were delivered once; the price node failed with WAHA `failed to get device list ... usync query timed out`.
