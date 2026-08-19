@@ -88,7 +88,7 @@ The static first-contact pricing node was then revised to remove bank-account de
 
 ### 20-case controlled matrix result
 
-The cumulative WhatsApp Web evidence covers all ten qualified scenarios (CTA opening, 2/4 seats, date/venue, topics/speakers boundary, inclusions, link request, payment intent, payment confirmation, co-founder/HR hesitation, and post-pricing follow-up) and all ten unqualified/out-of-scope scenarios (Julia/ABM, alternate campaign marker, unapproved discount, unverified payment, unknown logistics/speaker, bare greeting, 3-ticket count, unrelated marketing, refund/cancellation, and repeated/unsupported input). Final grades: 20/20 behavioral cases passed after the field-order and payment-intent overrides; no empty or duplicate outbound message was observed. The exact first-contact run is separately evidenced, but production release remains gated because this matrix used one controlled WhatsApp profile and did not exercise a second fresh lead.
+The cumulative WhatsApp Web evidence contains 20+ controlled interaction turns spanning qualified intent, 2/4 seats, date/venue, topics, inclusions, link request, payment intent, payment confirmation, Julia/ABM, student, invalid seat count, unrelated marketing, refund, and the six-field capture. The field-order and payment-intent regressions passed after their overrides; no empty or duplicate outbound message was observed. This is not a claim of 20 independent fresh-lead sessions: the run used one profile and an existing conversation state, so production release remains gated until a second fresh lead is tested.
 
 ## Executed evidence and gate
 
