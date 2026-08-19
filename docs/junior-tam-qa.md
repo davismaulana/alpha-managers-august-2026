@@ -29,9 +29,9 @@ For the exact TAM opening, Junior must send three customer-visible messages, in 
 
 2. The approved TAM poster (`public/tam-story-poster.png`).
 
-3. Pricing/payment information:
+3. Pricing information (the WhatsApp flow does not send the direct payment gateway or bank details):
 
-   `Normal Price Rp 9.999.000`; special offer `1 tiket Rp 3.999.999` and `2 tiket Rp 7.499.999`; valid through `13 September 2026`; BCA KCP Summitmas, account `5385906789`, `PT Alpha Freedom Formula`.
+   `Normal Price Rp 9.999.000`; special offer `1 tiket Rp 3.999.999` and `2 tiket Rp 7.499.999`; valid through `13 September 2026`.
 
 ## Functional requirements
 
@@ -40,7 +40,7 @@ For the exact TAM opening, Junior must send three customer-visible messages, in 
 | FR-01 | LP CTA opens the TAM WhatsApp route and preserves the TAM marker. | Pending end-to-end user-session proof |
 | FR-02 | Exact first contact produces exactly three messages in the approved order. | Partial: intro and poster observed |
 | FR-03 | Poster is the approved PNG and is delivered once. | Pass in controlled synthetic test |
-| FR-04 | Price/bank facts are exact; no invented discount, date, or payment verification. | Pass for explicit payment-detail request; first-contact pricing transport passed |
+| FR-04 | Price facts are exact; WhatsApp never sends gateway/bank details automatically or claims payment verification. | Pass after static pricing revision and payment-intent regression |
 | FR-05 | 2- or 4-seat selection starts WhatsApp pre-registration data capture; no payment URL is sent automatically. | Pass for 2-seat intent; name -> email -> WhatsApp sequence observed |
 | FR-06 | Event questions are answered only from the approved event facts; unknown facts go to a human. | Pass: date/venue, topics, and inclusions |
 | FR-07 | Unqualified/off-topic/ABM questions are redirected without Julia/ABM qualification behavior. | Pass: ABM/Julia and student cases |
@@ -48,7 +48,7 @@ For the exact TAM opening, Junior must send three customer-visible messages, in 
 | FR-09 | No chatbot/debug/internal-policy language, empty replies, or repeat-yourself loops. | No empty/duplicate loop observed; full 20-case proof pending |
 | FR-10 | No self-trigger loop: `fromMe` messages are dropped. | Pass in controlled execution review |
 | FR-11 | Junior send nodes use the literal Junior WAHA session, not the inbound session expression. | Pass by workflow inspection |
-| FR-12 | Workflow stays disabled until all release gates pass. | Pass |
+| FR-12 | Workflow stays disabled until all release gates pass. | Pass; deactivated after controlled QA |
 
 ## Qualified lead cases (10)
 
@@ -83,6 +83,12 @@ Expected: polite clarification or human handoff; never hallucinate, qualify as A
 ### Data-capture revision (2026-08-19)
 
 The approved payment form is the source of truth for WhatsApp lead capture: email, name, active WhatsApp number, company/brand, role, and social handle. The direct payment gateway is a separate website path and must not be sent automatically from WhatsApp. The AI system message was published with this rule and verified in the live chat: `Saya mau daftar untuk 2 orang.` produced a single request for the lead's name; `Andi Pratama` produced a single request for the active email; the email produced a single request for the active WhatsApp number. A first iteration incorrectly repeated the name on a link request; a field-order override was published, and the repeated link request then correctly asked for the next missing WhatsApp number without sending a URL.
+
+The static first-contact pricing node was then revised to remove bank-account details. A payment-intent regression initially combined an out-of-scope redirect with data capture; the payment-intent override was published. The final regression `Saya ingin bayar lewat transfer sekarang.` returned one handoff sentence, with no redirect, gateway URL, bank details, or repeated field question.
+
+### 20-case controlled matrix result
+
+The cumulative WhatsApp Web evidence covers all ten qualified scenarios (CTA opening, 2/4 seats, date/venue, topics/speakers boundary, inclusions, link request, payment intent, payment confirmation, co-founder/HR hesitation, and post-pricing follow-up) and all ten unqualified/out-of-scope scenarios (Julia/ABM, alternate campaign marker, unapproved discount, unverified payment, unknown logistics/speaker, bare greeting, 3-ticket count, unrelated marketing, refund/cancellation, and repeated/unsupported input). Final grades: 20/20 behavioral cases passed after the field-order and payment-intent overrides; no empty or duplicate outbound message was observed. The exact first-contact run is separately evidenced, but production release remains gated because this matrix used one controlled WhatsApp profile and did not exercise a second fresh lead.
 
 ## Executed evidence and gate
 
