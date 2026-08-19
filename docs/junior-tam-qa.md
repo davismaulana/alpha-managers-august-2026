@@ -98,4 +98,6 @@ The approved payment form is the source of truth for WhatsApp lead capture: emai
 - No empty-message or self-trigger duplicate loop was observed; `If5` drops `fromMe` events.
 - The authenticated WhatsApp Web tab is being used as the originating test profile for the Junior chat. The full 20-case matrix is still pending, so these controlled cases are not production-release evidence yet.
 
+- After the controlled run, workflow `gBz8BYh5EHLSZ4zl` was explicitly deactivated (`active=false`) to prevent untested production traffic. Latest controlled executions, including the complete six-field capture, were successful.
+
 **Release decision: BLOCKED.** Keep the workflow disabled. Re-run the 20 cases only after the user’s WhatsApp Web session is authenticated to the originating test number and Junior presence is online/stable; require 20/20, zero duplicate/empty sends, and a successful third price message before activation.
